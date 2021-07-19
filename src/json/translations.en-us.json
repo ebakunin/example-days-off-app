@@ -1,0 +1,16 @@
+{
+    "SYSTEM_PAGE_TITLE": "Example Day Off Management App",
+    "SYSTEM_TODAY": "Today",
+    "SYSTEM_SELECT_MONTH": "Select Month",
+    "SYSTEM_SELECT_YEAR": "Select Year",
+    "SYSTEM_CLEAR_MONTH": "Clear Month",
+    "SYSTEM_CLEAR_ALL_DATES": "Clear All Dates",
+    "SYSTEM_DAYS_OFF_SAVED_DAYS_OFF": "Saved Days Off",
+    "SYSTEM_RESTORE_ALL_QUESTION": "Restore All",
+    "SYSTEM_SLOTS_DELETE_ALL": "Delete All",
+    "SYSTEM_NO_DATES_SAVED": "No Dates Saved",
+    "SYSTEM_SELECT_DATE_EXPLANATION": "Select a date from the calendar and click the save button.",
+    "SYSTEM_SAVE": "Save",
+    "SYSTEM_NEXT": "next",
+    "SYSTEM_CLOSE": "close"
+}

@@ -1,0 +1,111 @@
+@import '../../styles/settings';
+
+.month-separator {
+    line-height: 50%;
+    margin-bottom: 14px;
+    padding-top: 14px;
+
+    span {
+        background-color: $primary-background-color;
+        color: $gray-4;
+        font-size: 11px;
+        font-weight: bold;
+        padding-right: 10px;
+        position: relative;
+        text-transform: uppercase;
+    }
+
+    hr {
+        border-color: $gray-5;
+        margin: 0;
+        position: relative;
+        top: 6px;
+    }
+}
+
+.day-off-card {
+    border: 1px solid $gray-5;
+    border-radius: $border-radius;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 12px;
+
+    &:hover {
+        border-color: $danger;
+
+        .delete-day {
+            color: $danger;
+        }
+    }
+
+    &.pending-delete {
+        &:hover {
+            border-color: $primary-color-2-medium;
+
+            .show-restore {
+                color: $primary-color-2-medium;
+            }
+        }
+
+        .cal-day-month {
+            background-color: $danger !important;
+        }
+    }
+
+    .cal-day {
+        border: 1px solid $gray-5;
+        border-radius: $border-radius;
+        margin-right: 12px;
+        text-align: center;
+        width: 45px;
+
+        .cal-day-month {
+            background-color: $primary-color-2-medium;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            color: $primary-background-color;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .cal-day-date {
+            color: $gray-4;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 125%;
+        }
+    }
+
+    .cal-text {
+        align-self: center;
+        flex-grow: 1;
+
+        .long-date {
+            color: $primary-color-1-medium;
+            font-weight: 500;
+            margin-bottom: -5px;
+        }
+
+        .full-day {
+            color: $button-disabled-color;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+    }
+
+    .delete-day {
+        align-self: center;
+        color: $gray-4;
+        font-size: 21px;
+
+        &:hover {
+            .show-restore {
+                color: $primary-color-2-medium;
+            }
+        }
+    }
+}

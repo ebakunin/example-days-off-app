@@ -1,0 +1,180 @@
+@import '../../styles/settings';
+
+$calendar-height: 356px;
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.top-menu {
+    border-bottom: 1px solid $gray-5;
+    padding: 20px;
+}
+
+#daysOffSection {
+    color: $gray-3;
+    display: flex;
+    flex-direction: row;
+}
+
+#daysOffContent {
+    border: 1px solid $gray-5;
+    border-radius: $border-radius;
+    margin-right: 20px;
+
+    #monthList {
+        border-bottom: 1px solid $gray-5;
+        list-style: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+
+        .month {
+            cursor: pointer;
+            flex: auto;
+            padding-bottom: 18px;
+            text-align: center;
+            width: 3rem;
+
+            &:hover {
+                color: $primary-color-2-medium;
+            }
+
+            &.selected {
+                border-bottom: 2px solid $primary-color-2-medium;
+                color: $primary-color-2-medium;
+                cursor: default;
+                font-weight: bold;
+            }
+        }
+    }
+
+    #calendarSection {
+        #daysOffSelectors {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px 0 20px 20px;
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    &.enabled {
+                        cursor: pointer;
+
+                        &:hover {
+                            color: $primary-color-2-medium;
+                        }
+                    }
+
+                    &:not(.enabled) {
+                        color: $gray-5;
+                    }
+                }
+            }
+
+
+            #clearAllDates {
+                &.enabled {
+                    #dateCounter {
+                        visibility: visible;
+                    }
+                }
+
+                #dateCounter {
+                    color: $primary-color-2-medium;
+                    display: inline-block;
+                    font-weight: bold;
+                    line-height: 100%;
+                    visibility: hidden;
+                    width: 40px;
+                }
+            }
+        }
+
+        #daysOffCalendar {
+            display: flex;
+            border-left: 1px solid $gray-5;
+            height: calc(#{$calendar-height} + 2px);
+            margin: auto 0 auto auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: calc(30px - 0.5rem);
+
+            .p-calendar, .p-datepicker {
+                border: none;
+            }
+        }
+    }
+}
+
+#daysOffList {
+    border: 1px solid $gray-5;
+    border-radius: $border-radius;
+    min-width: 370px;
+    padding-bottom: 2px;
+
+    #saveDaysOff {
+        color: $primary-color-1-medium;
+        flex-grow: 1;
+        font-weight: 500;
+        margin-right: 20px;
+
+        .badge {
+            background-color: $primary-color-2-medium;
+            margin-top: -2px;
+        }
+    }
+
+    #deleteAll {
+        cursor: pointer;
+        justify-self: flex-end;
+
+        &:hover {
+            color: $danger;
+        }
+    }
+
+    #restoreAll {
+        cursor: pointer;
+        justify-self: flex-end;
+
+        &:hover {
+            color: $primary-color-2-medium;
+        }
+    }
+
+    #exceptionsListContainer {
+        display: flex;
+        flex-direction: column;
+        height: $calendar-height;
+        overflow-y: auto;
+        padding: 0 20px 20px 20px;
+
+        #noDaysOff {
+            display: flex;
+            flex-direction: column;
+            font-size: 12px;
+            justify-content: center;
+            max-width: 330px;
+            min-height: 100%;
+            padding: 35px;
+            text-align: center;
+
+            .no-dates-saved {
+                font-size: $body-font-size;
+                font-weight: 600;
+                margin-top: 10px;
+            }
+
+            .fa-calendar-times {
+                color: $primary-color-2-medium;
+                font-size: 400%;
+            }
+        }
+    }
+}

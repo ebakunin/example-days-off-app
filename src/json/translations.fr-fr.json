@@ -1,0 +1,15 @@
+{
+    "SYSTEM_TODAY": "Aujourd'hui",
+    "SYSTEM_SELECT_MONTH": "Sélectionnez le mois",
+    "SYSTEM_SELECT_YEAR": "Sélectionnez l'année",
+    "SYSTEM_CLEAR_MONTH": "Effacez le mois",
+    "SYSTEM_CLEAR_ALL_DATES": "Effacez les dates",
+    "SYSTEM_DAYS_OFF_SAVED_DAYS_OFF": "Jours de congé enregistrés",
+    "SYSTEM_RESTORE_ALL_QUESTION": "Tout restaurer",
+    "SYSTEM_SLOTS_DELETE_ALL": "Tout supprimer",
+    "SYSTEM_NO_DATES_SAVED": "Aucune date n'a été sauvegardée",
+    "SYSTEM_SELECT_DATE_EXPLANATION": "Sélectionnez une date dans le calendrier et cliquez sur le bouton de sauvegarde.",
+    "SYSTEM_SAVE": "Enregistrer",
+    "SYSTEM_NEXT": "suivante",
+    "SYSTEM_CLOSE": "fermer"
+}

@@ -1,0 +1,65 @@
+<header>
+    <app-header (showExplanation)="onShowExplanationText()"></app-header>
+</header>
+
+<h1>{{ 'Example Day Off Management App' | translate | async }}&nbsp;</h1>
+
+<app-schedule-exception-management
+    [startingViewDate]="startingViewDate"
+    [closedDays]="(office$ | async)?.closedDays ?? []"
+    [closedDates]="(office$ | async)?.closedDates ?? []"
+    [daysOff]="(employee$ | async)?.daysOff ?? []"
+    (newExceptions)="newExceptionDates = $event"
+    (exceptionsToBeDeleted)="exceptionDatesToBeDeleted = $event"
+    (currentViewedMonth)="startingViewDate = $event">
+</app-schedule-exception-management>
+
+<br>
+
+<button pButton pRipple type="button"
+        label="Save"
+        [disabled]="newExceptionDates.length === 0 && exceptionDatesToBeDeleted.length === 0"
+        (click)="onSave()">
+</button>
+
+<ng-container *ngIf="(showSpinner$ | async) || showMesh">
+    <div class="mesh" style="z-index: 100"></div>
+</ng-container>
+
+<app-spinner></app-spinner>
+
+<!--
+# explain how the page works
+# explain how the code works
+# explain why the footprint is so large and uses fake data
+-->
+
+<aside>
+    <div #showSteps class="explanation down-left" style="width: 450px; left: 5em; top: 2em">
+        {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
+        <div class="positioned arrow down-left"></div>
+        <div class="next-step">
+            [<a (click)="showNextExplanationText(1)">{{ 'SYSTEM_NEXT' | translate | async }}</a>]
+        </div>
+    </div>
+</aside>
+
+<aside>
+    <div #showSteps class="explanation down-left" style="width: 300px; left: 45em; top: 2em">
+        {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
+        <div class="positioned arrow down-left"></div>
+        <div class="next-step">
+            [<a (click)="showNextExplanationText(2)">{{ 'SYSTEM_NEXT' | translate | async }}</a>]
+        </div>
+    </div>
+</aside>
+
+<aside>
+    <div #showSteps class="explanation down-left" style="width: 400px; left: 2em; top: 10em">
+        {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
+        <div class="positioned arrow down-left"></div>
+        <div class="next-step">
+            [<a (click)="showNextExplanationText('end')">{{ 'SYSTEM_CLOSE' | translate | async }}</a>]
+        </div>
+    </div>
+</aside>

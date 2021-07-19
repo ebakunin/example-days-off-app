@@ -1,0 +1,80 @@
+.p-dropdown {
+    min-width: 180px;
+}
+
+.mesh {
+    background-color: lightgray;
+    opacity: 0.6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.explanation {
+    background-color: lightgray;
+    border: 1px solid darkslategray;
+    border-radius: 10px;
+    color: black;
+    display: none;
+    font-size: 115%;
+    padding: 10px 15px;
+    position: absolute;
+    z-index: 150;
+
+    &.down-left {
+        border-bottom-left-radius: 0;
+    }
+
+    &.down-right {
+        border-bottom-right-radius: 0;
+    }
+}
+
+
+.positioned {
+    position: absolute;
+
+    &.down-left {
+        left: 4px;
+        bottom: 3px;
+    }
+}
+
+.arrow {
+    border: solid darkslategray;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 6px;
+
+    &.right {
+        transform: rotate(-45deg);
+    }
+    &.left {
+        transform: rotate(135deg);
+    }
+    &.up {
+        transform: rotate(-135deg);
+    }
+    &.down {
+        transform: rotate(45deg);
+    }
+    &.down-left {
+        transform: rotate(90deg);
+    }
+}
+
+.next-step {
+    float: right;
+    font-size: 75%;
+    font-variant: small-caps;
+    position: relative;
+    left: 5px;
+    top: 8px;
+
+    a {
+        cursor: pointer;
+    }
+}
+

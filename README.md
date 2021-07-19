@@ -1,1 +1,1 @@
-# example-days-off-app
+# Example Days Off Angular App

@@ -1,0 +1,62 @@
+<nav id="header">
+    <div class="options">
+        <!--<i class="fas fa-chalkboard-teacher"-->
+        <i class="far fa-comment"
+           pTooltip="{{ 'How the app works' | translate | async }}"
+           [attr.aria-label]="'How the app works' | translate | async"
+           (click)="showExplanation.emit(true)"></i>
+
+        <span class="separator" aria-hidden="true"></span>
+
+        <a href="https://github.com/ebakunin/multisort" target="_blank">
+            <i class="fab fa-github"
+               pTooltip="{{ 'See the code on Github' | translate | async }}"
+               tooltipPosition="bottom"
+               [attr.aria-label]="'See the code on Github' | translate | async"
+               aria-label="See the code on Github"></i>
+        </a>
+
+        <span class="separator" aria-hidden="true"></span>
+
+        <i class="far fa-paper-plane"
+           pTooltip="{{ 'Send me a message' | translate | async }}"
+           tooltipPosition="bottom"
+           [attr.aria-label]="'Send me a message' | translate | async"
+           (click)="onSendMessage()"></i>
+
+        <span class="separator" aria-hidden="true"></span>
+
+        <i class="globe fa"
+           [ngClass]="(globeIcon$ | async) ?? ''"
+           pTooltip="{{ 'Select a language' | translate | async }}"
+           tooltipPosition="bottom"
+           [attr.aria-label]="'Select a language' | translate | async"
+           (click)="showDropdown = !showDropdown"></i>
+        <span class="badge">{{ (selectedLanguage$ | async)?.abbreviation }}</span>
+    </div>
+
+    <div *ngIf="showDropdown">
+        <p-dropdown [options]="(languages$ | async) ?? []"
+                    [ngModel]="selectedLanguage$ | async"
+                    (onChange)="onChangeLanguage($event.value)"
+                    optionLabel="nativeDescription">
+        </p-dropdown>
+    </div>
+</nav>
+
+<div id="contact">
+    <h3>{{ 'Message Me' | translate | async }}</h3>
+    <form>
+        <textarea
+            #message
+            [placeholder]="'Say something nice, or at least interesting…' | translate | async"
+            rows="8"
+            maxlength="5000"></textarea>
+        <br>
+        <button type="button"
+                [disabled]="message.value.trim().length === 0"
+                (click)="onSendMessage()">
+            {{ 'Send' | translate | async }} {{ message.value ?? 'empty'}}
+        </button>
+    </form>
+</div>

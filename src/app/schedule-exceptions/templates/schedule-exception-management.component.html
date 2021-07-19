@@ -1,0 +1,104 @@
+<section id="daysOffSection">
+    <div id="daysOffContent">
+        <ul id="monthList" class="row-container top-menu">
+            <li *ngFor="let month of monthsList; trackBy: trackMonth"
+                class="month"
+                [ngClass]="{
+                    'selected': month.index === calendar.currentMonth,
+                    'pointer': month.index !== calendar.currentMonth
+                }"
+                (click)="month.index !== calendar.currentMonth ? goToMonth(month.date) : null">
+                {{ month.date | localeDate:{month: 'short'} | async }}
+            </li>
+        </ul> <!-- /#monthList -->
+
+        <div id="calendarSection" class="row-container">
+            <div id="daysOffSelectors">
+                <ul>
+                    <li id="goToToday"
+                        [class.enabled]="todaysMonth !== calendar.currentMonth || todaysYear !== calendar.currentYear"
+                        (click)="goToToday()">
+                        {{ 'SYSTEM_TODAY' | translate | async }}
+                    </li>
+                    <li id="selectMonth" class="enabled" (click)="onSelectMonth()">
+                        {{ 'SYSTEM_SELECT_MONTH' | translate | async }}
+                    </li>
+                    <li id="selectYear" class="enabled" (click)="onSelectYear()">
+                        {{ 'SYSTEM_SELECT_YEAR' | translate | async }}
+                    </li>
+                </ul>
+
+                <ul>
+                    <li id="clearMonth"
+                        [class.enabled]="newExceptionsBucket.size > 0"
+                        (click)="newExceptionsBucket.size > 0 ? onClearMonth() : null">
+                        {{ 'SYSTEM_CLEAR_MONTH' | translate | async }}
+                    </li>
+                    <li id="clearAllDates"
+                        [class.enabled]="newExceptionsBucket.size > 0"
+                        (click)="newExceptionsBucket.size > 0 ? onClearAllNewDates() : null">
+                        {{ 'SYSTEM_CLEAR_ALL_DATES' | translate | async }}
+                        <span id="dateCounter">&nbsp;{{ newExceptionsBucket.size }}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="daysOffCalendar" class="p-input-icon-right">
+                <p-calendar #calendar
+                            id="scheduleExceptionCalendar"
+                            selectionMode="multiple"
+                            panelStyleClass="primeng-calendar"
+                            [ngModel]="daysOff"
+                            [disabledDays]="closedDays"
+                            [disabledDates]="closedDates"
+                            [minDate]="todaysDate"
+                            [maxDate]="maxDate"
+                            [inline]="true"
+                            [showOtherMonths]="false"
+                            (onMonthChange)="onMonthChange()">
+                </p-calendar>
+            </div> <!-- /#daysOffCalendar -->
+        </div> <!-- /#calendarSection -->
+    </div> <!-- /#daysOffContent -->
+
+    <div id="daysOffList">
+        <div class="row-container top-menu">
+            <div id="saveDaysOff">
+                {{ 'SYSTEM_DAYS_OFF_SAVED_DAYS_OFF' | translate | async }}&nbsp;
+                <span *ngIf="existingExceptionsBucket.size > 0" class="badge">{{ existingExceptionsBucket.size }}</span>
+            </div>
+
+            <ng-container *ngIf="cardData.length > 0">
+                <div *ngIf="markedForDeletionBucket.size > 0" id="restoreAll" (click)="onRestoreAll()">
+                    {{ 'SYSTEM_RESTORE_ALL_QUESTION' | translate | async }} &nbsp;<i class="fa fa-undo"></i>
+                </div>
+                <div *ngIf="markedForDeletionBucket.size === 0" id="deleteAll" (click)="onDeleteAll()">
+                    {{ 'SYSTEM_SLOTS_DELETE_ALL' | translate | async }} &nbsp;<i class="far fa-times-circle"></i>
+                </div>
+            </ng-container>
+        </div>
+
+        <div #exceptionsListContainer id="exceptionsListContainer" class="mac-style-scrollbar">
+            <ng-container *ngIf="cardData.length > 0; else noCards">
+                <div id="innerContent">
+                    <ng-container *ngFor="let card of cardData; let i = index; trackBy: trackCardData">
+                        <app-exception-date-card
+                                [date]="card.date"
+                                [pendingDelete]="card.isPendingDelete"
+                                [showMonthSeparator]="shouldShowCardMonthSeparator(card.date, i)"
+                                (onMarkForDelete)="onMarkForDelete($event)"
+                                (onRestore)="onRestore($event)">
+                        </app-exception-date-card>
+                    </ng-container>
+                </div> <!-- /#innerContent -->
+            </ng-container>
+            <ng-template #noCards>
+                <div id="noDaysOff">
+                    <i class="far fa-calendar-times"></i>
+                    <div class="no-dates-saved">{{ 'SYSTEM_NO_DATES_SAVED' | translate | async }}</div>
+                    {{ 'SYSTEM_SELECT_DATE_EXPLANATION' | translate | async }}
+                </div>
+            </ng-template>
+        </div> <!-- /#exceptionsListContainer -->
+    </div> <!-- /#daysOffContent -->
+</section>

@@ -1,0 +1,131 @@
+@import './settings';
+
+// PrimeNG use the "mdc-light-indigo" theme
+
+.primeng-calendar {
+    &.p-datepicker {
+        border: none;
+        color: $gray-2;
+        font-family: $body-font-family;
+        font-size: 13px;
+
+        .p-datepicker-header {
+            .p-datepicker-title {
+                color: $primary-color-1-medium;
+                font-size: $body-font-size;
+                margin-left: auto;
+                padding-left: 22px;
+            }
+
+            .p-datepicker-prev, .p-datepicker-next {
+                color: $primary-color-2-medium;
+                transition: none;
+
+                &:disabled {
+                    color: $gray-4;
+                }
+
+                &:enabled:hover {
+                    background-color: unset;
+                    color: $primary-color-2-dark;
+                }
+
+                .p-datepicker-prev-icon, .p-datepicker-next-icon {
+                    font-size: $body-font-size;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .p-datepicker-calendar {
+            th {
+                border-bottom: none;
+                font-size: 0;
+                font-weight: bold;
+                text-align: center;
+
+                &::first-letter {
+                    font-size: 12px;
+                }
+            }
+
+            td {
+                padding: 7px;
+
+                .p-ripple {
+                    color: $gray-2;
+                    font-size: 12px;
+                    height: 26px;
+                    width: 26px;
+
+                    &.p-highlight {
+                        background-color: $primary-color-2-medium;
+                        color: $primary-background-color;
+                    }
+                }
+
+                &.p-datepicker-today {
+                    padding: 4px;
+
+                    .p-ripple {
+                        background-color: rgba(67, 158, 247, 0.1);
+                        border-color: $primary-color-2-medium;
+                        box-shadow: none;
+                        height: 28px;
+                        width: 28px;
+
+                        &.p-highlight {
+                            border-color: $primary-background-color;
+                            border-style: double;
+                            border-width: initial;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/* CUSTOM ID STYLING */
+#scheduleExceptionCalendar {
+    .p-datepicker-calendar {
+        td {
+            &.p-datepicker-today {
+                .removed-exception-dates, .new-exception-dates, .existing-exception-dates {
+                    border-style: double;
+                    border-width: 3px;
+                }
+
+                .existing-exception-dates {
+                    background-color: $primary-background-color;
+                }
+            }
+
+            &:not(.p-datepicker-today) {
+                .p-ripple.p-highlight {
+                    background-color: $primary-background-color;
+                    color: $gray-2;
+                }
+            }
+        }
+    }
+
+    .new-exception-dates {
+        background-color: $primary-background-color !important;
+        border-color: $primary-color-2-medium !important;
+        color: $gray-2 !important;
+    }
+
+    .existing-exception-dates {
+        background-color: $primary-color-2-medium !important;
+        color: $primary-background-color !important;
+    }
+
+    .removed-exception-dates {
+        background-color: $primary-background-color !important;
+        border-color: $danger !important;
+        color: $gray-2 !important;
+    }
+}
