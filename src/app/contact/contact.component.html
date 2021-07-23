@@ -1,0 +1,37 @@
+<p-dialog [header]="('Message Me' | translate | async) ?? ''"
+          position="bottom"
+          styleClass="contact-dialog"
+          [modal]="true"
+          [(visible)]="visible">
+
+    <form *ngIf="form" [formGroup]="form" autocomplete="off" (submit)="onSendMessage()">
+        <div>
+            <textarea id="yourMessage"
+                      formControlName="message"
+                      [placeholder]="'Say something nice, or at least interesting…' | translate | async"
+                      autofocus
+                      maxlength="2000"
+                      rows="6"></textarea>
+        </div>
+
+        <div>
+            <input type="text"
+                   formControlName="name"
+                   id="yourName"
+                   size="50"
+                   [placeholder]="'Your name' | translate | async">
+            <input type="email"
+                   formControlName="email"
+                   id="yourEmail"
+                   size="50"
+                   [placeholder]="'Your email' | translate | async">
+        </div>
+
+        <div>
+            <button [label]="('Send' | translate | async) ?? ''"
+                    pButton pRipple
+                    [disabled]="!form.valid">
+            </button>
+        </div>
+    </form>
+</p-dialog>

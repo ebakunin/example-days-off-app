@@ -1,0 +1,47 @@
+@import '../styles/settings';
+
+::ng-deep .contact-dialog {
+    width: 50vw;
+
+    form {
+        display: grid;
+        grid-gap: 8px;
+        grid-template-columns: auto auto auto;
+
+        div {
+            &:first-child {
+                grid-column: 1 / 7;
+
+                textarea {
+                    border-radius: $border-radius;
+                    border-width: 1px;
+                    font-size: 105%;
+                    padding: 3px 6px;
+                    resize: none;
+                    width: 100%;
+                }
+            }
+
+            &:nth-child(2) {
+                grid-column: 1 / 6;
+
+                input {
+                    border-radius: $border-radius;
+                    border-width: 1px;
+                    display: block;
+                    font-size: 105%;
+                    padding: 3px 6px;
+                    width: 100%;
+
+                    &:first-child {
+                        margin-bottom: 9px;
+                    }
+                }
+            }
+
+            &:nth-child(3) {
+                margin: auto;
+            }
+        }
+    }
+}
