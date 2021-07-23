@@ -1,0 +1,34 @@
+<!--
+# explain how the page works
+# explain how the code works
+# explain why the footprint is so large and uses fake data
+-->
+<aside>
+    <div #showSteps class="explanation down-left" style="width: 450px; left: 5em; top: 2em">
+        {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
+        <div class="positioned arrow down-left"></div>
+        <div class="next-step">
+            [<a (click)="showNextExplanationText(1)">{{ 'SYSTEM_NEXT' | translate | async }}</a>]
+        </div>
+    </div>
+</aside>
+
+<aside>
+    <div #showSteps class="explanation down-left" style="width: 300px; left: 45em; top: 2em">
+        {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
+        <div class="positioned arrow down-left"></div>
+        <div class="next-step">
+            [<a (click)="showNextExplanationText(2)">{{ 'SYSTEM_NEXT' | translate | async }}</a>]
+        </div>
+    </div>
+</aside>
+
+<aside>
+    <div #showSteps class="explanation down-left" style="width: 400px; left: 2em; top: 10em">
+        {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
+        <div class="positioned arrow down-left"></div>
+        <div class="next-step">
+            [<a (click)="onClose()">{{ 'SYSTEM_CLOSE' | translate | async }}</a>]
+        </div>
+    </div>
+</aside>
