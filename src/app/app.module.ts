@@ -11,13 +11,17 @@ import { ScheduleExceptionsModule } from './schedule-exceptions/schedule-excepti
 import { ServicesModule } from './services/services.module';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
+import { ContactComponent } from './contact/contact.component';
+import { ExplanationsComponent } from './explanations/explanations.component';
+import { MenuComponent } from './header/menu.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        HeaderComponent,
+        ContactComponent,
+        ExplanationsComponent,
+        MenuComponent,
         SpinnerComponent
     ],
     imports: [
@@ -32,7 +36,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
         ScheduleExceptionsModule,
         ServicesModule.forRoot()
     ],
-    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

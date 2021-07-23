@@ -1,0 +1,45 @@
+@import '../styles/settings';
+
+::ng-deep .p-dropdown:not(.p-disabled).p-focus {
+    box-shadow: none;
+}
+
+#mainMenu {
+    position: fixed;
+    right: 1em;
+    margin-right: 0.5em;
+
+    div {
+        font-size: 250%;
+
+        &:not(:first-child):before {
+            color: gray;
+            content: '·';
+            display: block;
+            line-height: 100%;
+            text-align: center;
+        }
+
+        section {
+            display: block;
+            position: absolute;
+            right: 0;
+        }
+
+        i {
+            color: gray;
+            cursor: pointer;
+
+            &:hover {
+                color: #000;
+            }
+        }
+
+        .badge {
+            color: #fff;
+            font-size: 25%;
+            margin-left: -4ch;
+            vertical-align: baseline;
+        }
+    }
+}
