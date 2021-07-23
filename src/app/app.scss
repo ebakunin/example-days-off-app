@@ -1,0 +1,20 @@
+.p-dropdown {
+    min-width: 180px;
+}
+
+.mesh {
+    background-color: rgba(0, 0, 0, 0.32);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+}
+
+footer {
+    font-size: 110%;
+    position: fixed;
+    right: 1em;
+    bottom: 0.75em;
+}
