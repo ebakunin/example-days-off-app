@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import {
-    delay,
     distinctUntilKeyChanged,
-    filter,
     map,
-    pluck, startWith,
+    pluck,
+    startWith,
     switchMap,
     take,
     tap
@@ -16,14 +15,14 @@ import { SpinnerService } from './spinner.service';
 import { Language } from '../models/language.model';
 import { English, French, Spanish } from '../data/mock.data';
 
-type TranslationType = {[isoCode: string]: [string, string][]};
+type TranslationType = {[isoCode: string]: Map<string, string>};
 
 @Injectable()
 export class LanguageService {
     public readonly languages$ = new BehaviorSubject<Language[]>([English, French, Spanish]);
     public readonly selectedLanguage$ = new BehaviorSubject<Language>(English);
-    public readonly translations$ = new BehaviorSubject<TranslationType>({});
 
+    private readonly _translations$ = new BehaviorSubject<TranslationType>({});
     private readonly _storage: TranslationType = {};
 
     constructor(private _http: HttpClient,
@@ -37,7 +36,7 @@ export class LanguageService {
      * @returns {Observable<Language["isoCode"]>}
      * @private
      */
-    private _retrieveTranslations$(isoCode = 'en-US'): Observable<Language['isoCode']> {
+    private _retrieveTranslations$(isoCode: string = 'en-US'): Observable<Language['isoCode']> {
         isoCode = isoCode.toLowerCase();
 
         /* Only retrieve data if it has not yet been loaded */
@@ -46,10 +45,10 @@ export class LanguageService {
             const headers = new HttpHeaders().set('Content-Type', 'text/json');
 
             return this._http.get<[string, string]>(path, {headers}).pipe(
-                delay(1000), // fake loading time
+                // delay(1000), // fake loading time
                 map(json => {
-                    this._storage[isoCode] = Object.entries(json);
-                    this.translations$.next(this._storage);
+                    this._storage[isoCode] = new Map(Object.entries(json));
+                    this._translations$.next(this._storage);
                     return isoCode;
                 })
             );
@@ -59,35 +58,28 @@ export class LanguageService {
     }
 
     /**
-     * @param {string[]} ids
+     * @param {string[]} tokens
      * @return {Observable<string[]>}
      */
-    public translate$(ids: string[]): Observable<string[]> {
-        const translations$ = ids.map(id => this._translateById$(id));
-        return combineLatest(translations$);
+    public translate$(tokens: string[]): Observable<string[]> {
+        const translations$ = tokens.map(token => this._translateByToken$(token));
+        return combineLatest(translations$).pipe(startWith(['']));
     }
 
     /**
-     * Translates a term using the term's ID.
-     * If no translation is available returns the original code.
-     * @param {string} id The ID of the desired term to translate
+     * Returns a translated term by token. If no term is available returns the token.
+     * Displays the spinner during the loading process.
+     *
+     * @param {string} token The token of the desired term to translate
      * @returns {Observable<string>}
      */
-    private _translateById$(id: string): Observable<string> {
+    private _translateByToken$(token: string): Observable<string> {
         return this.selectedLanguage$.pipe(
-            distinctUntilKeyChanged('id'),
+            distinctUntilKeyChanged('isoCode'),
             tap(() => this._spinnerService.start()),
             switchMap(language => this._retrieveTranslations$(language.isoCode)),
-            switchMap(isoCode => this.translations$.pipe(pluck(isoCode.toLowerCase()))),
-            filter(translations => translations?.length > 0),
-            map(translations => {
-                for (const [key, term] of translations) {
-                    if (key === id) {
-                        return term;
-                    }
-                }
-                return id;
-            }),
+            switchMap(isoCode => this._translations$.pipe(pluck(isoCode.toLowerCase()))),
+            map(translations => translations.get(token) ?? token),
             tap(() => this._spinnerService.stop())
         );
     }

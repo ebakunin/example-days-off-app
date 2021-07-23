@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { distinctUntilKeyChanged, map, startWith } from "rxjs/operators";
+import { distinctUntilKeyChanged, map } from "rxjs/operators";
 import 'numeral/locales';
 
 import { LanguageService } from '../services/language.service';
@@ -11,6 +11,9 @@ import './common.function'; // @fixme
 export class UcFirstPipe implements PipeTransform {
     /**
      * Equivalent of PHP `ucfirst()`.
+     *
+     * @param {string} word
+     * @returns {string}
      */
     public transform(word: string): string {
         return word.ucfirst();
@@ -21,6 +24,9 @@ export class UcFirstPipe implements PipeTransform {
 export class UcWordsPipe implements PipeTransform {
     /**
      * Equivalent of PHP `ucwords()`.
+     *
+     * @param {string} words
+     * @returns {string}
      */
     public transform(words: string): string {
         return words.ucwords();
@@ -49,6 +55,11 @@ export class CallFunctionPipe implements PipeTransform {
      *     // If item.text="Example" and item.moreText="foo" then display:
      *     // "Example foo 0.5972487105801683"
      *   </li>
+     *
+     * @param {T} thisArg
+     * @param {(t: T, ...others: any[]) => R} project
+     * @param {[]} args
+     * @returns {R}
      */
     public transform<T, R>(thisArg: T, project: (t: T, ...others: any[]) => R, ...args: any[]): R {
         return project(thisArg, ...args);
@@ -78,8 +89,11 @@ export class FormGroupTypePipe implements PipeTransform {
      * In the template:
      *   <input type="text" formControlName="name">
      *   <section [formGroup]="form.get('checkbox') | formGroupType">
+     *
+     * @param {AbstractControl} abstractControl
+     * @returns {FormGroup}
      */
-    public transform(abstractControl: any): FormGroup {
+    public transform(abstractControl: AbstractControl): FormGroup {
         return abstractControl as FormGroup;
     }
 }
@@ -105,8 +119,11 @@ export class FormControlTypePipe implements PipeTransform {
      *   <section *ngFor="let options of form.get('options').controls">
      *       <input type="checkbox" [formControl]="options | formControlType">
      *   </section>
+     *
+     * @param {AbstractControl} abstractControl
+     * @returns {FormControl}
      */
-    public transform(abstractControl: any): FormControl {
+    public transform(abstractControl: AbstractControl): FormControl {
         return abstractControl as FormControl;
     }
 }
@@ -118,6 +135,9 @@ export class FormKeysPipe implements PipeTransform {
      *
      * @example
      *   <form *ngIf="(form | formKeys).length > 0" [formGroup]="form">
+     *
+     * @param {FormGroup} form
+     * @returns {string[]}
      */
     public transform(form: FormGroup): string[] {
         return Object.keys(form.controls);
@@ -134,6 +154,10 @@ export class SortByDatePipe implements PipeTransform {
      *   <li *ngFor="let date of dateArray | sortByDate">
      *       {{ date | date:'longDate' }}
      *   </li>
+     *
+     * @param {Date[] | Set<Date>} data
+     * @param {"asc" | "desc"} order
+     * @returns {Date[]}
      */
     public transform(data: Date[] | Set<Date>, order: 'asc'|'desc' = 'asc'): Date[] {
         if (data instanceof Set) {
@@ -170,7 +194,7 @@ type AngularDateFormat = 'short'|'medium'|'long'|'full'|'shortDate'|'mediumDate'
 
 @Pipe({ name: 'localeDate' })
 export class LocaleDatePipe implements PipeTransform {
-    private static Formats: any = {
+    private static Formats: {[format: string]: {}} = {
         short: {month: 'numeric', day: 'numeric', year: '2-digit', hour: 'numeric', minute: '2-digit'}, // 'M/d/yy, h:mm a'
         medium: {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit'}, // 'MMM d, y, h:mm:ss a'
         long: {month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit', timeZoneName: 'short'}, // 'MMMM d, y, h:mm:ss a z'
@@ -206,7 +230,7 @@ export class LocaleDatePipe implements PipeTransform {
      * @returns {string}
      * @see https://devhints.io/wip/intl-datetime
      */
-    public transform(date: Date, format: Object | AngularDateFormat, inMilitaryTime?: boolean): Observable<string> {
+    public transform(date: Date, format: Object|AngularDateFormat, inMilitaryTime?: boolean): Observable<string> {
         let formatOptions: any = {};
 
         if (typeof format === 'string') {
@@ -237,7 +261,12 @@ export class LocaleDatePipe implements PipeTransform {
 export class TranslatePipe implements PipeTransform {
     constructor(private _languagesService: LanguageService) {}
 
-    public transform(code: string): Observable<string> {
-        return this._languagesService.translate$([code]).pipe(startWith(''), map(t => t?.[0] ?? ''));
+    /**
+     * Returns a translated term by token. If no term is available returns the token.
+     * @param {string} token
+     * @returns {Observable<string>}
+     */
+    public transform(token: string): Observable<string> {
+        return this._languagesService.translate$([token]).pipe(map(terms => terms[0]));
     }
 }
