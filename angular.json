@@ -30,7 +30,7 @@
                         "styles": [
                             "src/app/styles/main.scss",
                             "src/app/styles/font-awesome/css/all.css",
-                            "src/app/styles/primeng/themes/mdc-light-indigo/theme.css",
+                            "src/app/styles/primeng/themes/saga-blue/theme.css",
                             "src/app/styles/primeng/primeng.min.css",
                             "src/app/styles/primeng/primeicons.css"
                         ],
