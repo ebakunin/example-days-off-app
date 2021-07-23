@@ -1,7 +1,9 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 
+import { AppService } from './app.service';
 import { EmployeeService } from './employee.service';
 import { LanguageService } from './language.service';
+import { MessageService } from 'primeng/api';
 import { OfficeService } from './office.service';
 import { SpinnerService } from './spinner.service';
 
@@ -11,8 +13,10 @@ export class ServicesModule {
         return {
             ngModule: ServicesModule,
             providers: [
+                AppService,
                 EmployeeService,
                 LanguageService,
+                MessageService,
                 OfficeService,
                 SpinnerService
             ]
