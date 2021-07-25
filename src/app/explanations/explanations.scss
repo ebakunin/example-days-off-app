@@ -53,15 +53,11 @@
 }
 
 .next-step {
+    cursor: pointer;
     float: right;
-    font-size: 75%;
-    font-variant: small-caps;
+    font-size: 125%;
     position: relative;
     left: 5px;
     top: 12px;
-
-    a {
-        cursor: pointer;
-    }
 }
 

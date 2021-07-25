@@ -1,45 +1,83 @@
-@import '../styles/settings';
+@import '../styles/skeleton-sass/src/themes/custom/vars';
 
-::ng-deep .p-dropdown:not(.p-disabled).p-focus {
-    box-shadow: none;
-}
+/* MOBILE */
+@media only screen and (max-width: 600px) {
+    #mainMenu {
+        flex-flow: row;
+        justify-content: space-around;
+        position: inherit;
 
-#mainMenu {
-    position: fixed;
-    right: 1em;
-    margin-right: 0.5em;
-
-    div {
-        font-size: 250%;
-
-        &:not(:first-child):before {
-            color: gray;
-            content: '·';
-            display: block;
-            line-height: 100%;
-            text-align: center;
+        .menu-item {
+            font-size: 200%;
         }
 
-        section {
+        #languageDropdown {
+            right: unset;
+        }
+    }
+}
+/* DESKTOP */
+@media only screen and (min-width: 601px) {
+    #mainMenu {
+        flex-flow: column;
+        position: fixed;
+        right: 1rem;
+        text-align: center;
+
+        .menu-item {
+            font-size: 300%;
+        }
+
+        .menu-item:not(:first-child):before {
+            color: $gray-color-dark;
+            content: '·';
             display: block;
-            position: absolute;
-            right: 0;
+            font-family: serif;
+            line-height: 40%;
+        }
+
+        #languageDropdown {
+            right: 3ch;
+        }
+    }
+}
+#mainMenu {
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+
+    .menu-item {
+        > span {
+            color: $gray-color-dark;
+
+            &:hover i {
+                color: $tertiary-color-dark;
+            }
         }
 
         i {
-            color: gray;
+            color: $gray-color-dark;
             cursor: pointer;
 
             &:hover {
-                color: #000;
+                color: $tertiary-color-dark;
             }
         }
 
         .badge {
-            color: #fff;
+            color: $body-background-color;
+            cursor: pointer;
             font-size: 25%;
             margin-left: -4ch;
             vertical-align: baseline;
+        }
+
+        #languageDropdown {
+            display: block;
+            font-size: 0;
+            position: absolute;
+            right: 3ch;
+            margin-top: -10px;
+            text-align: left;
         }
     }
 }

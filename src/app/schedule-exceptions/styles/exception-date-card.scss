@@ -1,4 +1,4 @@
-@import '../../styles/settings';
+@import './../../styles/skeleton-sass/src/themes/custom/vars';
 
 .month-separator {
     line-height: 50%;
@@ -6,9 +6,9 @@
     padding-top: 14px;
 
     span {
-        background-color: $primary-background-color;
-        color: $gray-4;
-        font-size: 11px;
+        background-color: $body-background-color;
+        color: $gray-color-medium;
+        font-size: 1.2rem;
         font-weight: bold;
         padding-right: 10px;
         position: relative;
@@ -16,7 +16,7 @@
     }
 
     hr {
-        border-color: $gray-5;
+        border-color: $gray-color-light;
         margin: 0;
         position: relative;
         top: 6px;
@@ -24,7 +24,7 @@
 }
 
 .day-off-card {
-    border: 1px solid $gray-5;
+    border: 1px solid $gray-color-medium;
     border-radius: $border-radius;
     cursor: pointer;
     display: flex;
@@ -43,10 +43,10 @@
 
     &.pending-delete {
         &:hover {
-            border-color: $primary-color-2-medium;
+            border-color: $primary-color-medium;
 
             .show-restore {
-                color: $primary-color-2-medium;
+                color: $primary-color-medium;
             }
         }
 
@@ -56,24 +56,24 @@
     }
 
     .cal-day {
-        border: 1px solid $gray-5;
+        border: 1px solid $gray-color-light;
         border-radius: $border-radius;
         margin-right: 12px;
         text-align: center;
         width: 45px;
 
         .cal-day-month {
-            background-color: $primary-color-2-medium;
+            background-color: $primary-color-medium;
             border-top-left-radius: 3px;
             border-top-right-radius: 3px;
-            color: $primary-background-color;
-            font-size: 11px;
+            color: $body-background-color;
+            font-size: 1.1rem;
             text-transform: uppercase;
         }
 
         .cal-day-date {
-            color: $gray-4;
-            font-size: 20px;
+            color: $gray-color-dark;
+            font-size: 2rem;
             font-weight: bold;
             line-height: 125%;
         }
@@ -84,14 +84,14 @@
         flex-grow: 1;
 
         .long-date {
-            color: $primary-color-1-medium;
+            color: $primary-color-dark;
             font-weight: 500;
             margin-bottom: -5px;
         }
 
         .full-day {
-            color: $button-disabled-color;
-            font-size: 12px;
+            color: $gray-color-dark;
+            font-size: 1.25rem;
             font-weight: 500;
             text-transform: uppercase;
         }
@@ -99,12 +99,12 @@
 
     .delete-day {
         align-self: center;
-        color: $gray-4;
-        font-size: 21px;
+        color: $gray-color-light;
+        font-size: 2rem;
 
         &:hover {
             .show-restore {
-                color: $primary-color-2-medium;
+                color: $primary-color-medium;
             }
         }
     }

@@ -1,4 +1,4 @@
-import { addDays, addMonths, startOfToday } from 'date-fns';
+import { addDays, addMonths, getDay, startOfToday } from 'date-fns';
 import { Employee } from '../models/employee.model';
 import { Language } from '../models/language.model';
 import { Office } from '../models/office.modal';
@@ -44,11 +44,39 @@ ExampleOffice.init({
     closedDays: [0, 6]
 });
 
-const today = startOfToday();
 export const ExampleEmployee = new Employee();
 ExampleEmployee.init({
     id: 1,
     firstName: 'Alice',
     lastName: 'Beecham',
-    daysOff: [addDays(today, 2), addDays(today, 8), addMonths(today, 1)]
+    daysOff: createMockDaysOff()
 });
+
+
+/**
+ * Create 5 unique days off values within the next 30 days.
+ * The days off should not fall on the office's closed days.
+ * @returns {Date[]}
+ */
+function createMockDaysOff(): Date[] {
+    const today = startOfToday();
+    const daysOff: Date[] = [];
+    const usedRandomInts: number[] = [];
+
+    let i = 0;
+    while (i < 4) {
+        const randomInt = Math.floor(Math.random() * 30) + 1;
+        if (!usedRandomInts.includes(randomInt)) {
+            usedRandomInts.push(randomInt);
+            const date = addDays(today, randomInt);
+            if (!ExampleOffice.closedDays.includes(getDay(date))) {
+                daysOff.push(date);
+                i++;
+            }
+        }
+    }
+
+    daysOff.push(addMonths(daysOff[0], 1), addMonths(daysOff[0], 2));
+
+    return daysOff;
+}

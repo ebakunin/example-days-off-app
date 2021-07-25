@@ -5,6 +5,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SkeletonModule } from 'primeng/skeleton';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 
@@ -15,6 +16,7 @@ import { TooltipModule } from 'primeng/tooltip';
         DropdownModule,
         InputTextModule,
         ProgressSpinnerModule,
+        SkeletonModule,
         ToastModule,
         TooltipModule
     ]

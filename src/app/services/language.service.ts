@@ -32,6 +32,26 @@ export class LanguageService {
     }
 
     /**
+     * @param {string[]} tokens
+     * @return {Observable<string[]>}
+     */
+    public translate$(tokens: string[]): Observable<string[]> {
+        const translations$ = tokens.map(token => this._translateByToken$(token));
+        return combineLatest(translations$).pipe(startWith(['']));
+    }
+
+    /**
+     * Returns a translated term by token. If no term exists the token is returned instead.
+     *
+     * @param {string} token
+     * @returns {string}
+     */
+    public getTranslation(token: string): string {
+        const isoCode = this.selectedLanguage$.getValue().isoCode.toLowerCase();
+        return this._storage[isoCode].get(token) as string ?? token;
+    }
+
+    /**
      * @param {string} isoCode
      * @returns {Observable<Language["isoCode"]>}
      * @private
@@ -58,16 +78,7 @@ export class LanguageService {
     }
 
     /**
-     * @param {string[]} tokens
-     * @return {Observable<string[]>}
-     */
-    public translate$(tokens: string[]): Observable<string[]> {
-        const translations$ = tokens.map(token => this._translateByToken$(token));
-        return combineLatest(translations$).pipe(startWith(['']));
-    }
-
-    /**
-     * Returns a translated term by token. If no term is available returns the token.
+     * Returns a translated term by token. If no term exist the token is returned instead.
      * Displays the spinner during the loading process.
      *
      * @param {string} token The token of the desired term to translate

@@ -25,14 +25,16 @@
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
+                            "src/styles",
                             "src/json"
                         ],
                         "styles": [
-                            "src/app/styles/main.scss",
                             "src/app/styles/font-awesome/css/all.css",
                             "src/app/styles/primeng/themes/saga-blue/theme.css",
                             "src/app/styles/primeng/primeng.min.css",
-                            "src/app/styles/primeng/primeicons.css"
+                            "src/app/styles/primeng/primeicons.css",
+                            "src/app/styles/skeleton-sass/skeleton.css",
+                            "src/app/styles/main.scss"
                         ],
                         "scripts": []
                     },

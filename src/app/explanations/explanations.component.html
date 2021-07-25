@@ -8,7 +8,7 @@
         {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
         <div class="positioned arrow down-left"></div>
         <div class="next-step">
-            [<a (click)="showNextExplanationText(1)">{{ 'SYSTEM_NEXT' | translate | async }}</a>]
+            <i class="fas fa-angle-double-right" (click)="showNextExplanationText(1)"></i>
         </div>
     </div>
 </aside>
@@ -18,7 +18,7 @@
         {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
         <div class="positioned arrow down-left"></div>
         <div class="next-step">
-            [<a (click)="showNextExplanationText(2)">{{ 'SYSTEM_NEXT' | translate | async }}</a>]
+            <i class="fas fa-angle-double-right" (click)="showNextExplanationText(2)"></i>
         </div>
     </div>
 </aside>
@@ -28,7 +28,7 @@
         {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
         <div class="positioned arrow down-left"></div>
         <div class="next-step">
-            [<a (click)="onClose()">{{ 'SYSTEM_CLOSE' | translate | async }}</a>]
+            <i class="fas fa-times" (click)="onClose()"></i>
         </div>
     </div>
 </aside>

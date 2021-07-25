@@ -1,7 +1,7 @@
-<section id="daysOffSection">
+<div id="daysOffSection">
     <div id="daysOffContent">
-        <ul id="monthList" class="row-container top-menu">
-            <li *ngFor="let month of monthsList; trackBy: trackMonth"
+        <div id="monthList" class="row-container">
+            <div *ngFor="let month of monthsList; trackBy: trackMonth"
                 class="month"
                 [ngClass]="{
                     'selected': month.index === calendar.currentMonth,
@@ -9,8 +9,8 @@
                 }"
                 (click)="month.index !== calendar.currentMonth ? goToMonth(month.date) : null">
                 {{ month.date | localeDate:{month: 'short'} | async }}
-            </li>
-        </ul> <!-- /#monthList -->
+            </div>
+        </div> <!-- /#monthList -->
 
         <div id="calendarSection" class="row-container">
             <div id="daysOffSelectors">
@@ -62,7 +62,7 @@
     </div> <!-- /#daysOffContent -->
 
     <div id="daysOffList">
-        <div class="row-container top-menu">
+        <div id="daysOffListSummary" class="row-container">
             <div id="saveDaysOff">
                 {{ 'SYSTEM_DAYS_OFF_SAVED_DAYS_OFF' | translate | async }}&nbsp;
                 <span *ngIf="existingExceptionsBucket.size > 0" class="badge">{{ existingExceptionsBucket.size }}</span>
@@ -78,7 +78,7 @@
             </ng-container>
         </div>
 
-        <div #exceptionsListContainer id="exceptionsListContainer" class="mac-style-scrollbar">
+        <div #exceptionsListContainer id="exceptionsListContainer">
             <ng-container *ngIf="cardData.length > 0; else noCards">
                 <div id="innerContent">
                     <ng-container *ngFor="let card of cardData; let i = index; trackBy: trackCardData">
@@ -101,4 +101,6 @@
             </ng-template>
         </div> <!-- /#exceptionsListContainer -->
     </div> <!-- /#daysOffContent -->
-</section>
+
+    <br class="clearfix">
+</div>

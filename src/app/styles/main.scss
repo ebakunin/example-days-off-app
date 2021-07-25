@@ -1,62 +1,21 @@
-@import './settings';
+@import './skeleton-sass/src/themes/custom/vars';
 @import './primeng-calendar';
 
 html {
     min-height: 100%;
 }
 
-body {
-    color: $body-font-color;
-    font-family: $body-font-family, sans-serif;
-    font-size: $body-font-size;
+
+/* Mobile */
+@media only screen and (max-width: 600px) {
+    body {
+        padding: 1rem;
+    }
 }
-
-html, body {
-    background-color: $body-background-color;
-}
-
-h1 {
-    font-size: 170%;
-}
-
-h2 {
-    font-size: 140%;
-}
-
-h3 {
-    font-size: 120%;
-}
-
-.required::after {
-    color: $danger;
-    content: '*';
-}
-
-.pointer {
-    cursor: pointer !important;
-}
-
-.ellipsis {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.badge {
-    background-color: $primary-color-2-medium;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 1;
-    min-width: 10px;
-    padding: 3px 7px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-
-    &:empty {
-        display: none;
+/* Desktop */
+@media only screen and (min-width: 601px) {
+    body {
+        padding: 2rem;
     }
 }
 
@@ -68,12 +27,12 @@ h3 {
     }
 
     &::-webkit-scrollbar-track {
-        background-color: #fff;
+        background-color: $body-background-color;
     }
 
     &::-webkit-scrollbar-thumb {
         background-color: #c2c2c2;
-        border: 4px solid #fff;
+        border: 4px solid $body-background-color;
         border-radius: 16px;
         min-height: 30px;
 
@@ -83,8 +42,176 @@ h3 {
     }
 }
 
-/* Toast Messages */
-.p-toast-summary {
-    margin-top: 5px;
+
+/*************************
+  PrimeNG Toast Classes
+**************************/
+.toast-default {
     text-align: center;
+
+    .p-toast-message-content {
+        align-items: center;
+
+        .p-toast-message-text {
+            font-size: 1.6rem;
+            margin: unset !important;
+
+            .p-toast-detail:empty {
+                display: none;
+            }
+        }
+
+        .p-toast-icon-close-icon {
+            font-size: 1.25rem;
+        }
+    }
+}
+
+
+/****************************
+  PrimeNG Override Classes
+*****************************/
+.p-inputtext, .p-dropdown-panel {
+    font-size: 1.6rem;
+    margin: auto 1rem;
+}
+
+.p-dropdown-panel {
+    margin-left: 0;
+}
+
+.p-dropdown:not(.p-disabled) {
+    &:hover {
+        border-color: $secondary-color-dark;
+    }
+    &.p-focus {
+        box-shadow: none;
+    }
+}
+
+.p-disabled, .p-component:disabled {
+    opacity: 0.4;
+}
+
+
+/*********************
+  Helper Classes
+**********************/
+.circle {
+    border-radius: 50%;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+.truncate {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ng-invalid.ng-touched {
+    border-color: $danger;
+}
+
+.badge {
+    background-color: $primary-color-medium;
+    border-radius: 10px;
+    color: $body-background-color;
+    display: inline-block;
+    font-size: 90%;
+    font-weight: bold;
+    min-width: 2ch;
+    padding: 1px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    &:empty {
+        display: none;
+    }
+}
+
+
+/*********************
+  Media Query Classes
+**********************/
+@media only screen and (max-width: 600px) {
+    .hide-on-small-only, .hide-on-small-and-down {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .hide-on-medium-and-down {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .hide-on-medium-and-up {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+    .hide-on-medium-only {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .hide-on-large-only {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 1201px) {
+    .hide-on-extra-large-only {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 1201px) {
+    .show-on-extra-large {
+        display: block !important;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .show-on-large {
+        display: block !important;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+    .show-on-medium {
+        display: block !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .show-on-small {
+        display: block !important;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .show-on-medium-and-up {
+        display: block !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .show-on-medium-and-down {
+        display: block !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .center-on-small-only {
+        text-align: center;
+    }
 }

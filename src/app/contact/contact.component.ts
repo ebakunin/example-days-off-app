@@ -2,15 +2,15 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { filter, take, takeUntil } from 'rxjs/operators';
+import { distinctUntilChanged, take, takeUntil } from 'rxjs/operators';
 
 import { AppService } from '../services/app.service';
 import { LanguageService } from '../services/language.service';
-import { MessageService } from 'primeng/api';
+import { ToastService } from '../services/toast.service';
 
 import { CommonValidators } from '../shared/common.validator';
-import { environment } from '../../environments/environment.prod';
 import { ApiResponseType } from '../shared/common.type';
+import { environment } from '../../environments/environment';
 
 @Component({
     selector: 'app-contact',
@@ -19,7 +19,7 @@ import { ApiResponseType } from '../shared/common.type';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactComponent implements OnInit {
-    public readonly translations = new Map<string, string>();
+    public readonly showContactDialog$ = this._appService.showContactDialog$;
     public form!: FormGroup;
     public visible = false;
 
@@ -29,14 +29,13 @@ export class ContactComponent implements OnInit {
                 private _cdr: ChangeDetectorRef,
                 private _http: HttpClient,
                 private _languageService: LanguageService,
-                private _messageService: MessageService) {}
+                private _toastService: ToastService) {}
 
     /**
      *
      */
     public ngOnInit(): void {
-        this._setVisibility();
-        this._setTranslations(['Message success', 'Message error']);
+        this._setDialogVisibility();
         this._setupForm();
     }
 
@@ -52,62 +51,42 @@ export class ContactComponent implements OnInit {
      *
      */
     public onSendMessage(): void {
-        const path = 'http://www.ericchristenson.com/email.php';
+        const path = 'http://www.ericchristenson.com/message';
         const body = 'message=' + encodeURIComponent(this.form.get('message')?.value.trim())
             + '&name=' + encodeURIComponent(this.form.get('name')?.value.trim())
             + '&email=' + encodeURIComponent(this.form.get('email')?.value.trim());
         const headers = new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded',
-            'llave': environment.key
+            'llave': environment.llave
         });
 
         this._http.post<ApiResponseType>(path, body, {headers}).pipe(take(1)).subscribe(result => {
-            this._appService.showContactDialog$.next(false);
+            this.showContactDialog$.next(false);
             if (result.response === 200) {
-                this._showSuccessToast();
+                this._toastService.successToast(this._languageService.getTranslation('Message success'));
             } else {
-                this._showErrorToast(result.message);
+                this._toastService.errorToast(`${this._languageService.getTranslation('Message error')}: ${result.message}`);
             }
         }, (error: HttpErrorResponse) => {
-            this._showErrorToast(error.message);
-            this._appService.showContactDialog$.next(false);
+            this.showContactDialog$.next(false);
+            this._toastService.errorToast(`${this._languageService.getTranslation('Message error')}: ${error.message}`);
         });
     }
 
     /**
      * @private
      */
-    private _showSuccessToast(): void {
-        this._messageService.add({
-            severity: 'success',
-            summary: this.translations.get('Message success'),
-            closable: true
-        });
-    }
-
-    /**
-     * @param {string} errorMessage
-     * @private
-     */
-    private _showErrorToast(errorMessage: string): void {
-        this._messageService.add({
-            severity: 'custom',
-            summary: `${this.translations.get('Message error')}: ${errorMessage}`,
-            closable: true,
-            styleClass: 'p-toast-message-error',
-            icon: 'pi-exclamation-circle'
-        });
-    }
-
-    /**
-     * @private
-     */
-    private _setVisibility(): void {
-        this._appService.showContactDialog$.pipe(filter(Boolean), takeUntil(this._destroy$))
+    private _setDialogVisibility(): void {
+        this.showContactDialog$.pipe(distinctUntilChanged(), takeUntil(this._destroy$))
             .subscribe(visible => {
-                this.visible = visible as boolean;
+                this.visible = visible;
+                if (this.visible) {
+                    this.form.reset();
+                }
+
                 this._cdr.detectChanges();
-            });
+            }
+        );
     }
 
     /**
@@ -118,17 +97,6 @@ export class ContactComponent implements OnInit {
             message: new FormControl('', CommonValidators.requiredTrimmed),
             name: new FormControl('', CommonValidators.requiredTrimmed),
             email: new FormControl('', [Validators.required, Validators.email]),
-        });
-    }
-
-    /**
-     * @private
-     */
-    private _setTranslations(tokens: string[]): void {
-        this._languageService.translate$(tokens).pipe(takeUntil(this._destroy$)).subscribe(terms => {
-            terms.forEach((term, index) => {
-                this.translations.set(tokens[index], term);
-            });
         });
     }
 }

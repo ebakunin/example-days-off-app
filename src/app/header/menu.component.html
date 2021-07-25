@@ -1,23 +1,23 @@
 <nav id="mainMenu">
-    <div>
-        <i class="globe" [ngClass]="(globeIcon$ | async) ?? ''"
-           [attr.aria-label]="'Select a language' | translate | async"
-           [pTooltip]="('Select a language' | translate | async) ?? ''"
-           tooltipPosition="left"
-           (click)="showDropdown = !showDropdown"></i>
-        <span class="badge">{{ (selectedLanguage$ | async)?.abbreviation }}</span>
+    <div class="menu-item">
+        <span [attr.aria-label]="'Select a language' | translate | async"
+              [pTooltip]="('Select a language' | translate | async) ?? ''"
+              tooltipPosition="left"
+              (click)="showDropdown = !showDropdown">
+            <i class="globe" aria-hidden="true" [ngClass]="(globeIcon$ | async) ?? ''"></i>
+            <span class="badge">{{ (selectedLanguage$ | async)?.abbreviation }}</span>
+        </span>
 
-        <section *ngIf="showDropdown">
+        <div id="languageDropdown" *ngIf="showDropdown">
             <p-dropdown [options]="(languages$ | async) ?? []"
                         [ngModel]="selectedLanguage$ | async"
                         (onChange)="onChangeLanguage($event.value)"
                         optionLabel="nativeDescription">
             </p-dropdown>
-        </section>
+        </div>
     </div>
 
-    <div>
-<!--        <i class="fas fa-chalkboard-teacher"-->
+    <div class="menu-item">
         <i class="far fa-comment"
            [attr.aria-label]="'How the app works' | translate | async"
            [pTooltip]="('How the app works' | translate | async) ?? ''"
@@ -25,7 +25,7 @@
            (click)="showExplanation$.next(true)"></i>
     </div>
 
-    <div>
+    <div class="menu-item">
         <a href="https://github.com/ebakunin/example-days-off-app" target="_blank">
             <i class="fab fa-github"
                [attr.aria-label]="'See the code on Github' | translate | async"
@@ -34,7 +34,7 @@
         </a>
     </div>
 
-    <div>
+    <div class="menu-item">
         <i class="far fa-paper-plane"
            [attr.aria-label]="'Send me a message' | translate | async"
            [pTooltip]="('Send me a message' | translate | async) ?? ''"

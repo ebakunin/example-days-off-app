@@ -1,51 +1,93 @@
-@import '../../styles/settings';
+@import './../../styles/skeleton-sass/src/themes/custom/vars';
 
-$calendar-height: 356px;
+$calendar-height: 310px;
+
+#daysOffSection {
+    color: $gray-color-medium;
+    margin-bottom: 20px;
+
+    > div {
+        display: inline-block;
+        float: left;
+    }
+}
 
 .row-container {
     display: flex;
     flex-direction: row;
-    align-content: space-between;
 }
 
-.top-menu {
-    border-bottom: 1px solid $gray-5;
-    padding: 20px;
-}
+/* MOBILE */
+@media only screen and (max-width: 600px) {
+    #daysOffContent, #daysOffList {
+        width: 100%;
+    }
 
-#daysOffSection {
-    color: $gray-3;
-    display: flex;
-    flex-direction: row;
+    #daysOffContent {
+        #monthList {
+            line-height: 5rem;
+
+            .month {
+                font-size: 0;
+
+                &::first-letter {
+                    font-size: 1.5rem;
+                    padding-right: 2px;
+                    padding-left: 2px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+    #daysOffList {
+        margin-top: 1rem;
+
+        #daysOffListSummary {
+            line-height: 5rem;
+        }
+    }
+}
+/* DESKTOP */
+@media only screen and (min-width: 601px) {
+    #daysOffContent {
+        #monthList {
+            line-height: 6rem;
+        }
+    }
+    #daysOffList {
+        margin-left: 20px;
+
+        #daysOffListSummary {
+            line-height: 6rem;
+        }
+    }
 }
 
 #daysOffContent {
-    border: 1px solid $gray-5;
+    border: 1px solid $gray-color-dark;
     border-radius: $border-radius;
-    margin-right: 20px;
+    min-width: 40vw;
 
     #monthList {
-        border-bottom: 1px solid $gray-5;
-        list-style: none;
-        margin-bottom: 0;
-        padding-bottom: 0;
+        border-bottom: 1px solid $gray-color-dark;
+        justify-content: space-evenly;
 
         .month {
             cursor: pointer;
-            flex: auto;
-            padding-bottom: 18px;
+            display: inline-block;
             text-align: center;
-            width: 3rem;
 
             &:hover {
-                color: $primary-color-2-medium;
+                color: $primary-color-medium;
             }
 
             &.selected {
-                border-bottom: 2px solid $primary-color-2-medium;
-                color: $primary-color-2-medium;
+                border-bottom: 2px solid $primary-color-medium;
+                color: $primary-color-medium;
                 cursor: default;
                 font-weight: bold;
+                margin-bottom: -1px;
             }
         }
     }
@@ -55,7 +97,8 @@ $calendar-height: 356px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 20px 0 20px 20px;
+            padding: 2rem 0 2rem 1rem;
+            min-width: 15vw;
 
             ul {
                 list-style: none;
@@ -67,18 +110,21 @@ $calendar-height: 356px;
                         cursor: pointer;
 
                         &:hover {
-                            color: $primary-color-2-medium;
+                            color: $primary-color-dark;
                         }
                     }
 
                     &:not(.enabled) {
-                        color: $gray-5;
+                        color: $gray-color-medium;
                     }
                 }
             }
 
 
             #clearAllDates {
+                margin-bottom: 0;
+                min-width: 22ch;
+
                 &.enabled {
                     #dateCounter {
                         visibility: visible;
@@ -86,7 +132,7 @@ $calendar-height: 356px;
                 }
 
                 #dateCounter {
-                    color: $primary-color-2-medium;
+                    color: $primary-color-medium;
                     display: inline-block;
                     font-weight: bold;
                     line-height: 100%;
@@ -98,12 +144,14 @@ $calendar-height: 356px;
 
         #daysOffCalendar {
             display: flex;
-            border-left: 1px solid $gray-5;
+            border-left: 1px solid $gray-color-dark;
             height: calc(#{$calendar-height} + 2px);
+            justify-content: center;
             margin: auto 0 auto auto;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: calc(30px - 0.5rem);
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: 1rem;
+            width: 100%;
 
             .p-calendar, .p-datepicker {
                 border: none;
@@ -113,20 +161,24 @@ $calendar-height: 356px;
 }
 
 #daysOffList {
-    border: 1px solid $gray-5;
+    border: 1px solid $gray-color-dark;
     border-radius: $border-radius;
-    min-width: 370px;
-    padding-bottom: 2px;
+    min-width: 30vw;
+
+    #daysOffListSummary {
+        align-content: space-between;
+        border-bottom: 1px solid $gray-color-dark;
+        padding: 0 1.5rem 1px 1.5rem;
+    }
 
     #saveDaysOff {
-        color: $primary-color-1-medium;
+        color: $primary-color-medium;
         flex-grow: 1;
-        font-weight: 500;
+        font-weight: 600;
         margin-right: 20px;
 
         .badge {
-            background-color: $primary-color-2-medium;
-            margin-top: -2px;
+            line-height: 1.5;
         }
     }
 
@@ -134,7 +186,7 @@ $calendar-height: 356px;
         cursor: pointer;
         justify-self: flex-end;
 
-        &:hover {
+        &:hover, &:focus {
             color: $danger;
         }
     }
@@ -144,7 +196,7 @@ $calendar-height: 356px;
         justify-self: flex-end;
 
         &:hover {
-            color: $primary-color-2-medium;
+            color: $primary-color-medium;
         }
     }
 
@@ -153,7 +205,8 @@ $calendar-height: 356px;
         flex-direction: column;
         height: $calendar-height;
         overflow-y: auto;
-        padding: 0 20px 20px 20px;
+        padding: 0 2rem 2rem 2rem;
+        margin-bottom: 2px;
 
         #noDaysOff {
             display: flex;
@@ -166,13 +219,13 @@ $calendar-height: 356px;
             text-align: center;
 
             .no-dates-saved {
-                font-size: $body-font-size;
+                font-size: $font-size;
                 font-weight: 600;
                 margin-top: 10px;
             }
 
             .fa-calendar-times {
-                color: $primary-color-2-medium;
+                color: $primary-color-medium;
                 font-size: 400%;
             }
         }

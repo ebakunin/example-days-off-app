@@ -1,33 +1,43 @@
-<header>
-    <app-menu></app-menu>
-</header>
+<app-menu></app-menu>
 
-<h1 style="font-family: monospace">{{ 'Example Day Off Management App' | translate | async }}&nbsp;</h1>
+<h1 class="title">{{ 'Example Day Off Scheduling App' | translate | async }}</h1>
 
-<app-schedule-exception-management
-    [startingViewDate]="startingViewDate"
-    [closedDays]="(office$ | async)?.closedDays ?? []"
-    [closedDates]="(office$ | async)?.closedDates ?? []"
-    [daysOff]="(employee$ | async)?.daysOff ?? []"
-    (newExceptions)="newExceptionDates = $event"
-    (exceptionsToBeDeleted)="exceptionDatesToBeDeleted = $event"
-    (currentViewedMonth)="startingViewDate = $event">
-</app-schedule-exception-management>
+<section>
+    <ng-container *ngIf="dataIsReady; else showSkeleton">
+        <app-schedule-exception-management
+            [startingViewDate]="startingViewDate"
+            [closedDays]="(office$ | async)?.closedDays ?? []"
+            [closedDates]="(office$ | async)?.closedDates ?? []"
+            [daysOff]="(employee$ | async)?.daysOff ?? []"
+            (newExceptions)="newExceptionDates = $event"
+            (exceptionsToBeDeleted)="exceptionDatesToBeDeleted = $event"
+            (currentViewedMonth)="startingViewDate = $event">
+        </app-schedule-exception-management>
+    </ng-container>
+    <ng-template #showSkeleton>
+        <p-skeleton borderRadius="5px" width="515px" height="430px" styleClass="days-off-skeleton" [style]="{marginRight:'20px'}">
+        </p-skeleton>
 
-<br>
+        <p-skeleton borderRadius="5px" width="370px" height="430px" styleClass="days-off-skeleton">
+        </p-skeleton>
+    </ng-template>
 
-<button type="button"
-        [label]="('Save' | translate | async) ?? ''"
-        pButton pRipple
-        [disabled]="newExceptionDates.length === 0 && exceptionDatesToBeDeleted.length === 0"
-        (click)="onSave()">
-</button>
+    <br class="clear">
+    <br>
+
+    <button type="button"
+            class="button-primary"
+            [disabled]="newExceptionDates.length === 0 && exceptionDatesToBeDeleted.length === 0"
+            (click)="onSave()">
+        {{ 'Save' | translate | async }}
+    </button>
+</section>
 
 <div *ngIf="showMesh$ | async" class="mesh"></div>
 <p-toast position="bottom-center"></p-toast>
 
 <app-spinner></app-spinner>
-<app-contact></app-contact>
 <app-explanations></app-explanations>
+<app-contact></app-contact>
 
 <footer>© 2021</footer>

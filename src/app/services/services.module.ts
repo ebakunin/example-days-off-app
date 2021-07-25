@@ -6,6 +6,7 @@ import { LanguageService } from './language.service';
 import { MessageService } from 'primeng/api';
 import { OfficeService } from './office.service';
 import { SpinnerService } from './spinner.service';
+import { ToastService } from './toast.service';
 
 @NgModule()
 export class ServicesModule {
@@ -18,7 +19,8 @@ export class ServicesModule {
                 LanguageService,
                 MessageService,
                 OfficeService,
-                SpinnerService
+                SpinnerService,
+                ToastService
             ]
         };
     }

@@ -35,9 +35,9 @@ import {
     subDays
 } from 'date-fns';
 
-import { DayNumberType, MonthNumberType } from '../../shared/common.type';
 import { LanguageService } from '../../services/language.service';
 import { Language } from '../../models/language.model';
+import { DayNumberType, MonthNumberType } from '../../shared/common.type';
 
 /*
  * Component logic:

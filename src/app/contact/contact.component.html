@@ -2,35 +2,39 @@
           position="bottom"
           styleClass="contact-dialog"
           [modal]="true"
-          [(visible)]="visible">
+          [(visible)]="visible"
+          (onHide)="showContactDialog$.next(false)">
 
     <form *ngIf="form" [formGroup]="form" autocomplete="off" (submit)="onSendMessage()">
         <div>
             <textarea id="yourMessage"
                       formControlName="message"
-                      [placeholder]="'Say something nice, or at least interesting…' | translate | async"
+                      [placeholder]="'Say something nice, or at least interesting...' | translate | async"
                       autofocus
-                      maxlength="2000"
-                      rows="6"></textarea>
+                      maxlength="2500"
+                      required
+                      rows="4"></textarea>
         </div>
 
         <div>
             <input type="text"
                    formControlName="name"
                    id="yourName"
-                   size="50"
+                   required
                    [placeholder]="'Your name' | translate | async">
+        </div>
+
+        <div>
             <input type="email"
                    formControlName="email"
                    id="yourEmail"
-                   size="50"
+                   required
                    [placeholder]="'Your email' | translate | async">
         </div>
 
         <div>
-            <button [label]="('Send' | translate | async) ?? ''"
-                    pButton pRipple
-                    [disabled]="!form.valid">
+            <button class="button-primary" [disabled]="!form.valid">
+                {{ 'Send' | translate | async }}
             </button>
         </div>
     </form>
