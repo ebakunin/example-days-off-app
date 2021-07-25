@@ -1,16 +1,16 @@
-@import 'styles/settingsAlt';
+@import './styles/skeleton-sass/src/themes/custom/vars';
 
 /* Mobile */
 @media only screen and (max-width: 600px) {
     .title {
-        font-size: 175%;
+        font-size: 2.75rem;
         text-align: center;
     }
 }
 /* Desktop */
 @media only screen and (min-width: 601px) {
     .title {
-        font-size: 210%;
+        font-size: 3rem;
     }
 }
 
@@ -28,10 +28,6 @@
     z-index: 100;
 }
 
-::ng-deep .days-off-skeleton {
-    display: inline-block;
-}
-
 footer {
     background-color: rgba(255, 255, 255, 0.8);
     font-size: 2rem;
@@ -40,4 +36,9 @@ footer {
     position: fixed;
     right: 1rem;
     bottom: 1rem;
+}
+
+
+::ng-deep .days-off-skeleton {
+    display: inline-block;
 }
