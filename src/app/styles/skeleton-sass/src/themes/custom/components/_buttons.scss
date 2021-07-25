@@ -1,0 +1,70 @@
+/* BUTTONS
+ * ------------------------------------------------ */
+.button, .button-primary {
+	display: inline-block;
+	height: $button-height;
+	padding: 0 relative(30px);
+	text-align: center;
+	font-size: $button-font-size;
+	font-weight: $button-weight;
+	line-height: $button-height;
+	letter-spacing: $button-letter-spacing;
+	text-transform: if($button-font-uppercase, uppercase, none);
+	text-decoration: none;
+	white-space: nowrap;
+	border-radius: $border-radius;
+	border: 1px solid $button-border-color;
+	cursor: pointer;
+	box-sizing: border-box;
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+	&:visited {
+		color: $button-color;
+	}
+	&:hover, &:focus, &:active {
+		outline: 0;
+	}
+}
+
+.button {
+	background-color: $body-background-color;
+	color: $button-color;
+
+	&:hover, &:focus {
+		color: $button-hover-color;
+		border-color: $button-hover-border-color;
+        background-color: $button-hover-background-color;
+	}
+	&:active {
+		color: $button-active-color;
+		border-color: $button-active-border-color;
+        background-color: $button-active-background-color;
+	}
+}
+.button-primary {
+	background-color: $primary-color-medium;
+	border-color: $primary-color-dark;
+	color: $body-background-color;
+
+	&:hover, &:focus {
+		background-color: $primary-color-dark;
+		border-color: $button-primary-hover-border-color;
+		color: $body-background-color;
+	}
+	&:active {
+		color: $button-primary-active-color;
+		background-color: $button-primary-active-background-color;
+		border-color: $button-primary-active-border-color;
+	}
+}
+
+/* Fix for odd Mozilla border & padding issues */
+button, input {
+	&::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+}

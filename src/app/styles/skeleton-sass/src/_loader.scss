@@ -1,0 +1,15 @@
+// 1. core config and core config overrides
+@import "config";
+
+// 2. import theme dependencies
+//@import "node_modules/normalize-scss/sass/normalize/import-now";
+
+// 3. import default theme overrides
+@import "themes/custom/vars";
+
+// 4. import default theme styles
+@import "themes/custom/include_components"; // renamed from base in version 3.1
+@import "themes/custom/grid"; // renamed from skeleton in version 3.1
+
+// 6. import extras to be used in skeleton.scss
+// @import "my/extra/_component.scss";

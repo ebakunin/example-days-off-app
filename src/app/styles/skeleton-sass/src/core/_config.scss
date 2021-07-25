@@ -1,0 +1,169 @@
+////
+/// Skeleton Sass 4.0.0
+/// @author Dennis Thompson
+/// @group core
+////
+
+// GLOBAL VARIABLES - default global variables in this file.
+// If you wish to change the default value of these variables,
+// please do so in your _MYconfig.scss.
+
+/// The default background color as defined in `body`
+/// @type color
+/// @access public
+$background-color: #fff; // default background color
+
+// GENERAL
+
+/// Set true to use wildcard `border-box`
+/// @type bool
+/// @access public
+$use-global-border-box: true; // use global border box?
+
+/// Set true to use `rem` units as the default relative unit
+/// @type bool
+/// @access public
+$use-rem: true; // use rem as default unit?
+
+/// Set true to use `em` units as the default relative unit
+/// @type bool
+/// @access public
+$use-em: false; // use em as default unit?
+
+/// Set true to use `%` units as the default relative unit
+/// @type bool
+/// @access public
+$use-percent: false; // use percentage as default unit?
+
+/// Set true to use `px` fallback when legacy browsers don't properly support `rem` or `em` units.
+/// @type bool
+/// @access public
+/// @deprecated
+$use-px-fallback: true; // allow for pixel fall back
+
+// FONTS
+
+/// Sets the global font-size as defined in `body`
+/// @type number
+/// @access public
+$font-size: 14px;  // default font size. Change here will adjust sizes across the board.
+
+/// Sets the global font-family as defined in `body`
+/// @type list
+/// @access public
+$font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; // default fonts
+
+/// Sets the global heading families for `h1` through `h6`
+/// @type list
+/// @access public
+$heading-family: "Georgia", "Times New Roman", serif; // default heading (h1-h6) font
+
+/// Sets the global font color as defined in `body`
+/// @type color
+/// @access public
+$font-color: #444;  // default font color
+
+/// Sets the global heading color for `h1` through `h6`
+/// @type color
+/// @access public
+$heading-color: #181818; // default heading (h1-h6) color
+
+/// Sets the form font-family
+/// @type bool
+/// @access public
+$form-font: $font-family; // default form font
+
+// LINKS
+
+/// Sets the global link color as defined in `a`
+/// @type color
+/// @access public
+$link-color: #333; // default link color
+
+/// Sets the global link hover color
+/// @type color
+/// @access public
+$link-hover: #000; // default link color on :hover
+
+/// Sets the global link decoration
+/// @type string
+/// @access public
+$link-decoration: underline; // default link decoration
+
+// GRID
+
+/// Set true to enable the fluid grid
+/// @type bool
+/// @access public
+$is-fluid: false; // Change to true to enable the fluid grid
+
+/// Sets the base column width.
+///
+/// **Note:** only relevant when `$is-fluid` is set to false.
+/// @type number
+/// @access public
+$base-col-width: 40px; // The width of each columns
+
+/// Sets the amount of padding between each column.
+/// @type number
+/// @access public
+$base-gutter-width: 20px; // The space between columns
+
+/// Sets the number of columns to generate (max 99).
+/// @type number
+/// @access public
+$base-col-count: 16; // The number of columns
+
+/// Calculates the base width of the grid based on configured values.
+/// @type number
+/// @access public
+$base-width: if($is-fluid, 98%, ($base-col-width + $base-gutter-width) * $base-col-count); // Calculated
+
+/// The width of the _new_ grid used starting with the `fresh` theme.
+/// @type number
+/// @access public
+$new-grid-width: 80%; // the new grid with set within the 550px breakpoint
+
+// BREAKPOINTS
+
+/// A default value for the tablet `@media` query breakpoint.
+/// @type number
+/// @access public
+$tablet-width: 768px; // the tablet width media query
+
+/// A default value for the portrait-mode mobile `@media` query breakpoint.
+/// @type number
+/// @access public
+$mobile-portrait-width: 300px; // the mobile portrait media query
+
+/// A default value for the landscape-mode mobile `@media` query breakpoint.
+/// @type number
+/// @access public
+$mobile-landscape-width: 420px; // the mobile landscape media query
+
+/// The width to set the for fluid mobile grid.
+/// @type number
+/// @access public
+$mobile-fluid-width: 100%; // this value is not used with breakpoints, it is used in generating a fluid grid for mobile devices
+
+// ------ CHANGE MAY CAUSE UNDESIRED RESULTS
+
+/// **Warning:** Excersize discretion when altering these values as they can cause undesired results.
+///
+/// Adjusts the base font size which is used to calculate _all_ relative units.
+/// @type number
+/// @access public
+$base-font-size: 10px; // the font size in the html element so we can use ems and rems in a friendly way
+
+/// **Warning:** Excersize discretion when altering these values as they can cause undesired results.
+///
+/// Set `false` to use legacy grid implemented in Skeleton Sass 1
+/// @type bool
+/// @access public
+/// @deprecated
+$use-new-grid: true; // Uses the new grid released in Skeleton CSS 2
+
+// ------ IMPORTS. DO NOT CHANGE
+@import "dependencies";
+@import "functions";
+@import "mixins";
