@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { merge, of } from 'rxjs';
 import { delay, first, switchMap, take, tap } from 'rxjs/operators';
-import { startOfToday } from 'date-fns';
 
 import { AppService } from './services/app.service';
 import { EmployeeService } from './services/employee.service';
@@ -23,7 +22,8 @@ export class AppComponent {
 
     public newExceptionDates: Date[] = [];
     public exceptionDatesToBeDeleted: Date[] = [];
-    public startingViewDate = startOfToday();
+    public startingViewDate!: Date;
+    public currentViewedMonth!: Date;
     public dataIsReady = true;
 
     constructor(private _appService: AppService,
@@ -37,8 +37,6 @@ export class AppComponent {
      *
      */
     public onSave(): void {
-        const datetimes = this.exceptionDatesToBeDeleted.map(date => date.getTime());
-
         this.employee$.pipe(
             first(),
             tap(() => {
@@ -47,7 +45,7 @@ export class AppComponent {
             }),
             switchMap(employee => {
                 employee.daysOff = employee.daysOff.map(day => {
-                     return datetimes.includes(day.getTime()) ? null : day;
+                     return this.exceptionDatesToBeDeleted.map(date => date.getTime()).includes(day.getTime()) ? null : day;
                 }).filter(Boolean) as Date[];
                 return this._employeeService.employees.saveItem$(employee);
             }),
@@ -62,10 +60,13 @@ export class AppComponent {
             delay(1000), // fake time communicating with the API
             take(1)
         ).subscribe(success => {
+            this.startingViewDate = this.currentViewedMonth;
             this.dataIsReady = true;
             this._spinnerService.stop();
 
             if (success) {
+                this.newExceptionDates = [];
+                this.exceptionDatesToBeDeleted = [];
                 this._toastService.successToast(this._languageService.getTranslation('Days off updated'));
             } else {
                 this._toastService.errorToast(this._languageService.getTranslation('Error updating days off'));

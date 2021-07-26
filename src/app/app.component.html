@@ -11,26 +11,24 @@
             [daysOff]="(employee$ | async)?.daysOff ?? []"
             (newExceptions)="newExceptionDates = $event"
             (exceptionsToBeDeleted)="exceptionDatesToBeDeleted = $event"
-            (currentViewedMonth)="startingViewDate = $event">
+            (currentViewedMonth)="currentViewedMonth = $event">
         </app-schedule-exception-management>
     </ng-container>
     <ng-template #showSkeleton>
-        <p-skeleton borderRadius="5px" width="515px" height="430px" styleClass="days-off-skeleton" [style]="{marginRight:'20px'}">
-        </p-skeleton>
-
-        <p-skeleton borderRadius="5px" width="370px" height="430px" styleClass="days-off-skeleton">
-        </p-skeleton>
+        <p-skeleton width="515px" styleClass="days-off-skeleton"></p-skeleton>
+        <p-skeleton width="370px" styleClass="days-off-skeleton"></p-skeleton>
     </ng-template>
 
     <br class="clear">
-    <br>
 
-    <button type="button"
-            class="button-primary"
-            [disabled]="newExceptionDates.length === 0 && exceptionDatesToBeDeleted.length === 0"
-            (click)="onSave()">
-        {{ 'Save' | translate | async }}
-    </button>
+    <div style="margin-top: 20px">
+        <button type="button"
+                class="button-primary"
+                [disabled]="newExceptionDates.length === 0 && exceptionDatesToBeDeleted.length === 0"
+                (click)="onSave()">
+            {{ 'SYSTEM_SAVE' | translate | async }}
+        </button>
+    </div>
 </section>
 
 <div *ngIf="showMesh$ | async" class="mesh"></div>

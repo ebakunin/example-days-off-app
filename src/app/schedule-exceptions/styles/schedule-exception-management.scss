@@ -1,10 +1,7 @@
 @import './../../styles/skeleton-sass/src/themes/custom/vars';
 
-$calendar-height: 310px;
-
 #daysOffSection {
     color: $gray-color-medium;
-    margin-bottom: 20px;
 
     > div {
         display: inline-block;

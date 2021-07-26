@@ -322,6 +322,7 @@ export class ScheduleExceptionManagementComponent implements AfterViewInit, OnDe
      * @param {Date} selectedDate
      */
     public goToMonth(selectedDate: Date): void {
+console.log('goToMonth()', selectedDate);
         const viewedMonth = startOfMonth(new Date().setFullYear(this.calendar.currentYear, this.calendar.currentMonth, 1));
         const monthDiff = differenceInCalendarMonths(startOfMonth(selectedDate), viewedMonth);
 
@@ -493,7 +494,7 @@ export class ScheduleExceptionManagementComponent implements AfterViewInit, OnDe
         const offsetTop = this.exceptionsListContainer.nativeElement.querySelector(cardMonthSectionId)?.offsetTop;
 
         if (offsetTop) {
-            this.exceptionsListContainer.nativeElement.scrollTo({top: offsetTop - 66, left: 0, behavior: 'smooth'});
+            this.exceptionsListContainer.nativeElement.scrollTo({top: offsetTop - 139, left: 0, behavior: 'smooth'});
         }
     }
 

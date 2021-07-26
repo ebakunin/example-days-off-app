@@ -12,6 +12,7 @@
         }
 
         #languageDropdown {
+            margin-top: -5px;
             right: unset;
         }
     }
@@ -37,6 +38,8 @@
         }
 
         #languageDropdown {
+            margin-top: -10px;
+            padding-top: 15px;
             right: 3ch;
         }
     }
@@ -75,8 +78,6 @@
             display: block;
             font-size: 0;
             position: absolute;
-            right: 3ch;
-            margin-top: -10px;
             text-align: left;
         }
     }

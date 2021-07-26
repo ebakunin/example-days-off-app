@@ -1,3 +1,6 @@
+/* COLOR THEME */
+/* SKELETON THEME */
+/* GRID CHANGES */
 /* BASIC STYLES
  * ------------------------------------------------ */
 html {
@@ -139,7 +142,7 @@ p {
 }
 .button:disabled, .button-primary:disabled {
   cursor: not-allowed;
-  opacity: 0.75;
+  opacity: 0.5;
 }
 .button:visited, .button-primary:visited {
   color: #5ab9ea;
@@ -174,7 +177,7 @@ p {
   color: #fff;
 }
 .button-primary:active {
-  color: #FFF;
+  color: #fff;
   background-color: #1eaedb;
   border-color: #1eaedb;
 }

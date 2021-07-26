@@ -54,20 +54,20 @@ ExampleEmployee.init({
 
 
 /**
- * Create 5 unique days off values within the next 30 days.
+ * Create 6 unique days off values.
  * The days off should not fall on the office's closed days.
  * @returns {Date[]}
  */
 function createMockDaysOff(): Date[] {
     const today = startOfToday();
     const daysOff: Date[] = [];
-    const usedRandomInts: number[] = [];
+    const usedRandomDayOff: number[] = [];
 
     let i = 0;
     while (i < 4) {
         const randomInt = Math.floor(Math.random() * 30) + 1;
-        if (!usedRandomInts.includes(randomInt)) {
-            usedRandomInts.push(randomInt);
+        if (!usedRandomDayOff.includes(randomInt)) {
+            usedRandomDayOff.push(randomInt);
             const date = addDays(today, randomInt);
             if (!ExampleOffice.closedDays.includes(getDay(date))) {
                 daysOff.push(date);
@@ -76,7 +76,7 @@ function createMockDaysOff(): Date[] {
         }
     }
 
-    daysOff.push(addMonths(daysOff[0], 1), addMonths(daysOff[0], 2));
+    daysOff.push(addMonths(daysOff[0], 1), addMonths(daysOff[0], 2), addMonths(daysOff[0], 3));
 
     return daysOff;
 }

@@ -2,8 +2,14 @@
 @import "../original/mixins/private";
 @import "../original/mixins/public";
 
-$body-background-color: #fff;
+$prefix-for-webkit:    true !default;
+$prefix-for-mozilla:   true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera:     true !default;
+$prefix-for-spec:      true !default;
 
+
+/* COLOR THEME */
 $primary-color-medium: #5ab9ea;
 $primary-color-light: color.scale($primary-color-medium, $whiteness: 40%);
 $primary-color-dark: color.scale($primary-color-medium, $blackness: 40%);
@@ -20,15 +26,11 @@ $gray-color-medium: #9B9CA7FF;
 $gray-color-light: color.scale($gray-color-medium, $whiteness: 40%);
 $gray-color-dark: color.scale($gray-color-medium, $blackness: 40%);
 
+$danger: #d0021b;
+$warning: #e68d31;
+$success: #43c277;
 
-
-$prefix-for-webkit:    true !default;
-$prefix-for-mozilla:   true !default;
-$prefix-for-microsoft: true !default;
-$prefix-for-opera:     true !default;
-$prefix-for-spec:      true !default;
-
-// Default overrides for new theme
+/* SKELETON THEME */
 $is-fluid: true; // Change to true to enable the fluid grid
 $use-global-border-box: false; // Change to true the enable global border-box
 
@@ -48,11 +50,11 @@ $heading-family: $font-family; // default heading (h1-h6) font
 $heading-color: $font-color; // default heading (h1-h6) color
 $heading-weight: 300; // sets the weight of the heading text
 
+$body-background-color: #fff;
 $form-font: $font-family; // default form font
-
 $border-radius: 4px;
 
-// Button Settings
+// button settings
 $button-color: $primary-color-medium;
 $button-weight: 600;
 $button-font-uppercase: true;
@@ -63,11 +65,11 @@ $button-letter-spacing: 0.1rem;
 $button-border-radius: $border-radius;
 $button-font-size: relative(11px);
 
-$button-hover-color: #fff;
+$button-hover-color: $body-background-color;
 $button-hover-border-color: #888;
 $button-hover-background-color: transparent;
 
-$button-active-color: #fff;
+$button-active-color: $body-background-color;
 $button-active-border-color: #888;
 $button-active-background-color: transparent;
 
@@ -75,21 +77,19 @@ $button-primary-color: #333;
 $button-primary-border-color: $button-primary-color;
 $button-primary-background-color: #33c3f0;
 
-$button-primary-hover-color: #FFF;
+$button-primary-hover-color: $body-background-color;
 $button-primary-hover-background-color: #1eaedb;
 $button-primary-hover-border-color: $button-primary-hover-background-color;
 
-$button-primary-active-color: #FFF;
+$button-primary-active-color: $body-background-color;
 $button-primary-active-background-color: #1eaedb;
 $button-primary-active-border-color: $button-primary-hover-background-color;
 
-// GRID CHANGES
+/* GRID CHANGES */
 $grid-max-width: 960px;
 $base-col-count: 12;
 $base-col-width: 60px;
 $use-new-grid: true;
 
-// ACTION COLORS
-$danger: #d0021b;
-$warning: #e68d31;
-$success: #43c277;
+
+$calendar-height: 290px;
