@@ -33,7 +33,7 @@
         </div>
 
         <div>
-            <button class="button-primary" [disabled]="!form.valid">
+            <button class="button-primary" [disabled]="isInvalid">
                 {{ 'Send' | translate | async }}
             </button>
         </div>
