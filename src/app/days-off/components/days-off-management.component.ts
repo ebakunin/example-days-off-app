@@ -42,7 +42,7 @@ import { DayNumberType, MonthNumberType } from '../../shared/common.type';
 /*
  * Component logic:
  *
- * ScheduleExceptionManagementComponent receives a potentially empty array of existing Schedule Exception Dates
+ * DaysOffManagementComponent receives a potentially empty array of existing Schedule Exception Dates
  * (for example, a Date object related to a RoomDateException). Those Dates, along with any new Dates or Dates
  * marked for deletion as selected by the user, are placed in 4 "buckets":
  *
@@ -68,12 +68,12 @@ interface ICardData {
 }
 
 @Component({
-    selector: 'app-schedule-exception-management',
-    templateUrl: '../templates/schedule-exception-management.component.html',
-    styleUrls: ['../styles/schedule-exception-management.scss'],
+    selector: 'app-days-off-management',
+    templateUrl: '../templates/days-off-management.component.html',
+    styleUrls: ['../styles/days-off-management.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ScheduleExceptionManagementComponent implements AfterViewInit, OnDestroy, OnInit {
+export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnInit {
     @ViewChild('calendar') calendar!: Calendar;
     @ViewChild('exceptionsListContainer') exceptionsListContainer!: ElementRef;
 
@@ -133,7 +133,7 @@ export class ScheduleExceptionManagementComponent implements AfterViewInit, OnDe
 
     /*
      * Used to determine when the Calendar should not be updated,
-     * typically when scrolling through multiple months at once
+     * usually when scrolling through multiple months at once
      */
     private _disableUpdateCalendarView = false;
 
@@ -199,7 +199,7 @@ export class ScheduleExceptionManagementComponent implements AfterViewInit, OnDe
         const viewedMonth = startOfMonth(new Date().setFullYear(this.calendar.currentYear, this.calendar.currentMonth, 1));
 
         if (this.calendar.currentMonth === this.todaysMonth && this.calendar.currentYear !== this.todaysYear) {
-            this.monthsList = ScheduleExceptionManagementComponent._getMonthList(viewedMonth);
+            this.monthsList = DaysOffManagementComponent._getMonthList(viewedMonth);
         }
 
         if (!this._disableUpdateCalendarView) {
@@ -322,7 +322,6 @@ export class ScheduleExceptionManagementComponent implements AfterViewInit, OnDe
      * @param {Date} selectedDate
      */
     public goToMonth(selectedDate: Date): void {
-console.log('goToMonth()', selectedDate);
         const viewedMonth = startOfMonth(new Date().setFullYear(this.calendar.currentYear, this.calendar.currentMonth, 1));
         const monthDiff = differenceInCalendarMonths(startOfMonth(selectedDate), viewedMonth);
 
@@ -403,7 +402,7 @@ console.log('goToMonth()', selectedDate);
             this._setCalendarLocale(language.isoCode);
 
             const viewedMonth = startOfMonth(new Date().setFullYear(this.calendar.currentYear, this.calendar.currentMonth, 1));
-            this.monthsList = ScheduleExceptionManagementComponent._getMonthList(viewedMonth);
+            this.monthsList = DaysOffManagementComponent._getMonthList(viewedMonth);
         });
     }
 
@@ -464,7 +463,7 @@ console.log('goToMonth()', selectedDate);
      */
     private _addDates(selectedDateTimes: number[]): void {
         selectedDateTimes.forEach(datetime => {
-            if (this.newExceptionsBucket.size < ScheduleExceptionManagementComponent._MAX_NEW_EXCEPTION_DATES) {
+            if (this.newExceptionsBucket.size < DaysOffManagementComponent._MAX_NEW_EXCEPTION_DATES) {
                 this.newExceptionsBucket.add(datetime);
             }
         });

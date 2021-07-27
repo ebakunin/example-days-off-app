@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
  */
 
 @Component({
-    selector: 'app-exception-date-card',
+    selector: 'app-day-off-card',
     template: `
         <div *ngIf="showMonthSeparator"
              class="month-separator"
@@ -33,10 +33,10 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
             </div>
         </div> <!-- /.day-off-card -->
     `,
-    styleUrls: ['../styles/exception-date-card.scss'],
+    styleUrls: ['../styles/day-off-card.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ExceptionDateCardComponent {
+export class DayOffCardComponent {
     @Input() date!: Date;
     @Input() pendingDelete = false
     @Input() showMonthSeparator = false;

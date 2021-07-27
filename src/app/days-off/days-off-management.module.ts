@@ -4,14 +4,14 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../shared/material.module';
 import { CommonPipesModule } from '../shared/pipes.module';
 
-import { ExceptionDateCardComponent } from './components/exception-date-card.component';
-import { ScheduleExceptionManagementComponent } from './components/schedule-exception-management.component';
+import { DayOffCardComponent } from './components/day-off-card.component';
+import { DaysOffManagementComponent } from './components/days-off-management.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
-        ExceptionDateCardComponent,
-        ScheduleExceptionManagementComponent
+        DayOffCardComponent,
+        DaysOffManagementComponent
     ],
     imports: [
         CommonModule,
@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
         FormsModule
     ],
     exports: [
-        ScheduleExceptionManagementComponent
+        DaysOffManagementComponent
     ]
 })
-export class ScheduleExceptionsModule {}
+export class DaysOffManagementModule {}
