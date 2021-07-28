@@ -3,7 +3,7 @@
           styleClass="contact-dialog"
           [modal]="true"
           [(visible)]="visible"
-          (onHide)="showContactDialog$.next(false)">
+          (onHide)="onHide()">
 
     <form *ngIf="form" [formGroup]="form" autocomplete="off" (submit)="onSendMessage()">
         <div>

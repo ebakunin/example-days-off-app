@@ -28,7 +28,7 @@
 }
 
 .mesh {
-    background-color: rgba(0, 0, 0, 0.32);
+    background-color: rgba(0, 0, 0, 0.35);
     position: fixed;
     top: 0;
     left: 0;
@@ -51,7 +51,7 @@ footer {
 ::ng-deep .days-off-skeleton {
     border-radius: $border-radius;
     display: inline-block;
-    min-height: calc(#{$calendar-height} + 6rem);
+    min-height: calc(#{$calendar-height} + 62px);
 
     &:first-child {
         margin-right: 20px;

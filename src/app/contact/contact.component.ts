@@ -51,6 +51,14 @@ export class ContactComponent implements OnInit {
     /**
      *
      */
+    public onHide(): void {
+        this.form.reset();
+        this.showContactDialog$.next(false);
+    }
+
+    /**
+     *
+     */
     public onSendMessage(): void {
         this.sendingMessage = true;
 

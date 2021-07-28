@@ -7,7 +7,7 @@
 
     span {
         background-color: $body-background-color;
-        color: $gray-color-medium;
+        color: $gray-color-dark;
         font-size: 1.2rem;
         font-weight: bold;
         height: 20px;
@@ -100,12 +100,12 @@
 
     .delete-day {
         align-self: center;
-        color: $gray-color-light;
+        color: $gray-color-medium;
         font-size: 2rem;
 
         &:hover {
             .show-restore {
-                color: $primary-color-medium;
+                color: $gray-color-dark;
             }
         }
     }

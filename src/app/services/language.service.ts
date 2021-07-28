@@ -66,7 +66,7 @@ export class LanguageService {
             const headers = new HttpHeaders().set('Content-Type', 'text/json');
 
             return this._http.get<[string, string]>(path, {headers}).pipe(
-                delay(1000), // fake loading time @fixme
+                delay(800), // mock loading time
                 map(json => {
                     this._storage[isoCode] = new Map(Object.entries(json));
                     this._translations$.next(this._storage);

@@ -5,7 +5,6 @@ import { distinctUntilKeyChanged, map } from "rxjs/operators";
 import 'numeral/locales';
 
 import { LanguageService } from '../services/language.service';
-import './common.function'; // @fixme
 
 @Pipe({ name: 'ucfirst' })
 export class UcFirstPipe implements PipeTransform {

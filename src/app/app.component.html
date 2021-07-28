@@ -1,9 +1,9 @@
 <app-menu></app-menu>
 
-<h1 id="title">{{ 'UI_DAYS_OFF_TITLE' | translate | async }}</h1>
+<h1 id="title">{{ 'UI_DAYS_OFF_TITLE' | translate | async }}&nbsp;</h1>
 
 <p id="summary">
-    {{ 'UI_DAYS_OFF_EXPLANATION' | translate | async }}
+    {{ 'UI_DAYS_OFF_EXPLANATION' | translate | async }}&nbsp;
 </p>
 
 <section>
@@ -19,7 +19,7 @@
         </app-days-off-management>
     </ng-container>
     <ng-template #showSkeleton>
-        <p-skeleton width="515px" styleClass="days-off-skeleton"></p-skeleton>
+        <p-skeleton width="495px" styleClass="days-off-skeleton"></p-skeleton>
         <p-skeleton width="370px" styleClass="days-off-skeleton"></p-skeleton>
     </ng-template>
 

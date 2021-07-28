@@ -1,7 +1,7 @@
 @import './../../styles/skeleton-sass/src/themes/custom/vars';
 
 #daysOffSection {
-    color: $gray-color-medium;
+    color: $gray-color-dark;
 
     > div {
         display: inline-block;
@@ -160,12 +160,13 @@
                         cursor: pointer;
 
                         &:hover {
-                            color: $primary-color-dark;
+                            color: $tertiary-color-dark;
                         }
                     }
 
                     &:not(.enabled) {
-                        color: $gray-color-medium;
+                        color: $gray-color-light;
+                        cursor: default;
                     }
                 }
             }
