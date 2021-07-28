@@ -2,20 +2,29 @@
 
 /* Mobile */
 @media only screen and (max-width: 600px) {
-    .title {
+    #title {
         font-size: 2.75rem;
         text-align: center;
+    }
+    #summary {
+        margin-bottom: 1rem;
     }
 }
 /* Desktop */
 @media only screen and (min-width: 601px) {
-    .title {
+    #title {
         font-size: 3rem;
+    }
+
+    #summary {
+        width: 80%;
+        margin-bottom: 1.5rem;
     }
 }
 
-.title {
+#title {
     font-family: monospace;
+    margin-bottom: 1rem;
 }
 
 .mesh {

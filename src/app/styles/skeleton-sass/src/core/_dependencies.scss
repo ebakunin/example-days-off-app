@@ -119,7 +119,7 @@
 /// @param {number} $colWidth - The width of each column
 /// @param {bool} $new [ $use-new-grid ] - Set true to enable the new style of grid to be generated
 /// @access private
-@mixin _offset($is-fluid, $colCount, $colWidth, $new: $use-new-grid) { // TODO: finish this
+@mixin _offset($is-fluid, $colCount, $colWidth, $new: $use-new-grid) { //
 	@for $i from 1 through ($colCount - 1 ) {
 		.offset-by-#{numToString($i)} { margin-left: if($is-fluid, percentage($i / $colCount) + ($i / 3), ($colWidth + 20) * $i); }
 	}

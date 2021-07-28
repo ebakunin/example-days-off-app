@@ -12,7 +12,6 @@
         }
 
         #languageDropdown {
-            margin-top: -5px;
             right: unset;
         }
     }
@@ -22,7 +21,7 @@
     #mainMenu {
         flex-flow: column;
         position: fixed;
-        right: 1rem;
+        right: 1.5rem;
         text-align: center;
 
         .menu-item {
@@ -38,8 +37,6 @@
         }
 
         #languageDropdown {
-            margin-top: -10px;
-            padding-top: 15px;
             right: 3ch;
         }
     }
@@ -77,6 +74,7 @@
         #languageDropdown {
             display: block;
             font-size: 0;
+            margin-top: -5px;
             position: absolute;
             text-align: left;
         }

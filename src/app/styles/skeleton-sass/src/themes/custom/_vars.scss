@@ -22,7 +22,7 @@ $tertiary-color-medium: #464866;
 $tertiary-color-light: color.scale($tertiary-color-medium, $whiteness: 40%);
 $tertiary-color-dark: color.scale($tertiary-color-medium, $blackness: 40%);
 
-$gray-color-medium: #9B9CA7FF;
+$gray-color-medium: #9b9ca7ff;
 $gray-color-light: color.scale($gray-color-medium, $whiteness: 40%);
 $gray-color-dark: color.scale($gray-color-medium, $blackness: 40%);
 
@@ -92,4 +92,4 @@ $base-col-width: 60px;
 $use-new-grid: true;
 
 
-$calendar-height: 290px;
+$calendar-height: 310px;
