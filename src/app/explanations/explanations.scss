@@ -1,12 +1,14 @@
+@import '../styles/skeleton-sass/src/themes/custom/vars';
+
 .explanation {
-    background-color: #fff;
+    background-color: $body-background-color;
     border: 4px solid #000;
     border-radius: 25px;
     box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
-    color: black;
+    color: #000;
     display: none;
-    font-size: 115%;
-    padding: 22px 30px;
+    font-size: 105%;
+    padding: 1.5rem 2rem;
     position: absolute;
     z-index: 150;
 
@@ -19,45 +21,65 @@
     }
 }
 
-
-.positioned {
-    position: absolute;
-
-    &.down-left {
-        left: 2px;
-        bottom: 2px;
+/* Mobile */
+@media only screen and (max-width: 600px) {
+    #explanation1 {
+        left: 5rem;
+        top: 2rem;
+        width: calc(100% - 6rem);
+    }
+    #explanation2 {
+        left: 10rem;
+        top: 6rem;
+        width: calc(100% - 11rem);
+    }
+    #explanation3 {
+        left: 4rem;
+        top: 12rem;
+        width: calc(100% - 5rem);
+    }
+}
+/* Desktop */
+@media only screen and (min-width: 601px) {
+    #explanation1 {
+        left: 5rem;
+        top: 2rem;
+        width: 500px;
+    }
+    #explanation2 {
+        left: 10rem;
+        top: 6rem;
+        width: 400px;
+    }
+    #explanation3 {
+        left: 4rem;
+        top: 12rem;
+        width: 400px;
     }
 }
 
-.arrow {
-    border: solid darkslategray;
-    border-width: 0 1px 1px 0;
+.positioned-arrow {
+    border: solid #000;
+    border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 6px;
-
-    &.right {
-        transform: rotate(-45deg);
-    }
-    &.left {
-        transform: rotate(135deg);
-    }
-    &.up {
-        transform: rotate(-135deg);
-    }
-    &.down {
-        transform: rotate(45deg);
-    }
-    &.down-left {
-        transform: rotate(90deg);
-    }
+    position: absolute;
+    left: 2px;
+    bottom: 2px;
+    transform: rotate(90deg);
 }
 
 .next-step {
+    color: $gray-color-dark;
     cursor: pointer;
     float: right;
     font-size: 125%;
     position: relative;
     left: 5px;
     top: 12px;
+
+    &:hover {
+        color: #000;
+    }
 }
 

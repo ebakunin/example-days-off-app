@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonPipesModule } from './shared/pipes.module';
 import { MaterialModule } from './shared/material.module';
 import { RippleModule } from 'primeng/ripple';
-import { ScheduleExceptionsModule } from './schedule-exceptions/schedule-exceptions.module';
+import { DaysOffManagementModule } from './days-off/days-off-management.module';
 import { ServicesModule } from './services/services.module';
 
 import { AppComponent } from './app.component';
@@ -33,7 +33,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
         MaterialModule,
         ReactiveFormsModule,
         RippleModule,
-        ScheduleExceptionsModule,
+        DaysOffManagementModule,
         ServicesModule.forRoot()
     ],
     bootstrap: [AppComponent]

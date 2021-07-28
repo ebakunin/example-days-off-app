@@ -1,7 +1,7 @@
 <nav id="mainMenu">
     <div class="menu-item">
-        <span [attr.aria-label]="'Select a language' | translate | async"
-              [pTooltip]="('Select a language' | translate | async) ?? ''"
+        <span [attr.aria-label]="'UI_SELECT_LANGUAGE' | translate | async"
+              [pTooltip]="('UI_SELECT_LANGUAGE' | translate | async) ?? ''"
               tooltipPosition="left"
               (click)="showDropdown = !showDropdown">
             <i class="globe" aria-hidden="true" [ngClass]="(globeIcon$ | async) ?? ''"></i>
@@ -19,8 +19,8 @@
 
     <div class="menu-item">
         <i class="far fa-comment"
-           [attr.aria-label]="'How the app works' | translate | async"
-           [pTooltip]="('How the app works' | translate | async) ?? ''"
+           [attr.aria-label]="'UI_APP_EXPLANATION' | translate | async"
+           [pTooltip]="('UI_APP_EXPLANATION' | translate | async) ?? ''"
            tooltipPosition="left"
            (click)="showExplanation$.next(true)"></i>
     </div>
@@ -28,16 +28,16 @@
     <div class="menu-item">
         <a href="https://github.com/ebakunin/example-days-off-app" target="_blank">
             <i class="fab fa-github"
-               [attr.aria-label]="'See the code on Github' | translate | async"
-               [pTooltip]="('See the code on Github' | translate | async) ?? ''"
+               [attr.aria-label]="'UI_GITHUB_CODE' | translate | async"
+               [pTooltip]="('UI_GITHUB_CODE' | translate | async) ?? ''"
                tooltipPosition="left"></i>
         </a>
     </div>
 
     <div class="menu-item">
         <i class="far fa-paper-plane"
-           [attr.aria-label]="'Send me a message' | translate | async"
-           [pTooltip]="('Send me a message' | translate | async) ?? ''"
+           [attr.aria-label]="'UI_SEND_MESSAGE' | translate | async"
+           [pTooltip]="('UI_SEND_MESSAGE' | translate | async) ?? ''"
            tooltipPosition="left"
            (click)="showContactDialog$.next(true)"></i>
     </div>

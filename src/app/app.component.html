@@ -1,10 +1,14 @@
 <app-menu></app-menu>
 
-<h1 class="title">{{ 'Example Day Off Scheduling App' | translate | async }}</h1>
+<h1 id="title">{{ 'UI_DAYS_OFF_TITLE' | translate | async }}</h1>
+
+<p id="summary">
+    {{ 'UI_DAYS_OFF_EXPLANATION' | translate | async }}
+</p>
 
 <section>
     <ng-container *ngIf="dataIsReady; else showSkeleton">
-        <app-schedule-exception-management
+        <app-days-off-management
             [startingViewDate]="startingViewDate"
             [closedDays]="(office$ | async)?.closedDays ?? []"
             [closedDates]="(office$ | async)?.closedDates ?? []"
@@ -12,7 +16,7 @@
             (newExceptions)="newExceptionDates = $event"
             (exceptionsToBeDeleted)="exceptionDatesToBeDeleted = $event"
             (currentViewedMonth)="currentViewedMonth = $event">
-        </app-schedule-exception-management>
+        </app-days-off-management>
     </ng-container>
     <ng-template #showSkeleton>
         <p-skeleton width="515px" styleClass="days-off-skeleton"></p-skeleton>
@@ -26,7 +30,7 @@
                 class="button-primary"
                 [disabled]="newExceptionDates.length === 0 && exceptionDatesToBeDeleted.length === 0"
                 (click)="onSave()">
-            {{ 'SYSTEM_SAVE' | translate | async }}
+            {{ 'UI_SAVE' | translate | async }}
         </button>
     </div>
 </section>

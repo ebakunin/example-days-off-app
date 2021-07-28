@@ -20,12 +20,11 @@ import { environment } from '../../environments/environment';
 })
 export class ContactComponent implements OnInit {
     public readonly showContactDialog$ = this._appService.showContactDialog$;
-    public readonly isInvalid = () => !this.form.valid || this.sendingMessage;
     public form!: FormGroup;
     public visible = false;
+    public sendingMessage = false;
 
     private readonly _destroy$ = new Subject<boolean>();
-    private sendingMessage = false;
 
     constructor(private _appService: AppService,
                 private _cdr: ChangeDetectorRef,
@@ -55,7 +54,7 @@ export class ContactComponent implements OnInit {
     public onSendMessage(): void {
         this.sendingMessage = true;
 
-        const path = 'http://www.ericchristenson.com/message';
+        const path = '//www.ericchristenson.com/message';
         const body = 'message=' + encodeURIComponent(this.form.get('message')?.value.trim())
             + '&name=' + encodeURIComponent(this.form.get('name')?.value.trim())
             + '&email=' + encodeURIComponent(this.form.get('email')?.value.trim());
@@ -69,14 +68,14 @@ export class ContactComponent implements OnInit {
             this.showContactDialog$.next(false);
 
             if (result.response === 200) {
-                this._toastService.successToast(this._languageService.getTranslation('Message success'));
+                this._toastService.successToast(this._languageService.getTranslation('UI_MESSAGE_SUCCESS'));
             } else {
-                this._toastService.errorToast(`${this._languageService.getTranslation('Message error')}: ${result.message}`);
+                this._toastService.errorToast(`${this._languageService.getTranslation('UI_MESSAGE_ERROR')}: ${result.message}`);
             }
         }, (error: HttpErrorResponse) => {
             this.sendingMessage = false;
             this.showContactDialog$.next(false);
-            this._toastService.errorToast(`${this._languageService.getTranslation('Message error')}: ${error.message}`);
+            this._toastService.errorToast(`${this._languageService.getTranslation('UI_MESSAGE_ERROR')}: ${error.message}`);
         });
     }
 

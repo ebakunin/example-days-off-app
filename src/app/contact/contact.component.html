@@ -1,4 +1,4 @@
-<p-dialog [header]="('Message Me' | translate | async) ?? ''"
+<p-dialog [header]="('UI_MESSAGE_ME' | translate | async) ?? ''"
           position="bottom"
           styleClass="contact-dialog"
           [modal]="true"
@@ -9,7 +9,7 @@
         <div>
             <textarea id="yourMessage"
                       formControlName="message"
-                      [placeholder]="'Say something nice, or at least interesting...' | translate | async"
+                      [placeholder]="'UI_MESSAGE_PLACEHOLDER' | translate | async"
                       autofocus
                       maxlength="2500"
                       required
@@ -21,7 +21,7 @@
                    formControlName="name"
                    id="yourName"
                    required
-                   [placeholder]="'Your name' | translate | async">
+                   [placeholder]="'UI_NAME_PLACEHOLDER' | translate | async">
         </div>
 
         <div>
@@ -29,12 +29,12 @@
                    formControlName="email"
                    id="yourEmail"
                    required
-                   [placeholder]="'Your email' | translate | async">
+                   [placeholder]="'UI_EMAIL_PLACEHOLDER' | translate | async">
         </div>
 
         <div>
-            <button class="button-primary" [disabled]="isInvalid">
-                {{ 'Send' | translate | async }}
+            <button class="button-primary" [disabled]="!form.valid || this.sendingMessage">
+                {{ 'UI_SEND' | translate | async }}
             </button>
         </div>
     </form>

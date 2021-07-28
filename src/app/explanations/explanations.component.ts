@@ -11,6 +11,12 @@ import { AppService } from '../services/app.service';
 import { distinctUntilChanged, filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
+/*
+# explain how the page works
+# explain how the code works
+# explain why the footprint is so large and uses fake data
+*/
+
 @Component({
     selector: 'app-explanations',
     templateUrl: './explanations.component.html',
@@ -28,6 +34,12 @@ export class ExplanationsComponent implements OnInit {
      *
      */
     public ngOnInit(): void {
+/*
+        setTimeout(() => {
+            this._appService.showExplanation$.next(true); // @fixme
+        }, 1000);
+*/
+
         this._appService.showExplanation$.pipe(
             distinctUntilChanged(),
             filter(Boolean),

@@ -1,12 +1,7 @@
-<!--
-# explain how the page works
-# explain how the code works
-# explain why the footprint is so large and uses fake data
--->
 <aside>
-    <div #showSteps class="explanation down-left" style="width: 450px; left: 5em; top: 2em">
-        {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
-        <div class="positioned arrow down-left"></div>
+    <div #showSteps id="explanation1" class="explanation down-left">
+        {{ 'UI_EXPLANATION_1' | translate | async }}
+        <div class="positioned-arrow"></div>
         <div class="next-step">
             <i class="fas fa-angle-double-right" (click)="showNextExplanationText(1)"></i>
         </div>
@@ -14,9 +9,9 @@
 </aside>
 
 <aside>
-    <div #showSteps class="explanation down-left" style="width: 300px; left: 45em; top: 2em">
-        {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
-        <div class="positioned arrow down-left"></div>
+    <div #showSteps id="explanation2" class="explanation down-left">
+        {{ 'UI_EXPLANATION_2' | translate | async }}
+        <div class="positioned-arrow"></div>
         <div class="next-step">
             <i class="fas fa-angle-double-right" (click)="showNextExplanationText(2)"></i>
         </div>
@@ -24,9 +19,9 @@
 </aside>
 
 <aside>
-    <div #showSteps class="explanation down-left" style="width: 400px; left: 2em; top: 10em">
-        {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' | translate | async }}
-        <div class="positioned arrow down-left"></div>
+    <div #showSteps id="explanation3" class="explanation down-left" style="">
+        {{ 'UI_EXPLANATION_3' | translate | async }}
+        <div class="positioned-arrow"></div>
         <div class="next-step">
             <i class="fas fa-times" (click)="onClose()"></i>
         </div>

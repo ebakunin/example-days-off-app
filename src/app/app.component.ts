@@ -67,9 +67,9 @@ export class AppComponent {
             if (success) {
                 this.newExceptionDates = [];
                 this.exceptionDatesToBeDeleted = [];
-                this._toastService.successToast(this._languageService.getTranslation('Days off updated'));
+                this._toastService.successToast(this._languageService.getTranslation('UI_UPDATE_SUCCESS'));
             } else {
-                this._toastService.errorToast(this._languageService.getTranslation('Error updating days off'));
+                this._toastService.errorToast(this._languageService.getTranslation('UI_UPDATE_SUCCESS'));
             }
         }, () => {
             this.dataIsReady = true;
