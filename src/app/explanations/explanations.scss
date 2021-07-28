@@ -7,8 +7,6 @@
     box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
     color: #000;
     display: none;
-    font-size: 105%;
-    padding: 1.5rem 2rem;
     position: absolute;
     z-index: 150;
 
@@ -36,6 +34,9 @@
 /* Mobile */
 @media only screen and (max-width: 600px) {
     .explanation {
+        font-size: 105%;
+        padding: 1.5rem 2rem;
+
         &.up-right {
             border-top-right-radius: 0;
         }
@@ -76,6 +77,34 @@
 }
 /* Desktop */
 @media only screen and (min-width: 601px) {
+    .explanation {
+        font-size: 115%;
+        padding: 2.5rem 3rem;
+
+        &.down-left {
+            border-bottom-left-radius: 0;
+        }
+        &.down-right {
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    .corner-arrow {
+        display: inline-block;
+        bottom: 2px;
+
+        &.bottom-left {
+            left: 2px;
+            transform: rotate(90deg);
+        }
+        &.bottom-right {
+            right: 2px;
+        }
+        &.top-right {
+            display: none;
+        }
+    }
+
     #explanation1 {
         left: 15vw;
         top: 10vh;
@@ -95,30 +124,5 @@
         left: 25vw;
         top: 20vh;
         width: 50vw;
-    }
-
-    .corner-arrow {
-        display: inline-block;
-        bottom: 2px;
-
-        &.bottom-left {
-            left: 2px;
-            transform: rotate(90deg);
-        }
-        &.bottom-right {
-            right: 2px;
-        }
-        &.top-right {
-            display: none;
-        }
-    }
-
-    .explanation {
-        &.down-left {
-            border-bottom-left-radius: 0;
-        }
-        &.down-right {
-            border-bottom-right-radius: 0;
-        }
     }
 }
