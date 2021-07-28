@@ -114,10 +114,10 @@
     }
 
     .explanation {
-        .down-left {
+        &.down-left {
             border-bottom-left-radius: 0;
         }
-        .down-right {
+        &.down-right {
             border-bottom-right-radius: 0;
         }
     }
