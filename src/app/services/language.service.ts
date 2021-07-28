@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import {
+    delay,
     distinctUntilKeyChanged,
     map,
     pluck,
@@ -65,7 +66,7 @@ export class LanguageService {
             const headers = new HttpHeaders().set('Content-Type', 'text/json');
 
             return this._http.get<[string, string]>(path, {headers}).pipe(
-                // delay(1000), // fake loading time
+                delay(1000), // fake loading time @fixme
                 map(json => {
                     this._storage[isoCode] = new Map(Object.entries(json));
                     this._translations$.next(this._storage);
@@ -78,7 +79,7 @@ export class LanguageService {
     }
 
     /**
-     * Returns a translated term by token. If no term exist the token is returned instead.
+     * Returns a translated term by token. If no term exists the token is returned instead.
      * Displays the spinner during the loading process.
      *
      * @param {string} token The token of the desired term to translate
@@ -90,7 +91,10 @@ export class LanguageService {
             tap(() => this._spinnerService.start()),
             switchMap(language => this._retrieveTranslations$(language.isoCode)),
             switchMap(isoCode => this._translations$.pipe(pluck(isoCode.toLowerCase()))),
-            map(translations => translations.get(token) ?? token),
+            map(translations => {
+                const text = translations.get(token) as string;
+                return text?.length > 0 ? text : token;
+            }),
             tap(() => this._spinnerService.stop())
         );
     }
