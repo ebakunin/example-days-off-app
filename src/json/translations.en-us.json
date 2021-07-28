@@ -28,7 +28,8 @@
     "UI_NAME_PLACEHOLDER": "Your name",
     "UI_EMAIL_PLACEHOLDER": "Your email",
     "UI_SEND": "Send",
-    "UI_EXPLANATION_1": "This example demonstrates how an employee can schedule days off from work. Here, the office is closed on Saturdays and Sundays. The employee already has several days off scheduled. By clicking on the map you can add or remove as many as 365 days at a time.",
-    "UI_EXPLANATION_2": "Technical explanation goes here",
-    "UI_EXPLANATION_3": ""
+    "UI_EXPLANATION_1": "This app demonstrates how an employee can schedule their days off from work. In this example the office is closed during the weekend. The employee already has several days off scheduled. By clicking dates on the calendar you can add or remove as many as 365 days off at a time.",
+    "UI_EXPLANATION_2": "The app is fully mobile responsive. It supports multiple languages and can switch on the fly. Because this is a demonstration, all default data is mocked and does not communicate with an API. CRUD actions do work as expected but are lost if the page is refreshed.",
+    "UI_EXPLANATION_3": "The codebase is built on Angular 12. The calendar is a heavily customized version of a PrimeNG component. Other PrimeNG UI components are used as well. The bare bones CSS framework is based on Skeleton. The app codebase is available on GitHub.",
+    "UI_EXPLANATION_4": "The app is based on my code from a previous job. It is somewhat over-engineered to show off various technologies. If you have any questions, suggestions, or (horror) find a bug feel free to message me."
 }
