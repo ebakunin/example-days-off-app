@@ -561,6 +561,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * Whether to show or hide the navigation arrows on the Calendar.
+     * The user should not see months in the past or advance beyond 3 years in the future.
      * @private
      */
     private _shouldDisableCalendarNavigationButton(): void {
@@ -575,7 +576,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
                 ? true
                 : this.calendar.currentYear === this.todaysYear && this.calendar.currentMonth <= this.todaysMonth;
 
-            disableNextButton = this.calendar.currentYear === this.todaysYear + 2 && this.calendar.currentMonth === this.todaysMonth - 1;
+            disableNextButton = this.calendar.currentYear === this.todaysYear + 3 && this.calendar.currentMonth === this.todaysMonth - 1;
         }
 
         setTimeout(() => {
