@@ -29,10 +29,6 @@ export class ExplanationsComponent implements OnInit {
      *
      */
     public ngOnInit(): void {
-        setTimeout(() => {
-            this._appService.showExplanation$.next(true); // @fixme
-        }, 1000);
-
         this._appService.showExplanation$.pipe(
             distinctUntilChanged(),
             filter(Boolean),

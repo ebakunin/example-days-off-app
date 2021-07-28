@@ -15,7 +15,6 @@ import { ContactComponent } from './contact/contact.component';
 import { ExplanationsComponent } from './explanations/explanations.component';
 import { MenuComponent } from './header/menu.component';
 import { SpinnerComponent } from './spinner/spinner.component';
-import './shared/common.function';
 
 @NgModule({
     declarations: [

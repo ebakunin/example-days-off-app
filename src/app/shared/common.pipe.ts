@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { distinctUntilKeyChanged, map } from "rxjs/operators";
 import 'numeral/locales';
+import './common.function';
 
 import { LanguageService } from '../services/language.service';
 
