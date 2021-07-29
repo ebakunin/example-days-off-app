@@ -1,4 +1,5 @@
 {
+    "UI_PAGE_TITLE": "Ejemplo de aplicación de gestión de días libres",
     "UI_TODAY": "Hoy",
     "UI_SELECT_MONTH": "Seleccionar mes",
     "UI_SELECT_YEAR": "Seleccionar año",
@@ -12,7 +13,7 @@
     "UI_SAVE": "Guardar",
     "UI_NEXT": "siguiente",
     "UI_CLOSE": "cerca",
-    "UI_DAYS_OFF_EXPLANATION": "Utilice el calendario para seleccionar o eliminar días libres. Las fechas en gris son cuando la oficina está cerrada o días pasados.",
+    "UI_DAYS_OFF_EXPLANATION": "Utilice el calendario para seleccionar o eliminar hasta 365 días de descanso dentro de los próximos dos años. Las fechas en gris son cuando la oficina está cerrada o días pasados.",
     "UI_DAYS_OFF_TITLE": "Ejemplo de aplicación de programación de días libres",
     "UI_UPDATE_SUCCESS": "Días libres actualizados",
     "UI_UPDATE_ERROR": "Error al actualizar los días libres",

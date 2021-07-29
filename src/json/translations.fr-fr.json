@@ -1,4 +1,5 @@
 {
+    "UI_PAGE_TITLE": "Exemple d'application de gestion des jours de congé",
     "UI_TODAY": "Aujourd'hui",
     "UI_SELECT_MONTH": "Sélectionnez le mois",
     "UI_SELECT_YEAR": "Sélectionnez l'année",
@@ -8,7 +9,7 @@
     "UI_RESTORE_ALL_QUESTION": "Tout restaurer",
     "UI_SLOTS_DELETE_ALL": "Tout supprimer",
     "UI_NO_DATES_SAVED": "Aucune date n'a été sauvegardée",
-    "UI_SELECT_DATE_EXPLANATION": "Sélectionnez une date dans le calendrier et cliquez sur le bouton de sauvegarde.",
+    "UI_SELECT_DATE_EXPLANATION": "Utilisez le calendrier pour sélectionner ou supprimer jusqu'à 365 jours de congé au cours des deux prochaines années. Les dates en gris correspondent à la fermeture du bureau ou à des jours dans le passé.",
     "UI_SAVE": "Enregistrer",
     "UI_NEXT": "suivante",
     "UI_CLOSE": "fermer",
