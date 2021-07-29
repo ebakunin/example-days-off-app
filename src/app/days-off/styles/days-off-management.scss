@@ -15,38 +15,12 @@
         width: 100%;
     }
 
-    #daysOffContent {
-        #monthList {
-            line-height: 5rem;
-
-            .month {
-                font-size: 0;
-
-                &::first-letter {
-                    font-size: 1.5rem;
-                    padding-right: 2px;
-                    padding-left: 2px;
-                    text-transform: uppercase;
-                }
-            }
-        }
-    }
-
     #daysOffList {
         margin-top: 1rem;
-
-        #daysOffListSummary {
-            line-height: 5rem;
-        }
     }
 }
 /* DESKTOP */
 @media only screen and (min-width: 601px) {
-    #daysOffContent {
-        #monthList {
-            line-height: 6rem;
-        }
-    }
     #daysOffList {
         margin-left: 20px;
 
@@ -60,31 +34,6 @@
     border: 1px solid $gray-color-dark;
     border-radius: $border-radius;
     min-width: 40vw;
-
-    #monthList {
-        display: flex;
-        flex-direction: row;
-        border-bottom: 1px solid $gray-color-dark;
-        justify-content: space-evenly;
-
-        .month {
-            cursor: pointer;
-            display: inline-block;
-            text-align: center;
-
-            &:hover {
-                color: $primary-color-medium;
-            }
-
-            &.selected {
-                border-bottom: 2px solid $primary-color-medium;
-                color: $primary-color-medium;
-                cursor: default;
-                font-weight: bold;
-                margin-bottom: -1px;
-            }
-        }
-    }
 
     /* MOBILE */
     @media only screen and (max-width: 600px) {
@@ -140,7 +89,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-width: 15vw;
+            min-width: 18ch;
 
             ul {
                 list-style: none;
@@ -184,7 +133,7 @@
 
         #daysOffCalendar {
             display: flex;
-            height: calc(#{$calendar-height} + 2px);
+            height: $calendar-height;
             justify-content: center;
             margin: auto 0 auto auto;
             padding-left: 1rem;
@@ -206,10 +155,11 @@
 
     #daysOffListSummary {
         align-content: space-between;
+        border-bottom: 1px solid $gray-color-dark;
         display: flex;
         flex-direction: row;
-        border-bottom: 1px solid $gray-color-dark;
-        padding: 0 1.5rem 1px 1.5rem;
+        padding: 0 1.5rem;
+        line-height: 58px;
     }
 
     #saveDaysOff {
@@ -220,6 +170,7 @@
 
         .badge {
             line-height: 1.5;
+            margin-top: -0.5ch;
         }
     }
 
@@ -244,7 +195,7 @@
     #exceptionsListContainer {
         display: flex;
         flex-direction: column;
-        height: $calendar-height;
+        height: calc(#{$calendar-height - 61px});
         overflow-y: auto;
         padding: 0 2rem 2rem 2rem;
         margin-bottom: 2px;

@@ -9,6 +9,11 @@
         padding-bottom: 0;
 
         .p-datepicker-header {
+            border-color: $gray-color-dark;
+            font-size: 130%;
+            margin-bottom: 10px;
+            padding-bottom: 18px;
+
             .p-datepicker-title {
                 color: $primary-color-medium;
                 font-size: 1.7rem;
@@ -20,6 +25,7 @@
 
                 &:disabled {
                     color: $gray-color-light;
+                    opacity: 0.7;
                 }
 
                 &:enabled:hover {
@@ -30,6 +36,27 @@
                 .p-datepicker-prev-icon, .p-datepicker-next-icon {
                     font-size: $font-size;
                     font-weight: 500;
+
+                    &:hover {
+                        color: $primary-color-dark;
+                    }
+                }
+            }
+
+            .p-datepicker-month, .p-datepicker-year {
+                border: none;
+                cursor: pointer;
+                font-size: 95%;
+                height: initial;
+                margin-bottom: 0;
+                padding: 0;
+
+                &:focus {
+                    box-shadow: none;
+                }
+
+                option {
+                    font-size: 105%;
                 }
             }
         }
@@ -55,7 +82,7 @@
 
             td {
                 border-bottom: none;
-                padding: 0.5rem;
+                padding: 0.6rem;
 
                 .p-ripple {
                     color: $gray-color-dark;
