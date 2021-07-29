@@ -115,7 +115,8 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     public readonly todaysDate = startOfToday();
     public readonly todaysMonth = this.todaysDate.getMonth();
     public readonly todaysYear = this.todaysDate.getFullYear();
-    public readonly maxDate = endOfDay(subDays(addYears(startOfMonth(this.todaysDate), 1), 1));
+    public readonly maxDate = endOfDay(subDays(addYears(startOfMonth(this.todaysDate), 2), 1));
+    public readonly yearRange = `${this.todaysYear}:${this.todaysYear + 2}`;
 
     public monthsList: IMonthData[] = [];
     public calendarLocale!: Translation;
@@ -140,6 +141,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     private static _MAX_NEW_EXCEPTION_DATES = 365;
 
     constructor(private _calendarConfig: PrimeNGConfig,
+                private _el: ElementRef,
                 private _languagesService: LanguageService,
                 private _renderer: Renderer2) {}
 
@@ -193,14 +195,11 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     }
 
     /**
-     *
+     * Note: month is 1-based (e.g. August = 8)
+     * @param {{month: number, year: number}} e
      */
-    public onMonthChange(): void {
-        const viewedMonth = startOfMonth(new Date().setFullYear(this.calendar.currentYear, this.calendar.currentMonth, 1));
-
-        if (this.calendar.currentMonth === this.todaysMonth && this.calendar.currentYear !== this.todaysYear) {
-            this.monthsList = DaysOffManagementComponent._getMonthList(viewedMonth);
-        }
+    public onDateChange(e: {month: number, year: number}): void {
+        const viewedMonth = startOfMonth(new Date().setFullYear(e.year, e.month + 1, 1));
 
         if (!this._disableUpdateCalendarView) {
             this.currentViewedMonth.emit(viewedMonth);
@@ -365,6 +364,16 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     }
 
     /**
+     * A `trackBy` method
+     * @param {number} index
+     * @param {ICardData} item
+     * @returns {number}
+     */
+    public trackCardData(index: number, item: ICardData): number {
+        return item.date.getTime();
+    }
+
+    /**
      * Attach a listener to the Calendar to manage selection changes and emit results.
      * @private
      */
@@ -400,9 +409,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
             takeUntil(this._destroy$)
         ).subscribe(language => {
             this._setCalendarLocale(language.isoCode);
-
-            const viewedMonth = startOfMonth(new Date().setFullYear(this.calendar.currentYear, this.calendar.currentMonth, 1));
-            this.monthsList = DaysOffManagementComponent._getMonthList(viewedMonth);
         });
     }
 
@@ -482,7 +488,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * After switching a Calendar month, scroll to the related month section in #exceptionsListContainer, if it exists.
-     * The card month section ID has the format `"#m" + month + year`, e.g. June 2021 = #m62021.
+     * The card month section ID has the format `"#m" + month number + year`, e.g. June 2021 = #m62021.
      */
     private _scrollToCardMonthSection(): void {
         if (this._disableUpdateCalendarView) {
@@ -493,7 +499,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
         const offsetTop = this.exceptionsListContainer.nativeElement.querySelector(cardMonthSectionId)?.offsetTop;
 
         if (offsetTop) {
-            this.exceptionsListContainer.nativeElement.scrollTo({top: offsetTop - 139, left: 0, behavior: 'smooth'});
+            this.exceptionsListContainer.nativeElement.scrollTo({top: offsetTop - 189, left: 0, behavior: 'smooth'});
         }
     }
 
@@ -625,47 +631,5 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
         this._updateCalendarView();
         this._emitExceptionDates();
-    }
-
-    /**
-     * Generate month data for the #monthList section.
-     * @param {Date} startingDate
-     * @returns {IMonthData[]}
-     * @private
-     */
-    private static _getMonthList(startingDate: Date): IMonthData[] {
-        const monthList: IMonthData[] = [];
-        let current = startingDate;
-
-        for (let i = 0; i < 12; i++) {
-            monthList.push({
-                index: current.getMonth() as MonthNumberType,
-                date: current
-            });
-            current = addMonths(current, 1);
-        }
-
-        return monthList;
-    }
-
-
-
-    // ------------------------------ `trackBy` Methods ------------------------------ //
-    /**
-     * @param {number} index
-     * @param {IMonthData} item
-     * @returns {number}
-     */
-    public trackMonth(index: number, item: IMonthData): number {
-        return item.index;
-    }
-
-    /**
-     * @param {number} index
-     * @param {ICardData} item
-     * @returns {number}
-     */
-    public trackCardData(index: number, item: ICardData): number {
-        return item.date.getTime();
     }
 }

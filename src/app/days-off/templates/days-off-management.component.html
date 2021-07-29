@@ -1,17 +1,5 @@
 <div id="daysOffSection">
     <div id="daysOffContent">
-        <div id="monthList">
-            <div *ngFor="let month of monthsList; trackBy: trackMonth"
-                class="month"
-                [ngClass]="{
-                    'selected': month.index === calendar.currentMonth,
-                    'pointer': month.index !== calendar.currentMonth
-                }"
-                (click)="month.index !== calendar.currentMonth ? goToMonth(month.date) : null">
-                {{ month.date | localeDate:{month: 'short'} | async }}
-            </div>
-        </div> <!-- /#monthList -->
-
         <div id="calendarSection">
             <div id="daysOffSelectors">
                 <ul>
@@ -55,7 +43,11 @@
                             [maxDate]="maxDate"
                             [inline]="true"
                             [showOtherMonths]="false"
-                            (onMonthChange)="onMonthChange()">
+                            [monthNavigator]="true"
+                            [yearNavigator]="true"
+                            [yearRange]="yearRange"
+                            (onMonthChange)="onDateChange($event)"
+                            (onYearChange)="onDateChange($event)">
                 </p-calendar>
             </div> <!-- /#daysOffCalendar -->
         </div> <!-- /#calendarSection -->
