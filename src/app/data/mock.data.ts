@@ -41,7 +41,8 @@ export const ExampleOffice = new Office();
 ExampleOffice.init({
     id: 1,
     name: 'Example Office',
-    closedDays: [0, 6]
+    closedDays: [0, 6],
+    closedDates: []
 });
 
 export const ExampleEmployee = new Employee();
