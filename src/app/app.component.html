@@ -2,9 +2,7 @@
 
 <h1 id="title">{{ 'UI_DAYS_OFF_TITLE' | translate | async }}&nbsp;</h1>
 
-<p id="summary">
-    {{ 'UI_DAYS_OFF_EXPLANATION' | translate | async }}&nbsp;
-</p>
+<p id="summary">{{ 'UI_DAYS_OFF_EXPLANATION' | translate | async }}&nbsp;</p>
 
 <section>
     <ng-container *ngIf="dataIsReady; else showSkeleton">
@@ -27,6 +25,7 @@
 
     <div style="margin-top: 20px">
         <button type="button"
+                id="saveButton"
                 class="button-primary"
                 [disabled]="newExceptionDates.length === 0 && exceptionDatesToBeDeleted.length === 0"
                 (click)="onSave()">

@@ -33,7 +33,7 @@
         </div>
 
         <div>
-            <button class="button-primary" [disabled]="!form.valid || this.sendingMessage">
+            <button id="sendButton" class="button-primary" [disabled]="!form.valid || this.sendingMessage">
                 {{ 'UI_SEND' | translate | async }}
             </button>
         </div>

@@ -33,7 +33,7 @@ String.prototype.ucwords = function () {
  * @returns {string}
  */
 String.prototype.toSentenceCase = function () {
-    const temp = this.toString().split(/(\.{1}\s+)/g);
+    const temp = this.toString().split(/(\.\s+)/g);
     return temp.map(a => a.charAt(0).toUpperCase() + a.slice(1).toLowerCase()).join('');
 };
 
@@ -52,7 +52,7 @@ String.prototype.toSnakeCase = function () {
  * @returns {string}
  */
 String.prototype.toCamelCase = function () {
-    return this.replace(/[^a-z0-9 ]/ig, '').replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
+    return this.replace(/[^a-z0-9 ]/ig, '').replace(/^\w|[A-Z]|\b\w|\s+/g, (match, index) => {
         return +match === 0 ? '' : index === 0 ? match.toLowerCase() : match.toUpperCase();
     });
 };

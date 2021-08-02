@@ -3,9 +3,9 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { distinctUntilKeyChanged, map } from "rxjs/operators";
 import 'numeral/locales';
-import './common.function';
 
 import { LanguageService } from '../services/language.service';
+import './common.function';
 
 @Pipe({ name: 'ucfirst' })
 export class UcFirstPipe implements PipeTransform {
@@ -190,11 +190,11 @@ export class ToDatePipe implements PipeTransform {
     }
 }
 
-type AngularDateFormat = 'short'|'medium'|'long'|'full'|'shortDate'|'mediumDate'|'longDate'|'fullDate'|'shortTime'|'mediumTime'|'longTime'|'fullTime';
+type AngularDateTimeFormatOptions = 'short'|'medium'|'long'|'full'|'shortDate'|'mediumDate'|'longDate'|'fullDate'|'shortTime'|'mediumTime'|'longTime'|'fullTime';
 
 @Pipe({ name: 'localeDate' })
 export class LocaleDatePipe implements PipeTransform {
-    private static Formats: {[format: string]: {}} = {
+    private static FORMATS: {[format: string]: {}} = {
         short: {month: 'numeric', day: 'numeric', year: '2-digit', hour: 'numeric', minute: '2-digit'}, // 'M/d/yy, h:mm a'
         medium: {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit'}, // 'MMM d, y, h:mm:ss a'
         long: {month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit', timeZoneName: 'short'}, // 'MMMM d, y, h:mm:ss a z'
@@ -219,25 +219,26 @@ export class LocaleDatePipe implements PipeTransform {
      * @example
      * In the component:
      *     public date = new Date();
+     *     // LanguagesService.selectedLanguage$ is currently Spanish
      *
      * In the template:
-     *    {{ date | localeDate:{month: 'short'} }} -> jun.
-     *    {{ date | localeDate:'longDate' }} -> 14 de junio de 2021
+     *    {{ date | localeDate:{month: 'short'} | async }} -> jun.
+     *    {{ date | localeDate:'longDate' | async }} -> 14 de junio de 2021
      *
      * @param {Date} date
-     * @param {Object | AngularDateFormat} format - if an Object, it must use Intl.DateTimeFormat options.
+     * @param {Intl.DateTimeFormatOptions | AngularDateTimeFormatOptions} format
      * @param {boolean} inMilitaryTime
      * @returns {string}
      * @see https://devhints.io/wip/intl-datetime
      */
-    public transform(date: Date, format: Object|AngularDateFormat, inMilitaryTime?: boolean): Observable<string> {
-        let formatOptions: any = {};
+    public transform(date: Date, format: Intl.DateTimeFormatOptions | AngularDateTimeFormatOptions, inMilitaryTime?: boolean): Observable<string> {
+        let formatOptions: Intl.DateTimeFormatOptions = {};
 
         if (typeof format === 'string') {
-            if (!LocaleDatePipe.Formats.hasOwnProperty(format)) {
+            if (!LocaleDatePipe.FORMATS.hasOwnProperty(format)) {
                 console.error('Invalid Angular pre-defined format option');
             } else {
-                formatOptions = LocaleDatePipe.Formats.format;
+                formatOptions = LocaleDatePipe.FORMATS.format;
             }
         } else {
             formatOptions = format;

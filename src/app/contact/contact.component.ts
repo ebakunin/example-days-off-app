@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { distinctUntilChanged, take, takeUntil } from 'rxjs/operators';
+import { distinctUntilChanged, filter, take, takeUntil, tap } from 'rxjs/operators';
 
 import { AppService } from '../services/app.service';
 import { LanguageService } from '../services/language.service';
@@ -60,6 +60,10 @@ export class ContactComponent implements OnInit {
      *
      */
     public onSendMessage(): void {
+        if (!this.form.valid) {
+            return;
+        }
+
         this.sendingMessage = true;
 
         const path = '//www.ericchristenson.com/message';
@@ -71,19 +75,24 @@ export class ContactComponent implements OnInit {
             'llave': environment.llave
         });
 
-        this._http.post<ApiResponseType>(path, body, {headers}).pipe(take(1)).subscribe(result => {
-            this.sendingMessage = false;
-            this.showContactDialog$.next(false);
-
-            if (result.response === 200) {
-                this._toastService.successToast(this._languageService.getTranslation('UI_MESSAGE_SUCCESS'));
-            } else {
-                this._toastService.errorToast(`${this._languageService.getTranslation('UI_MESSAGE_ERROR')}: ${result.message}`);
+        this._http.post<ApiResponseType>(path, body, {headers}).pipe(
+            filter(d => d.message?.length > 0),
+            take(1),
+            tap(() => {
+                this.sendingMessage = false;
+                this.showContactDialog$.next(false);
+            })
+        ).subscribe({
+            next: result => {
+                if (result.response === 200) {
+                    this._toastService.successToast(this._languageService.getTranslation('UI_MESSAGE_SUCCESS'));
+                } else {
+                    this._toastService.errorToast(`${this._languageService.getTranslation('UI_MESSAGE_ERROR')}: ${result.message}`);
+                }
+            },
+            error: (error: HttpErrorResponse) => {
+                this._toastService.errorToast(`${this._languageService.getTranslation('UI_MESSAGE_ERROR')}: ${error.message}`);
             }
-        }, (error: HttpErrorResponse) => {
-            this.sendingMessage = false;
-            this.showContactDialog$.next(false);
-            this._toastService.errorToast(`${this._languageService.getTranslation('UI_MESSAGE_ERROR')}: ${error.message}`);
         });
     }
 

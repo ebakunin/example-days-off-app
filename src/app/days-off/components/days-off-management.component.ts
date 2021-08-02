@@ -378,6 +378,10 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
      * @private
      */
     private _startCalendarListener(): void {
+        if (!this.calendar.contentViewChild) {
+            return;
+        }
+
         this._renderer.listen(this.calendar.contentViewChild.nativeElement, 'click', (e: MouseEvent) => {
             const element = e.target as HTMLElement;
 
@@ -418,7 +422,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
      * @private
      */
     private _setCalendarLocale(isoCode: Language['isoCode']): void {
-        this.calendarLocale = { dayNames: [], monthNames: [] };
+        this.calendarLocale = { dayNames: [], monthNames: [] } as Translation;
 
         let startOfTheYear = startOfYear(new Date());
         const endOfTheYear = endOfYear(startOfTheYear);
@@ -538,7 +542,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
         .filter(date => date.getMonth() === this.calendar.currentMonth && date.getFullYear() === this.calendar.currentYear)
         .map(date => date.getDate().toString());
 
-        elements.forEach(element => {
+        elements?.forEach(element => {
             const textContent = element.textContent as string;
 
             if (removedExceptions.includes(textContent)) {
@@ -571,6 +575,10 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
      * @private
      */
     private _shouldDisableCalendarNavigationButton(): void {
+        if (!this.calendar.contentViewChild.nativeElement) {
+            return;
+        }
+
         let disablePreviousButton: boolean;
         let disableNextButton: boolean;
 
@@ -595,7 +603,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
      * @private
      */
     private _updateCalendarView(): void {
-        if (!this.calendar || this._disableUpdateCalendarView) {
+        if (!this.calendar.contentViewChild || this._disableUpdateCalendarView) {
             return;
         }
 

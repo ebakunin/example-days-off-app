@@ -37,12 +37,15 @@ export class AppComponent {
      *
      */
     public onSave(): void {
+        if (this.newExceptionDates.length === 0 && this.exceptionDatesToBeDeleted.length === 0) {
+            return;
+        }
+
+        this._spinnerService.start();
+        this.dataIsReady = false;
+
         this.employee$.pipe(
             first(),
-            tap(() => {
-                this._spinnerService.start();
-                this.dataIsReady = false;
-            }),
             switchMap(employee => {
                 employee.daysOff = employee.daysOff.map(day => {
                      return this.exceptionDatesToBeDeleted.map(date => date.getTime()).includes(day.getTime()) ? null : day;
@@ -57,23 +60,26 @@ export class AppComponent {
                     return of(null);
                 }
             }),
-            delay(1000), // fake time communicating with the API
-            take(1)
-        ).subscribe(success => {
-            this.startingViewDate = this.currentViewedMonth;
-            this.dataIsReady = true;
-            this._spinnerService.stop();
-
-            if (success) {
-                this.newExceptionDates = [];
-                this.exceptionDatesToBeDeleted = [];
-                this._toastService.successToast(this._languageService.getTranslation('UI_UPDATE_SUCCESS'));
-            } else {
-                this._toastService.errorToast(this._languageService.getTranslation('UI_UPDATE_SUCCESS'));
+            // delay(1000), // fake time communicating with the API
+            take(1),
+            tap(() => {
+                this.dataIsReady = true;
+                this._spinnerService.stop();
+            })
+        ).subscribe({
+            next: success => {
+                if (success) {
+                    this.startingViewDate = this.currentViewedMonth;
+                    this.newExceptionDates = [];
+                    this.exceptionDatesToBeDeleted = [];
+                    this._toastService.successToast(this._languageService.getTranslation('UI_UPDATE_SUCCESS'));
+                } else {
+                    this._toastService.errorToast(this._languageService.getTranslation('UI_ERROR_SUCCESS'));
+                }
+            },
+            error: () => {
+                this._toastService.errorToast(this._languageService.getTranslation('UI_ERROR_SUCCESS'));
             }
-        }, () => {
-            this.dataIsReady = true;
-            this._spinnerService.stop();
         });
     }
 }
