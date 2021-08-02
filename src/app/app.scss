@@ -37,13 +37,26 @@
     z-index: 100;
 }
 
+/* Mobile */
+@media only screen and (max-width: 600px) {
+    footer {
+        float: right;
+        margin-right: 1rem;
+        margin-top: -3rem;
+    }
+}
+/* Desktop */
+@media only screen and (min-width: 601px) {
+    footer {
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+    }
+}
 footer {
     background-color: rgba(255, 255, 255, 0.8);
     font-size: 110%;
     line-height: 1.1;
-    float: right;
-    margin-right: 1rem;
-    margin-top: -2rem;
 }
 
 
