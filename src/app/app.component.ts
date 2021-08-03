@@ -60,7 +60,7 @@ export class AppComponent {
                     return of(null);
                 }
             }),
-            // delay(1000), // fake time communicating with the API
+            delay(1000), // fake time communicating with the API
             take(1),
             tap(() => {
                 this.dataIsReady = true;

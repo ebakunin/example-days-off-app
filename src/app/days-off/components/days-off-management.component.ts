@@ -115,7 +115,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     public readonly todaysDate = startOfToday();
     public readonly todaysMonth = this.todaysDate.getMonth();
     public readonly todaysYear = this.todaysDate.getFullYear();
-    public readonly maxDate = endOfDay(subDays(addYears(startOfMonth(this.todaysDate), 2), 1));
+    public readonly maxDate = endOfMonth(addYears(this.todaysDate, 2));
     public readonly yearRange = `${this.todaysYear}:${this.todaysYear + 2}`;
 
     public monthsList: IMonthData[] = [];
@@ -590,7 +590,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
                 ? true
                 : this.calendar.currentYear === this.todaysYear && this.calendar.currentMonth <= this.todaysMonth;
 
-            disableNextButton = this.calendar.currentYear === this.todaysYear + 3 && this.calendar.currentMonth === this.todaysMonth - 1;
+            disableNextButton = this.calendar.currentYear === this.todaysYear + 2 && this.calendar.currentMonth === this.todaysMonth;
         }
 
         setTimeout(() => {
