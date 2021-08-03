@@ -21,7 +21,6 @@ import {
     addMonths,
     addYears,
     differenceInCalendarMonths,
-    endOfDay,
     endOfMonth,
     endOfWeek,
     endOfYear,
@@ -31,8 +30,7 @@ import {
     startOfMonth,
     startOfToday,
     startOfWeek,
-    startOfYear,
-    subDays
+    startOfYear
 } from 'date-fns';
 
 import { LanguageService } from '../../services/language.service';

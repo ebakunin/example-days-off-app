@@ -2,6 +2,8 @@
 
 This demo is meant to show off various technologies. It is a bit over-engineered and has a larger footprint than  necessary, but offers a wide variety of functionality for the user.   
 
+Site: http://dev.ericchristenson.com/
+
 ### Architecture
 * [Angular 12](https://angular.io/docs)
 * [PrimeNG](https://www.primefaces.org/primeng/) UI components
