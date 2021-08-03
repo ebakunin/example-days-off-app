@@ -10,7 +10,8 @@ This demo is meant to show off various technologies. It is a bit over-engineered
 
 ### Functionality
 * Day off scheduling
-  * Various benefits
+  * Interactive calendar UX
+  * Ability to both add and remove days off simultaneously
   * Options deliberately limited by other schedules (such as office hours)
 * API utilization (mocked)
 * Full CRUD behavior 
