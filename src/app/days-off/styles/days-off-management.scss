@@ -25,7 +25,7 @@
         margin-left: 20px;
 
         #daysOffListSummary {
-            line-height: 6rem;
+            height: 6rem;
         }
     }
 }
@@ -49,8 +49,10 @@
                     margin-bottom: 0;
 
                     &:not(:last-child):after {
-                        content: '·';
-                        padding: 0 1rem;
+                        content: "|";
+                        font-size: 75%;
+                        padding: 0 1rem 0 0.8rem;
+                        vertical-align: text-top;
                     }
 
                     #clearAllDates {
@@ -155,11 +157,12 @@
 
     #daysOffListSummary {
         align-content: space-between;
+        align-items: center;
         border-bottom: 1px solid $gray-color-dark;
         display: flex;
         flex-direction: row;
+        height: 58px; // must be in px
         padding: 0 1.5rem;
-        line-height: 58px;
     }
 
     #saveDaysOff {
@@ -169,7 +172,6 @@
         margin-right: 20px;
 
         .badge {
-            line-height: 1.5;
             margin-top: -0.5ch;
         }
     }

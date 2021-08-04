@@ -68,7 +68,7 @@
                     {{ 'UI_SLOTS_DELETE_ALL' | translate | async }} &nbsp;<i class="far fa-times-circle"></i>
                 </div>
             </ng-container>
-        </div>
+        </div> <!-- /#daysOffListSummary -->
 
         <div #exceptionsListContainer id="exceptionsListContainer">
             <ng-container *ngIf="cardData.length > 0; else noCards">
@@ -92,7 +92,7 @@
                 </div>
             </ng-template>
         </div> <!-- /#exceptionsListContainer -->
-    </div> <!-- /#daysOffContent -->
+    </div> <!-- /#daysOffList -->
 
     <br class="clearfix">
 </div>

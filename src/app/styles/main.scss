@@ -97,19 +97,11 @@ html {
 /*********************
   Helper Classes
 **********************/
-.circle {
-    border-radius: 50%;
-}
-
-.pointer {
-    cursor: pointer !important;
-}
-
 .truncate {
-    display: block;
-    white-space: nowrap;
+    display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .ng-invalid.ng-touched {
@@ -118,15 +110,12 @@ html {
 
 .badge {
     background-color: $primary-color-medium;
-    border-radius: 10px;
+    border-radius: 50%;
     color: $body-background-color;
     display: inline-block;
     font-size: 90%;
     font-weight: bold;
-    min-width: 2ch;
-    padding: 1px 7px;
-    text-align: center;
-    vertical-align: middle;
+    padding: 0 0.85ch;
     white-space: nowrap;
 
     &:empty {
