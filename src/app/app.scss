@@ -63,7 +63,7 @@ footer {
 ::ng-deep .days-off-skeleton {
     border-radius: $border-radius;
     display: inline-block;
-    min-height: calc(#{$calendar-height} + 62px);
+    min-height: $calendar-height;
 
     &:first-child {
         margin-right: 20px;
