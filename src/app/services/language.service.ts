@@ -4,6 +4,7 @@ import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import {
     delay,
     distinctUntilKeyChanged,
+    filter,
     map,
     pluck,
     startWith,
@@ -25,6 +26,7 @@ export class LanguageService {
 
     private readonly _translations$ = new BehaviorSubject<TranslationType>({});
     private readonly _storage: TranslationType = {};
+    private _loadingLanguage = false;
 
     constructor(private _http: HttpClient,
                 private _spinnerService: SpinnerService) {
@@ -61,7 +63,8 @@ export class LanguageService {
         isoCode = isoCode.toLowerCase();
 
         /* Only retrieve data if it has not yet been loaded */
-        if (!this._storage.hasOwnProperty(isoCode)) {
+        if (!this._loadingLanguage && !this._storage.hasOwnProperty(isoCode)) {
+            this._loadingLanguage = true;
             const path = 'json/' + `translations.${isoCode}.json`;
             const headers = new HttpHeaders().set('Content-Type', 'text/json');
 
@@ -70,6 +73,7 @@ export class LanguageService {
                 map(json => {
                     this._storage[isoCode] = new Map(Object.entries(json));
                     this._translations$.next(this._storage);
+                    this._loadingLanguage = false;
                     return isoCode;
                 })
             );
@@ -91,6 +95,7 @@ export class LanguageService {
             tap(() => this._spinnerService.start()),
             switchMap(language => this._retrieveTranslations$(language.isoCode)),
             switchMap(isoCode => this._translations$.pipe(pluck(isoCode.toLowerCase()))),
+            filter(Boolean),
             map(translations => {
                 const text = translations.get(token) as string;
                 return text?.length > 0 ? text : token;
