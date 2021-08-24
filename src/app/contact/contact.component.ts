@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -18,9 +18,15 @@ import { environment } from '../../environments/environment';
     styleUrls: ['./contact.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnDestroy, OnInit {
     public readonly showContactDialog$ = this._appService.showContactDialog$;
-    public form!: FormGroup;
+
+    public readonly form = new FormGroup({
+        message: new FormControl('', CommonValidators.requiredTrimmed),
+        name: new FormControl('', CommonValidators.requiredTrimmed),
+        email: new FormControl('', [Validators.required, Validators.email]),
+    });
+
     public visible = false;
     public sendingMessage = false;
 
@@ -37,7 +43,6 @@ export class ContactComponent implements OnInit {
      */
     public ngOnInit(): void {
         this._setDialogVisibility();
-        this._setupForm();
     }
 
     /**
@@ -110,16 +115,5 @@ export class ContactComponent implements OnInit {
                 this._cdr.detectChanges();
             }
         );
-    }
-
-    /**
-     * @private
-     */
-    private _setupForm(): void {
-        this.form = new FormGroup({
-            message: new FormControl('', CommonValidators.requiredTrimmed),
-            name: new FormControl('', CommonValidators.requiredTrimmed),
-            email: new FormControl('', [Validators.required, Validators.email]),
-        });
     }
 }

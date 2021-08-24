@@ -161,7 +161,7 @@ export class SortByDatePipe implements PipeTransform {
      */
     public transform(data: Date[] | Set<Date>, order: 'asc'|'desc' = 'asc'): Date[] {
         if (data instanceof Set) {
-            data = Array.from(data);
+            data = [...data];
         }
 
         return order === 'asc'

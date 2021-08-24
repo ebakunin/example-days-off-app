@@ -1,6 +1,6 @@
 import { AbstractControl } from '@angular/forms';
 
-function isEmptyTrimmedValue(value: string): boolean {
+function isTrimmedValueEmpty(value: string): boolean {
     const test = value?.trim();
     return !test || test.length === 0;
 }
@@ -20,7 +20,7 @@ export class CommonValidators {
      * @returns {{required: boolean} | null}
      */
     static requiredTrimmed = (control: AbstractControl) => {
-        return isEmptyTrimmedValue(control.value) ? {'required': true} : null;
+        return isTrimmedValueEmpty(control.value) ? {'required': true} : null;
     }
 
     /**

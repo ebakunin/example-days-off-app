@@ -1,8 +1,6 @@
 import { BaseModel } from './base.model';
 
 export class Language extends BaseModel {
-    public static US_ENGLISH_ID = 1;
-
     public description = '';
     public nativeDescription = '';
     public abbreviation = '';
