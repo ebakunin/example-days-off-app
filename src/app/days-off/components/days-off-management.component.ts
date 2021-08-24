@@ -91,7 +91,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     private _daysOff: Date[] = [];
     get daysOff(): Date[] | null {
         /* PrimeNG Calendar throws an error if given an empty array but a null is acceptable */
-        return this._daysOff.length > 0 ? this._daysOff as Date[] : null;
+        return this._daysOff.length > 0 ? this._daysOff : null;
     }
     @Input() set daysOff(dates: Date[] | null) {
         if (!Array.isArray(dates)) {
@@ -181,7 +181,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
      * @returns {ICardData[]}
      */
     get cardData(): ICardData[] {
-        return Array.from(this.existingExceptionsBucket)
+        return [...this.existingExceptionsBucket]
             .sort((a, b) => a < b ? -1 : 1)
             .map(datetime => {
                 return <ICardData> {
@@ -246,7 +246,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
         const monthStart = startOfMonth(viewedMonth);
         const monthEnd = endOfMonth(viewedMonth);
 
-        Array.from(this.newExceptionsBucket).forEach(datetime => {
+        [...this.newExceptionsBucket].forEach(datetime => {
             const date = new Date(datetime);
 
             if (isBefore(date, monthStart) || isAfter(date, monthEnd)) {
@@ -446,8 +446,8 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
      * @private
      */
     private _emitExceptionDates(): void {
-        this.newExceptions.emit(Array.from(this.newExceptionsBucket).map(datetime => new Date(datetime)));
-        this.exceptionsToBeDeleted.emit(Array.from(this.markedForDeletionBucket).map(datetime => new Date(datetime)));
+        this.newExceptions.emit([...this.newExceptionsBucket].map(datetime => new Date(datetime)));
+        this.exceptionsToBeDeleted.emit([...this.markedForDeletionBucket].map(datetime => new Date(datetime)));
     }
 
     /**
@@ -528,17 +528,17 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     private _repaintCalendarMonth(elements: HTMLElement[]): void {
         this._shouldDisableCalendarNavigationButton();
 
-        const removedExceptions: string[] = Array.from(this.markedForDeletionBucket).map(datetime => new Date(datetime))
-        .filter(date => date.getMonth() === this.calendar.currentMonth && date.getFullYear() === this.calendar.currentYear)
-        .map(date => date.getDate().toString());
+        const removedExceptions: string[] = [...this.markedForDeletionBucket].map(datetime => new Date(datetime))
+            .filter(date => date.getMonth() === this.calendar.currentMonth && date.getFullYear() === this.calendar.currentYear)
+            .map(date => date.getDate().toString());
 
         const originalExceptions: string[] = this._daysOff
-        .filter(date => date.getMonth() === this.calendar.currentMonth && date.getFullYear() === this.calendar.currentYear)
-        .map(date => date.getDate().toString());
+            .filter(date => date.getMonth() === this.calendar.currentMonth && date.getFullYear() === this.calendar.currentYear)
+            .map(date => date.getDate().toString());
 
-        const newExceptions: string[] = Array.from(this.newExceptionsBucket).map(datetime => new Date(datetime))
-        .filter(date => date.getMonth() === this.calendar.currentMonth && date.getFullYear() === this.calendar.currentYear)
-        .map(date => date.getDate().toString());
+        const newExceptions: string[] = [...this.newExceptionsBucket].map(datetime => new Date(datetime))
+            .filter(date => date.getMonth() === this.calendar.currentMonth && date.getFullYear() === this.calendar.currentYear)
+            .map(date => date.getDate().toString());
 
         elements?.forEach(element => {
             const textContent = element.textContent as string;

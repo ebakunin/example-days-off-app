@@ -16,7 +16,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 
         <div class="day-off-card"
              [class.pending-delete]="pendingDelete"
-             (click)="pendingDelete ? markForRestore() : markForDelete()">
+             (click)="pendingDelete ? markForRestore() : onMarkForDelete()">
             <div class="cal-day">
                 <div class="cal-day-month">{{ date | localeDate:{month: 'short'} | async }}</div>
                 <div class="cal-day-date">{{ date | date:'dd' }}</div>
@@ -41,21 +41,21 @@ export class DayOffCardComponent {
     @Input() pendingDelete = false
     @Input() showMonthSeparator = false;
 
-    @Output() onMarkForDelete = new EventEmitter<Date>();
-    @Output() onRestore = new EventEmitter<Date>();
+    @Output() markForDelete = new EventEmitter<Date>();
+    @Output() restore = new EventEmitter<Date>();
 
     /**
      *
      */
-    public markForDelete(): void {
-        this.onMarkForDelete.emit(this.date);
+    public onMarkForDelete(): void {
+        this.markForDelete.emit(this.date);
     }
 
     /**
      *
      */
     public markForRestore(): void {
-        this.onRestore.emit(this.date);
+        this.restore.emit(this.date);
     }
 }
 

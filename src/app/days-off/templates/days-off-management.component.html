@@ -78,8 +78,8 @@
                                 [date]="card.date"
                                 [pendingDelete]="card.isPendingDelete"
                                 [showMonthSeparator]="shouldShowCardMonthSeparator(card.date, i)"
-                                (onMarkForDelete)="onMarkForDelete($event)"
-                                (onRestore)="onRestore($event)">
+                                (markForDelete)="onMarkForDelete($event)"
+                                (restore)="onRestore($event)">
                         </app-day-off-card>
                     </ng-container>
                 </div> <!-- /#innerContent -->
