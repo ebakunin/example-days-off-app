@@ -4,7 +4,6 @@ import { CalendarModule } from 'primeng/calendar';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { SkeletonModule } from 'primeng/skeleton';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 
@@ -14,7 +13,6 @@ import { TooltipModule } from 'primeng/tooltip';
         DialogModule,
         DropdownModule,
         ProgressSpinnerModule,
-        SkeletonModule,
         ToastModule,
         TooltipModule
     ]
