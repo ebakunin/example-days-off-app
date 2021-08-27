@@ -1,5 +1,16 @@
 @import './styles/skeleton-sass/src/themes/custom/vars';
 
+.mesh {
+    background-color: rgba(0, 0, 0, 0.35);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+}
+
+
 /* Mobile */
 @media only screen and (max-width: 600px) {
     #title {
@@ -21,20 +32,9 @@
         margin-bottom: 1.5rem;
     }
 }
-
 #title {
     font-family: monospace;
     margin-bottom: 1rem;
-}
-
-.mesh {
-    background-color: rgba(0, 0, 0, 0.35);
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 100;
 }
 
 /* Mobile */
@@ -54,15 +54,16 @@
     }
 }
 footer {
-    background-color: rgba(255, 255, 255, 0.8);
-    font-size: 110%;
+    background-color: $faded-gray;
     line-height: 1.1;
+    text-align: right;
+
+    span {
+        font-size: smaller;
+    }
 }
 
-
-::ng-deep .days-off-skeleton {
-    border-radius: $border-radius;
-    display: inline-block;
+.skeleton {
     min-height: $calendar-height;
 
     &:first-child {

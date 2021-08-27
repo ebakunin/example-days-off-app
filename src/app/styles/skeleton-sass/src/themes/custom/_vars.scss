@@ -26,6 +26,8 @@ $gray-color-medium: #9b9ca7ff;
 $gray-color-light: color.scale($gray-color-medium, $whiteness: 40%);
 $gray-color-dark: color.scale($gray-color-medium, $blackness: 40%);
 
+$faded-gray: rgba(255, 255, 255, 0.8);
+
 $danger: #d0021b;
 $warning: #e68d31;
 $success: #43c277;

@@ -2,12 +2,12 @@
 
 This demo is meant to show off various technologies. It is a bit over-engineered and has a larger footprint than  necessary, but offers a wide variety of functionality for the user.   
 
-Site: http://dev.ericchristenson.com/
+Example: http://dev.ericchristenson.com
 
 ### Architecture
 * [Angular 12](https://angular.io/docs)
 * [PrimeNG](https://www.primefaces.org/primeng/) UI components
-* Modified version of [Skeleton](http://getskeleton.com/) CSS framework
+* Modified version of [Skeleton CSS](http://getskeleton.com/) framework
 * [date-fns](https://date-fns.org/) for date handling and localization
 
 ### Functionality
@@ -22,5 +22,5 @@ Site: http://dev.ericchristenson.com/
   * JSON-based tokenized text
   * Localized dates and times
 
-### Specs
-Note that some components use `delay()` to fake API response time. The specs assume that the components are configured normally, so all `delay()` calls need to be commented out before running `ng test`. 
+### Testing
+Specs are written for both [Karma](https://karma-runner.github.io/) and [Cypress](https://www.cypress.io/) test suites. 

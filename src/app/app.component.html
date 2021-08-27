@@ -17,8 +17,8 @@
         </app-days-off-management>
     </ng-container>
     <ng-template #showSkeleton>
-        <p-skeleton width="495px" styleClass="days-off-skeleton"></p-skeleton>
-        <p-skeleton width="370px" styleClass="days-off-skeleton"></p-skeleton>
+        <div class="skeleton" style="width:495px"></div>
+        <div class="skeleton" style="width:370px"></div>
     </ng-template>
 
     <br class="clear">
@@ -34,11 +34,14 @@
     </div>
 </section>
 
+<footer>
+    © 2021<br>
+    <span>{{ 'UI_BACK_TO' | translate | async }} <a href="http://ericchristenson.com">ericchristenson.com</a></span>
+</footer>
+
 <div *ngIf="showMesh$ | async" class="mesh"></div>
 <p-toast position="bottom-center"></p-toast>
 
 <app-spinner></app-spinner>
 <app-explanations></app-explanations>
 <app-contact></app-contact>
-
-<footer>© 2021</footer>
