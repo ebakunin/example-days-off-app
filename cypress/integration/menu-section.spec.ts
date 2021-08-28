@@ -9,30 +9,31 @@ describe('Menu Section', () => {
         cy.get('#title').contains(EnglishTitleText);
     });
 
-    context('Language selection', () => {
+    context.skip('Language selection', () => {
         beforeEach(() => {
             cy.get('#selectLanguage').click();
-            cy.get('#languageDropdown .p-dropdown').as('dropdown');
-            cy.get('@dropdown').trigger('click');
+            cy.get('.p-dropdown-label').click();
+            cy.get('.p-dropdown-items').as('dropdown');
+            cy.get('#title').as('title');
         });
 
         it('should change to Spanish', () => {
-            cy.get('@dropdown').find('ul li').contains('Español').trigger('click');
-            cy.get('#title').contains(SpanishTitleText);
+            cy.get('@dropdown').find('.p-dropdown-item').contains('Español').click();
+            cy.get('@title').contains(SpanishTitleText);
         });
 
         it('should change to French', () => {
-            cy.get('@dropdown').find('ul li').contains('Française').trigger('click');
-            cy.get('#title').contains(FrenchTitleText);
+            cy.get('@dropdown').find('.p-dropdown-item').contains('Française').click();
+            cy.get('@title').contains(FrenchTitleText);
         });
 
         it('should change to English', () => {
-            cy.get('@dropdown').find('ul li').contains('English').trigger('click');
-            cy.get('#title').contains(EnglishTitleText);
+            cy.get('@dropdown').find('.p-dropdown-item').contains('English').click();
+            cy.get('@title').contains(EnglishTitleText);
         });
     });
 
-    context('Show explanation', () => {
+    context.skip('Show explanation', () => {
         it('should show first container', () => {
             cy.get('#showExplanation').click();
             cy.get('.mesh').should('exist');
@@ -40,23 +41,26 @@ describe('Menu Section', () => {
         });
 
         it('should show and hide all containers', () => {
-            cy.get('#explanation1 i').trigger('click').should('not.be.visible');
-            cy.get('#explanation2 i').trigger('click').should('not.be.visible');
-            cy.get('#explanation3 i').trigger('click').should('not.be.visible');
-            cy.get('#explanation4 i').trigger('click').should('not.be.visible');
+            cy.get('#explanation1 i').click().should('not.be.visible');
+            cy.get('#explanation2 i').click().should('not.be.visible');
+            cy.get('#explanation3 i').click().should('not.be.visible');
+            cy.get('#explanation4 i').click().should('not.be.visible');
             cy.get('.mesh').should('not.exist');
         });
     });
 
-    context('Go to GitHub', () => {
+    context.skip('Go to GitHub', () => {
         it('should have the correct link', () => {
             cy.get('#toGitHub').should('have.attr', 'href', 'https://github.com/ebakunin/example-days-off-app');
         });
     });
 
     context('Message me', () => {
+        beforeEach(() => {
+        });
+
         it('should show the dialog box', () => {
-            cy.get('#sendMessage').trigger('click');
+            cy.get('#sendMessage').click();
             cy.get('p-dialog').should('exist');
         });
 
@@ -68,8 +72,7 @@ describe('Menu Section', () => {
         });
 
         it('should correctly populate the form', () => {
-            cy.get('#yourEmail').clear();
-            cy.get('#yourEmail').type(sentMessage.email).blur();
+            cy.get('#yourEmail').clear().type(sentMessage.email).blur();
             cy.get('#sendButton').should('not.have.attr', 'disabled');
         });
 
@@ -83,7 +86,7 @@ describe('Menu Section', () => {
 
             const body = 'message=' + encodeURIComponent(sentMessage.message)
                 + '&name=' + encodeURIComponent(sentMessage.name)
-                + '&sentMessage=' + encodeURIComponent(sentMessage.email);
+                + '&email=' + encodeURIComponent(sentMessage.email);
 
             cy.wait('@getSendMessage').its('request.body').should('deep.equal', body);
         });
