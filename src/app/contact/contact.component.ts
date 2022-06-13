@@ -22,9 +22,9 @@ export class ContactComponent implements OnDestroy, OnInit {
     public readonly showContactDialog$ = this._appService.showContactDialog$;
 
     public readonly form = new FormGroup({
-        message: new FormControl('', CommonValidators.requiredTrimmed),
-        name: new FormControl('', CommonValidators.requiredTrimmed),
-        email: new FormControl('', [Validators.required, Validators.email]),
+        message: new FormControl<string>('', CommonValidators.requiredTrimmed),
+        name: new FormControl<string>('', CommonValidators.requiredTrimmed),
+        email: new FormControl<string>('', [Validators.required, Validators.email]),
     });
 
     public visible = false;
@@ -72,9 +72,9 @@ export class ContactComponent implements OnDestroy, OnInit {
         this.sendingMessage = true;
 
         const path = '//www.ericchristenson.com/message';
-        const body = 'message=' + encodeURIComponent(this.form.get('message')?.value.trim())
-            + '&name=' + encodeURIComponent(this.form.get('name')?.value.trim())
-            + '&email=' + encodeURIComponent(this.form.get('email')?.value.trim());
+        const body = 'message=' + encodeURIComponent(this.form.get('message')?.value?.trim() as string)
+            + '&name=' + encodeURIComponent(this.form.get('name')?.value?.trim() as string)
+            + '&email=' + encodeURIComponent(this.form.get('email')?.value?.trim() as string);
         const headers = new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded',
             'llave': environment.llave

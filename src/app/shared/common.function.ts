@@ -10,7 +10,7 @@ declare global {
 }
 
 /**
- * JavaScript equivalent of PHP's ucfirst().
+ * JavaScript equivalent of PHP's `ucfirst()`.
  * @returns {string}
  */
 String.prototype.ucfirst = function () {
@@ -18,7 +18,7 @@ String.prototype.ucfirst = function () {
 };
 
 /**
- * JavaScript equivalent of PHP's ucwords().
+ * JavaScript equivalent of PHP's `ucwords()`.
  * @returns {string}
  */
 String.prototype.ucwords = function () {

@@ -35,7 +35,7 @@ import {
 
 import { LanguageService } from '../../services/language.service';
 import { Language } from '../../models/language.model';
-import { DayNumberType, MonthNumberType } from '../../shared/common.type';
+import { DayNumberType } from '../../shared/common.type';
 
 /*
  * Component logic:
@@ -54,11 +54,6 @@ import { DayNumberType, MonthNumberType } from '../../shared/common.type';
  * The `daysOff` @Input is only one-way bound to the Calendar's `ngModel` as the buckets are used to
  * track any changes.
  */
-
-interface IMonthData {
-    index: MonthNumberType;
-    date: Date;
-}
 
 interface ICardData {
     date: Date;
@@ -116,7 +111,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     public readonly maxDate = endOfMonth(addYears(this.todaysDate, 2));
     public readonly yearRange = `${this.todaysYear}:${this.todaysYear + 2}`;
 
-    public monthsList: IMonthData[] = [];
     public calendarLocale!: Translation;
 
     /*
