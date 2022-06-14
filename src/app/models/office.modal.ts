@@ -1,15 +1,15 @@
 import { BaseModel } from './base.model';
-import { DayNumberType } from '../shared/common.type';
+import { DayNumberType } from '../shared/common.types';
 
 export class Office extends BaseModel {
-    public name = '';
-    public closedDays: DayNumberType[] = [];
-    public closedDates: Date[] = [];
+    name = '';
+    closedDays: DayNumberType[] = [];
+    closedDates: Date[] = [];
 
     /**
      * @param {Partial<Office>} modelInfo
      */
-    public init(modelInfo?: Partial<Office>): void {
+    init(modelInfo?: Partial<Office>): void {
         if (modelInfo) {
             this.name = modelInfo.name as string;
             this.closedDays = modelInfo.closedDays as DayNumberType[];

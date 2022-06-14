@@ -1,18 +1,18 @@
 import { BaseModel } from './base.model';
 
 export class Language extends BaseModel {
-    public description = '';
-    public nativeDescription = '';
-    public abbreviation = '';
-    public isoCode = '';
-    public createTimestamp = '';
-    public lastUpdateTimestamp = '';
-    public active = false;
+    description = '';
+    nativeDescription = '';
+    abbreviation = '';
+    isoCode = '';
+    createTimestamp = '';
+    lastUpdateTimestamp = '';
+    active = false;
 
     /**
      * @param {Partial<Language>} modelInfo
      */
-    public init(modelInfo?: Partial<Language>): void {
+    init(modelInfo?: Partial<Language>): void {
         if (modelInfo) {
             this.id = modelInfo.id as number;
             this.description = modelInfo.description as string;

@@ -1,5 +1,5 @@
 export abstract class BaseModel {
-    public id = 0;
+    id = 0;
 
-    public init(modelInfo?: any): void {}
+    init(modelInfo?: any): void {}
 }
