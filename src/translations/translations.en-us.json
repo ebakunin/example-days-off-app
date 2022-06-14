@@ -13,7 +13,7 @@
     "UI_SAVE": "Save",
     "UI_NEXT": "next",
     "UI_CLOSE": "close",
-    "UI_DAYS_OFF_EXPLANATION": "Use the calendar to select or remove up to 365 days off within the next two years. Dates in gray are when the office is closed or days in the past.",
+    "UI_DAYS_OFF_EXPLANATION": "Use the calendar to select or remove up to 365 days off within the next two years.",
     "UI_DAYS_OFF_TITLE": "Example Days Off Scheduling App",
     "UI_UPDATE_SUCCESS": "Days off updated",
     "UI_UPDATE_ERROR": "Error updating days off",
