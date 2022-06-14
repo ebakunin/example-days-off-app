@@ -3,19 +3,19 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class SpinnerService {
-    public readonly showSpinner$ = new BehaviorSubject<boolean>(false);
+    readonly showSpinner$ = new BehaviorSubject<boolean>(false);
 
     /**
      *
      */
-    public start(): void {
+    start(): void {
         this.showSpinner$.next(true);
     }
 
     /**
      *
      */
-    public stop(): void {
+    stop(): void {
         this.showSpinner$.next(false);
     }
 }

@@ -6,7 +6,7 @@ import { ExampleEmployee } from '../data/mock.data';
 
 @Injectable()
 export class EmployeeService {
-    public readonly employees = new BaseService<Employee>();
+    readonly employees = new BaseService<Employee>();
 
     constructor() {
         this.employees.setData([ExampleEmployee]);

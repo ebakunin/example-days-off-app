@@ -19,7 +19,7 @@ import { SpinnerService } from '../services/spinner.service';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpinnerComponent {
-    public readonly showSpinner$ = this._spinnerService.showSpinner$;
+    readonly showSpinner$ = this._spinnerService.showSpinner$;
 
     constructor(private _spinnerService: SpinnerService) {}
 }

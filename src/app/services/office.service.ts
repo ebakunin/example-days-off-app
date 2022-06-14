@@ -6,7 +6,7 @@ import { ExampleOffice } from '../data/mock.data';
 
 @Injectable()
 export class OfficeService {
-    public readonly offices = new BaseService<Office>();
+    readonly offices = new BaseService<Office>();
 
     constructor() {
         this.offices.setData([ExampleOffice]);

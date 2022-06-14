@@ -8,10 +8,10 @@ export class ToastService {
     /**
      * @param {string} summary
      */
-    public successToast(summary: string): void {
+    successToast(summary: string): void {
         this._messageService.add({
             severity: 'success',
-            summary: summary,
+            summary,
             closable: true,
             styleClass: 'toast-default'
         });
@@ -20,10 +20,10 @@ export class ToastService {
     /**
      * @param {string} summary
      */
-    public errorToast(summary: string): void {
+    errorToast(summary: string): void {
         this._messageService.add({
             severity: 'custom',
-            summary: summary,
+            summary,
             closable: true,
             styleClass: 'toast-default p-toast-message-error',
             icon: 'pi-exclamation-circle'
