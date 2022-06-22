@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../shared/material.module';
 import { CommonPipesModule } from '../shared/pipes.module';
 
-import { DayOffCardComponent } from './components/day-off-card.component';
-import { DaysOffManagementComponent } from './components/days-off-management.component';
-import { FormsModule } from '@angular/forms';
+import { DayOffCardComponent } from './day-off-card/day-off-card.component';
+import { DaysOffManagementComponent } from './days-off-management/days-off-management.component';
 
 @NgModule({
     declarations: [

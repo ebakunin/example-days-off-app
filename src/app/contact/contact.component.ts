@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { distinctUntilChanged, filter, take, takeUntil, tap } from 'rxjs/operators';
+import { finalize, Subject } from 'rxjs';
+import { distinctUntilChanged, filter, take, takeUntil } from 'rxjs/operators';
 
 import { AppService } from '../services/app.service';
 import { LanguageService } from '../services/language.service';
 import { ToastService } from '../services/toast.service';
 
-import { CommonValidators } from '../shared/common.validator';
-import { ApiResponseType } from '../shared/common.type';
+import { CommonValidators } from '../shared/common.validators';
+import { ApiResponseType } from '../shared/common.types';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -19,18 +19,18 @@ import { environment } from '../../environments/environment';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactComponent implements OnDestroy, OnInit {
-    public readonly showContactDialog$ = this._appService.showContactDialog$;
+    readonly showContactDialog$ = this._appService.showContactDialog$;
 
-    public readonly form = new FormGroup({
+    readonly form = new FormGroup({
         message: new FormControl<string>('', CommonValidators.requiredTrimmed),
         name: new FormControl<string>('', CommonValidators.requiredTrimmed),
         email: new FormControl<string>('', [Validators.required, Validators.email]),
     });
 
-    public visible = false;
-    public sendingMessage = false;
+    isVisible = false;
+    isSendingMessage = false;
 
-    private readonly _destroy$ = new Subject<boolean>();
+    readonly #destroy$ = new Subject<boolean>();
 
     constructor(private _appService: AppService,
                 private _cdr: ChangeDetectorRef,
@@ -41,22 +41,22 @@ export class ContactComponent implements OnDestroy, OnInit {
     /**
      *
      */
-    public ngOnInit(): void {
-        this._setDialogVisibility();
+    ngOnInit(): void {
+        this.#setDialogVisibility();
     }
 
     /**
      * Cancel subscriptions.
      */
-    public ngOnDestroy(): void {
-        this._destroy$.next(true);
-        this._destroy$.complete();
+    ngOnDestroy(): void {
+        this.#destroy$.next(true);
+        this.#destroy$.complete();
     }
 
     /**
      *
      */
-    public onHide(): void {
+    onHide(): void {
         this.form.reset();
         this.showContactDialog$.next(false);
     }
@@ -64,12 +64,12 @@ export class ContactComponent implements OnDestroy, OnInit {
     /**
      *
      */
-    public onSendMessage(): void {
+    onSendMessage(): void {
         if (!this.form.valid) {
             return;
         }
 
-        this.sendingMessage = true;
+        this.isSendingMessage = true;
 
         const path = '//www.ericchristenson.com/message';
         const body = 'message=' + encodeURIComponent(this.form.get('message')?.value?.trim() as string)
@@ -81,14 +81,14 @@ export class ContactComponent implements OnDestroy, OnInit {
         });
 
         this._http.post<ApiResponseType>(path, body, {headers}).pipe(
-            filter(d => d.message?.length > 0),
+            filter((response) => response.message?.length > 0),
             take(1),
-            tap(() => {
-                this.sendingMessage = false;
+            finalize(() => {
+                this.isSendingMessage = false;
                 this.showContactDialog$.next(false);
             })
         ).subscribe({
-            next: result => {
+            next: (result) => {
                 if (result.response === 200) {
                     this._toastService.successToast(this._languageService.getTranslation('UI_MESSAGE_SUCCESS'));
                 } else {
@@ -104,16 +104,17 @@ export class ContactComponent implements OnDestroy, OnInit {
     /**
      * @private
      */
-    private _setDialogVisibility(): void {
-        this.showContactDialog$.pipe(distinctUntilChanged(), takeUntil(this._destroy$))
-            .subscribe(visible => {
-                this.visible = visible;
-                if (this.visible) {
-                    this.form.reset();
-                }
-
-                this._cdr.detectChanges();
+    #setDialogVisibility(): void {
+        this.showContactDialog$.pipe(
+            distinctUntilChanged(),
+            takeUntil(this.#destroy$)
+        ).subscribe((visible) => {
+            this.isVisible = visible;
+            if (this.isVisible) {
+                this.form.reset();
             }
-        );
+
+            this._cdr.markForCheck();
+        });
     }
 }

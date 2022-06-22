@@ -1,11 +1,12 @@
-<p-dialog [header]="('UI_MESSAGE_ME' | translate | async) ?? ''"
+<p-dialog [header]="('UI_MESSAGE_ME' | translate | async) || ''"
+          id="contactDialog"
           position="bottom"
           styleClass="contact-dialog"
           [modal]="true"
-          [(visible)]="visible"
+          [(visible)]="isVisible"
           (onHide)="onHide()">
 
-    <form *ngIf="form" [formGroup]="form" autocomplete="off" (submit)="onSendMessage()">
+    <form [formGroup]="form" autocomplete="off" (submit)="onSendMessage()">
         <div>
             <textarea id="yourMessage"
                       formControlName="message"
@@ -33,7 +34,7 @@
         </div>
 
         <div>
-            <button id="sendButton" class="button-primary" [disabled]="!form.valid || this.sendingMessage">
+            <button id="sendButton" class="button-primary" [disabled]="!form.valid || this.isSendingMessage">
                 {{ 'UI_SEND' | translate | async }}
             </button>
         </div>

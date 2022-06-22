@@ -12,19 +12,19 @@ import { ToastService } from './services/toast.service';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.scss'],
+    styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-    public readonly showMesh$ = merge(this._spinnerService.showSpinner$, this._appService.showExplanation$);
-    public readonly employee$ = this._employeeService.employees.first$;
-    public readonly office$ = this._officeService.offices.first$;
+    readonly showMesh$ = merge(this._spinnerService.showSpinner$, this._appService.showExplanation$);
+    readonly employee$ = this._employeeService.employees.first$;
+    readonly office$ = this._officeService.offices.first$;
 
-    public newExceptionDates: Date[] = [];
-    public exceptionDatesToBeDeleted: Date[] = [];
-    public startingViewDate!: Date;
-    public currentViewedMonth!: Date;
-    public dataIsReady = true;
+    newExceptionDates: Date[] = [];
+    exceptionDatesToBeDeleted: Date[] = [];
+    startingViewDate!: Date;
+    currentViewedMonth!: Date;
+    dataIsReady = true;
 
     constructor(private _appService: AppService,
                 private _employeeService: EmployeeService,
@@ -36,7 +36,7 @@ export class AppComponent {
     /**
      *
      */
-    public onSave(): void {
+    onSave(): void {
         if (this.newExceptionDates.length === 0 && this.exceptionDatesToBeDeleted.length === 0) {
             return;
         }
@@ -46,13 +46,15 @@ export class AppComponent {
 
         this.employee$.pipe(
             first(),
-            switchMap(employee => {
-                employee.daysOff = employee.daysOff.map(day => {
-                     return this.exceptionDatesToBeDeleted.map(date => date.getTime()).includes(day.getTime()) ? null : day;
-                }).filter(Boolean) as Date[];
+            switchMap((employee) => {
+                employee.daysOff = employee.daysOff.map((day) =>
+                    this.exceptionDatesToBeDeleted.map((date) => date.getTime()).includes(day.getTime())
+                        ? null
+                        : day
+                ).filter(Boolean) as Date[];
                 return this._employeeService.employees.saveItem$(employee);
             }),
-            switchMap(employee => {
+            switchMap((employee) => {
                 if (employee) {
                     employee.daysOff = employee.daysOff.concat(this.newExceptionDates);
                     return this._employeeService.employees.saveItem$(employee);
@@ -67,7 +69,7 @@ export class AppComponent {
                 this._spinnerService.stop();
             })
         ).subscribe({
-            next: success => {
+            next: (success) => {
                 if (success) {
                     this.startingViewDate = this.currentViewedMonth;
                     this.newExceptionDates = [];

@@ -29,25 +29,26 @@
                         <span id="dateCounter">&nbsp;{{ newExceptionsBucket.size }}</span>
                     </li>
                 </ul>
-            </div>
+            </div> <!-- /#daysOffSelectors -->
 
             <div id="daysOffCalendar" class="p-input-icon-right">
-                <p-calendar #calendar
-                            id="scheduleExceptionCalendar"
-                            selectionMode="multiple"
-                            panelStyleClass="primeng-calendar"
-                            [ngModel]="daysOff"
-                            [disabledDays]="closedDays"
-                            [disabledDates]="closedDates"
-                            [minDate]="todaysDate"
-                            [maxDate]="maxDate"
-                            [inline]="true"
-                            [showOtherMonths]="false"
-                            [monthNavigator]="true"
-                            [yearNavigator]="true"
-                            [yearRange]="yearRange"
-                            (onMonthChange)="onDateChange($event)"
-                            (onYearChange)="onDateChange($event)">
+                <p-calendar
+                    #calendar
+                    id="scheduleExceptionCalendar"
+                    selectionMode="multiple"
+                    panelStyleClass="primeng-calendar"
+                    [ngModel]="daysOff"
+                    [disabledDays]="closedDays"
+                    [disabledDates]="closedDates"
+                    [minDate]="todaysDate"
+                    [maxDate]="maxDate"
+                    [inline]="true"
+                    [showOtherMonths]="false"
+                    [monthNavigator]="true"
+                    [yearNavigator]="true"
+                    [yearRange]="yearRange"
+                    (onMonthChange)="onDateChange($event)"
+                    (onYearChange)="onDateChange($event)">
                 </p-calendar>
             </div> <!-- /#daysOffCalendar -->
         </div> <!-- /#calendarSection -->
@@ -57,8 +58,10 @@
         <div id="daysOffListSummary">
             <div id="saveDaysOff">
                 {{ 'UI_SAVED_DAYS_OFF' | translate | async }}&nbsp;
-                <span *ngIf="existingExceptionsBucket.size > 0" class="badge">{{ existingExceptionsBucket.size }}</span>
-            </div>
+                <span *ngIf="existingExceptionsBucket.size > 0" class="badge">
+                    {{ existingExceptionsBucket.size }}
+                </span>
+            </div> <!-- /#saveDaysOff -->
 
             <ng-container *ngIf="cardData.length > 0">
                 <div *ngIf="markedForDeletionBucket.size > 0" id="restoreAll" (click)="onRestoreAll()">
@@ -75,11 +78,11 @@
                 <div id="innerContent">
                     <ng-container *ngFor="let card of cardData; let i = index; trackBy: trackCardData">
                         <app-day-off-card
-                                [date]="card.date"
-                                [pendingDelete]="card.isPendingDelete"
-                                [showMonthSeparator]="shouldShowCardMonthSeparator(card.date, i)"
-                                (markForDelete)="onMarkForDelete($event)"
-                                (restore)="onRestore($event)">
+                            [date]="card.date"
+                            [pendingDelete]="card.isPendingDelete"
+                            [showMonthSeparator]="shouldShowCardMonthSeparator(card.date, i)"
+                            (markForDelete)="onMarkForDelete($event)"
+                            (restore)="onRestore($event)">
                         </app-day-off-card>
                     </ng-container>
                 </div> <!-- /#innerContent -->
@@ -95,4 +98,4 @@
     </div> <!-- /#daysOffList -->
 
     <br class="clearfix">
-</div>
+</div> <!-- /#daysOffSection -->

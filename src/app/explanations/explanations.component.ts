@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
+    ElementRef, HostListener,
     OnInit,
     QueryList,
     Renderer2,
@@ -21,27 +21,32 @@ import { AppService } from '../services/app.service';
 export class ExplanationsComponent implements OnInit {
     @ViewChildren('showSteps') showSteps!: QueryList<ElementRef>;
 
-    private readonly _destroy$ = new Subject<boolean>();
+    readonly #destroy$ = new Subject<boolean>();
 
     constructor(private _appService: AppService, private _renderer: Renderer2) {}
 
     /**
      *
      */
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this._appService.showExplanation$.pipe(
             distinctUntilChanged(),
             filter(Boolean),
-            takeUntil(this._destroy$)
+            takeUntil(this.#destroy$)
         ).subscribe(() => this._renderer.setStyle(this.showSteps.get(0)?.nativeElement, 'display', 'block'));
     }
 
+    /**
+     *
+     */
+    @HostListener('document:keydown.escape')
+    onEscape = () => this.onClose();
 
     /**
      * @param {number} step
      */
-    public showNextExplanationText(step: number): void {
-        this.showSteps.forEach(el => {
+    showNextExplanationText(step: number): void {
+        this.showSteps.forEach((el) => {
             this._renderer.setStyle(el.nativeElement, 'display', 'none');
         });
 
@@ -51,8 +56,10 @@ export class ExplanationsComponent implements OnInit {
     /**
      *
      */
-    public onClose(): void {
-        this._renderer.setStyle(this.showSteps.get(this.showSteps.length - 1)?.nativeElement, 'display', 'none');
+    onClose(): void {
+        this.showSteps.forEach((el) => {
+            this._renderer.setStyle(el.nativeElement, 'display', 'none');
+        });
         this._appService.showExplanation$.next(false);
     }
 }

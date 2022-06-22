@@ -1,7 +1,7 @@
-@import './../../styles/skeleton-sass/src/themes/custom/vars';
+@import '../../styles/skeleton-sass/src/themes/custom/vars';
 
 #daysOffSection {
-    color: $gray-color-dark;
+    color: var(--gray-color);
 
     > div {
         display: inline-block;
@@ -31,8 +31,8 @@
 }
 
 #daysOffContent {
-    border: 1px solid $gray-color-dark;
-    border-radius: $border-radius;
+    border: 1px solid var(--gray-color);
+    border-radius: var(--border-radius);
     min-width: 40vw;
 
     /* MOBILE */
@@ -49,7 +49,7 @@
                     margin-bottom: 0;
 
                     &:not(:last-child):after {
-                        content: "|";
+                        content: '|';
                         font-size: 75%;
                         padding: 0 1rem 0 0.8rem;
                         vertical-align: text-top;
@@ -65,7 +65,7 @@
                 }
             }
             #daysOffCalendar {
-                border-top: 1px solid $gray-color-dark;
+                border-top: 1px solid var(--gray-color);
             }
         }
     }
@@ -80,7 +80,7 @@
             }
 
             #daysOffCalendar {
-                border-left: 1px solid $gray-color-dark;
+                border-left: 1px solid var(--gray-color);
             }
         }
     }
@@ -103,12 +103,12 @@
                         cursor: pointer;
 
                         &:hover {
-                            color: $tertiary-color-dark;
+                            color: var(--tertiary-color-dark);
                         }
                     }
 
                     &:not(.enabled) {
-                        color: $gray-color-light;
+                        color: var(--gray-color-light);
                         cursor: default;
                     }
                 }
@@ -124,7 +124,7 @@
                 }
 
                 #dateCounter {
-                    color: $primary-color-medium;
+                    color: var(--primary-color);
                     display: inline-block;
                     font-weight: bold;
                     line-height: 100%;
@@ -135,7 +135,7 @@
 
         #daysOffCalendar {
             display: flex;
-            height: $calendar-height;
+            height: var(--calendar-height);
             justify-content: center;
             margin: auto 0 auto auto;
             padding-left: 1rem;
@@ -151,14 +151,14 @@
 }
 
 #daysOffList {
-    border: 1px solid $gray-color-dark;
-    border-radius: $border-radius;
+    border: 1px solid var(--gray-color);
+    border-radius: var(--border-radius);
     min-width: 32vw;
 
     #daysOffListSummary {
         align-content: space-between;
         align-items: center;
-        border-bottom: 1px solid $gray-color-dark;
+        border-bottom: 1px solid var(--gray-color);
         display: flex;
         flex-direction: row;
         height: 58px; // must be in px
@@ -166,7 +166,7 @@
     }
 
     #saveDaysOff {
-        color: $primary-color-medium;
+        color: var(--primary-color);
         flex-grow: 1;
         font-weight: 600;
         margin-right: 20px;
@@ -181,7 +181,7 @@
         justify-self: flex-end;
 
         &:hover, &:focus {
-            color: $danger;
+            color: var(--danger);
         }
     }
 
@@ -190,14 +190,14 @@
         justify-self: flex-end;
 
         &:hover {
-            color: $primary-color-medium;
+            color: var(--primary-color);
         }
     }
 
     #exceptionsListContainer {
         display: flex;
         flex-direction: column;
-        height: calc(#{$calendar-height - 61px});
+        height: calc(var(--calendar-height) - 61px);
         overflow-y: auto;
         padding: 0 2rem 2rem 2rem;
         margin-bottom: 2px;
@@ -213,13 +213,13 @@
             text-align: center;
 
             .no-dates-saved {
-                font-size: $font-size;
+                font-size: var(--font-size);
                 font-weight: 600;
                 margin-top: 10px;
             }
 
             .fa-calendar-times {
-                color: $primary-color-medium;
+                color: var(--primary-color);
                 font-size: 400%;
             }
         }
