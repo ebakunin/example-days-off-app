@@ -6,7 +6,7 @@
 
 // GLOBAL VARIABLES - default global variables in this file.
 // If you wish to change the default value of these variables,
-// please do so in your _MYconfig.scss.
+// please do so in your _config.scss.
 
 /// The default background color as defined in `body`
 /// @type color
@@ -18,7 +18,7 @@ $background-color: #fff; // default background color
 /// Set true to use wildcard `border-box`
 /// @type bool
 /// @access public
-$use-global-border-box: true; // use global border box?
+$use-global-border-box: false; // use global border box?
 
 /// Set true to use `rem` units as the default relative unit
 /// @type bool
@@ -46,27 +46,27 @@ $use-px-fallback: true; // allow for pixel fall back
 /// Sets the global font-size as defined in `body`
 /// @type number
 /// @access public
-$font-size: 14px;  // default font size. Change here will adjust sizes across the board.
+$font-size: 15px;  // default font size. Change here will adjust sizes across the board.
 
 /// Sets the global font-family as defined in `body`
 /// @type list
 /// @access public
-$font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; // default fonts
+$font-family: Raleway, Arial, sans-serif; // default fonts
 
 /// Sets the global heading families for `h1` through `h6`
 /// @type list
 /// @access public
-$heading-family: "Georgia", "Times New Roman", serif; // default heading (h1-h6) font
+$heading-family: $font-family; // default heading (h1-h6) font
 
 /// Sets the global font color as defined in `body`
 /// @type color
 /// @access public
-$font-color: #444;  // default font color
+$font-color: #484848;  // default font color
 
 /// Sets the global heading color for `h1` through `h6`
 /// @type color
 /// @access public
-$heading-color: #181818; // default heading (h1-h6) color
+$heading-color: $font-color; // default heading (h1-h6) color
 
 /// Sets the form font-family
 /// @type bool
@@ -78,12 +78,12 @@ $form-font: $font-family; // default form font
 /// Sets the global link color as defined in `a`
 /// @type color
 /// @access public
-$link-color: #333; // default link color
+$link-color: #464866; // default link color
 
 /// Sets the global link hover color
 /// @type color
 /// @access public
-$link-hover: #000; // default link color on :hover
+$link-hover: #29648a; // default link color on :hover
 
 /// Sets the global link decoration
 /// @type string
@@ -95,14 +95,14 @@ $link-decoration: underline; // default link decoration
 /// Set true to enable the fluid grid
 /// @type bool
 /// @access public
-$is-fluid: false; // Change to true to enable the fluid grid
+$is-fluid: true; // Change to true to enable the fluid grid
 
 /// Sets the base column width.
 ///
 /// **Note:** only relevant when `$is-fluid` is set to false.
 /// @type number
 /// @access public
-$base-col-width: 40px; // The width of each columns
+$base-col-width: 60px; // The width of each columns
 
 /// Sets the amount of padding between each column.
 /// @type number
@@ -112,7 +112,7 @@ $base-gutter-width: 20px; // The space between columns
 /// Sets the number of columns to generate (max 99).
 /// @type number
 /// @access public
-$base-col-count: 16; // The number of columns
+$base-col-count: 12; // The number of columns
 
 /// Calculates the base width of the grid based on configured values.
 /// @type number
@@ -148,14 +148,14 @@ $mobile-fluid-width: 100%; // this value is not used with breakpoints, it is use
 
 // ------ CHANGE MAY CAUSE UNDESIRED RESULTS
 
-/// **Warning:** Excersize discretion when altering these values as they can cause undesired results.
+/// **Warning:** Exercise discretion when altering these values as they can cause undesired results.
 ///
 /// Adjusts the base font size which is used to calculate _all_ relative units.
 /// @type number
 /// @access public
 $base-font-size: 10px; // the font size in the html element so we can use ems and rems in a friendly way
 
-/// **Warning:** Excersize discretion when altering these values as they can cause undesired results.
+/// **Warning:** Exercise discretion when altering these values as they can cause undesired results.
 ///
 /// Set `false` to use legacy grid implemented in Skeleton Sass 1
 /// @type bool

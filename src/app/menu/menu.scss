@@ -10,10 +10,10 @@
         .menu-item {
             font-size: 200%;
         }
+    }
 
-        #languageDropdown {
-            right: unset;
-        }
+    #languageDropdown {
+        right: unset;
     }
 }
 /* DESKTOP */
@@ -26,57 +26,63 @@
 
         .menu-item {
             font-size: 300%;
-        }
 
-        .menu-item:not(:first-child):before {
-            color: $gray-color-dark;
-            content: '·';
-            display: block;
-            font-family: serif;
-            line-height: 40%;
-        }
-
-        #languageDropdown {
-            right: 3ch;
+            &:not(:first-child):before {
+                color: var(--gray-color);
+                content: '·';
+                display: block;
+                font-family: serif;
+                line-height: 40%;
+            }
         }
     }
+
+    #languageDropdown {
+        right: 3ch;
+    }
 }
+
 #mainMenu {
-    background-color: $faded-gray;
     display: flex;
 
     .menu-item {
-        > span {
-            color: $gray-color-dark;
-
-            &:hover i {
-                color: $tertiary-color-dark;
+        > span:hover {
+            i {
+                color: var(--tertiary-color-dark);
             }
         }
-
         i {
-            color: $gray-color-dark;
+            color: var(--gray-color);
             cursor: pointer;
 
             &:hover {
-                color: $tertiary-color-dark;
+                color: var(--tertiary-color-dark);
             }
         }
 
         .badge {
-            color: $body-background-color;
+            color: var(--body-background-color);
             cursor: pointer;
             font-size: 25%;
-            margin-left: -4ch;
-            vertical-align: baseline;
-        }
-
-        #languageDropdown {
-            display: block;
-            font-size: 0;
-            margin-top: -5px;
+            margin-left: -2rem;
+            margin-top: 6ch;
             position: absolute;
-            text-align: left;
         }
     }
+}
+
+#selectLanguage:hover {
+    color: var(--tertiary-color-dark);
+}
+
+#languageDropdown {
+    display: block;
+    font-size: 0;
+    margin-top: -5px;
+    position: absolute;
+    text-align: left;
+}
+
+#toGitHub:hover {
+    color: var(--tertiary-color-dark);
 }

@@ -1,12 +1,5 @@
 @use 'sass:color';
 
-$prefix-for-webkit:    true !default;
-$prefix-for-mozilla:   true !default;
-$prefix-for-microsoft: true !default;
-$prefix-for-opera:     true !default;
-$prefix-for-spec:      true !default;
-
-
 /* COLOR THEME */
 $primary-color-medium: #5ab9ea;
 $primary-color-light: color.scale($primary-color-medium, $whiteness: 40%);
@@ -16,80 +9,21 @@ $secondary-color-medium: #5680e9;
 $secondary-color-light: color.scale($secondary-color-medium, $whiteness: 40%);
 $secondary-color-dark: color.scale($secondary-color-medium, $blackness: 40%);
 
-$tertiary-color-medium: #464866;
-$tertiary-color-light: color.scale($tertiary-color-medium, $whiteness: 40%);
-$tertiary-color-dark: color.scale($tertiary-color-medium, $blackness: 40%);
-
 $gray-color-medium: #9b9ca7ff;
-$gray-color-light: color.scale($gray-color-medium, $whiteness: 40%);
-$gray-color-dark: color.scale($gray-color-medium, $blackness: 40%);
-
-$faded-gray: rgba(255, 255, 255, 0.8);
-
-$danger: #d0021b;
-$warning: #e68d31;
-$success: #43c277;
 
 /* SKELETON THEME */
-$is-fluid: true; // Change to true to enable the fluid grid
-$use-global-border-box: false; // Change to true the enable global border-box
-
-$link-color: #464866; // default link color
-$link-hover: #29648a; // default link color on :hover
-$link-active: #2e9cca; // default link color on :active
-$link-decoration: underline; // default link decoration
-
-$base-width: if($is-fluid, 100vw, ($base-col-width + $base-gutter-width) * $base-col-count);
-
-$font-size: 15px;  // default font size. Change here will adjust sizes across the board.
-$font-weight: 400; // sets the font weight
-$font-family: "Raleway", Arial, sans-serif; // default fonts
-$font-color: #484848;  // default font color
-
-$heading-family: $font-family; // default heading (h1-h6) font
-$heading-color: $font-color; // default heading (h1-h6) color
-$heading-weight: 300; // sets the weight of the heading text
-
-$body-background-color: #fff;
-$form-font: $font-family; // default form font
-$border-radius: 4px;
-
 // button settings
-$button-color: $primary-color-medium;
-$button-weight: 600;
-$button-font-uppercase: true;
-$button-border-color: #bbb;
-$button-background-color: transparent;
-$button-height: 38px;
-$button-letter-spacing: 0.1rem;
-$button-border-radius: $border-radius;
-$button-font-size: relative(11px);
-
-$button-hover-color: $body-background-color;
-$button-hover-border-color: #888;
-$button-hover-background-color: transparent;
-
-$button-active-color: $body-background-color;
+$button-active-color: #fff;
 $button-active-border-color: #888;
-$button-active-background-color: transparent;
 
 $button-primary-color: #333;
-$button-primary-border-color: $button-primary-color;
+$button-primary-border-color: #333;
 $button-primary-background-color: #33c3f0;
 
-$button-primary-hover-color: $body-background-color;
+$button-primary-hover-color: $button-active-color;
 $button-primary-hover-background-color: #1eaedb;
-$button-primary-hover-border-color: $button-primary-hover-background-color;
+$button-primary-hover-border-color: #1eaedb;
 
-$button-primary-active-color: $body-background-color;
-$button-primary-active-background-color: #1eaedb;
-$button-primary-active-border-color: $button-primary-hover-background-color;
-
-/* GRID CHANGES */
-$grid-max-width: 960px;
-$base-col-count: 12;
-$base-col-width: 60px;
-$use-new-grid: true;
-
-
-$calendar-height: 345px;
+$button-primary-active-color: $button-primary-hover-color;
+$button-primary-active-background-color: $button-primary-hover-background-color;
+$button-primary-active-border-color: $button-primary-hover-border-color;

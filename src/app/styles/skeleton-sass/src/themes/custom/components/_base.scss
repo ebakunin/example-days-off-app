@@ -10,21 +10,17 @@ html { font-size: percentage(strip-units($base-font-size) / 16); }
 	*,
 	*:before,
 	*:after {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 	}
 }
 body {
-	background: $background-color;
 	font: {
-		family: $font-family;
-		weight: $font-weight;
+		family: var(--font-family);
+		weight: 400;
 		style: normal;
 	}
 	@include font-size($font-size);
 	line-height: 1.6;
-	color: $font-color;
 	margin: 0 auto;
 }
 

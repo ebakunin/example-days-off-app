@@ -2,18 +2,18 @@
  * ------------------------------------------------ */
 .button, .button-primary {
 	display: inline-block;
-	height: $button-height;
+	height: 38px;
 	padding: 0 relative(30px);
 	text-align: center;
-	font-size: $button-font-size;
-	font-weight: $button-weight;
-	line-height: $button-height;
-	letter-spacing: $button-letter-spacing;
-	text-transform: if($button-font-uppercase, uppercase, none);
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 38px;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
 	text-decoration: none;
 	white-space: nowrap;
-	border-radius: $border-radius;
-	border: 1px solid $button-border-color;
+	border-radius: var(--border-radius);
+	border: 1px solid #bbb;
 	cursor: pointer;
 	box-sizing: border-box;
 
@@ -22,7 +22,7 @@
 		opacity: 0.5;
 	}
 	&:visited {
-		color: $button-color;
+		color: var(--primary-color);
 	}
 	&:hover, &:focus, &:active {
 		outline: 0;
@@ -30,32 +30,32 @@
 }
 
 .button {
-	background-color: $body-background-color;
-	color: $button-color;
+	background-color: var(--body-background-color);
+	color: var(--primary-color);
 
 	&:hover, &:focus {
 		color: $button-hover-color;
 		border-color: $button-hover-border-color;
-        background-color: $button-hover-background-color;
+        background-color: transparent;
 	}
 	&:active {
 		color: $button-active-color;
 		border-color: $button-active-border-color;
-        background-color: $button-active-background-color;
+        background-color: transparent;
 	}
 	&[disabled] {
-		background-color: $body-background-color;
+		background-color: var(--body-background-color);
 	}
 }
 .button-primary {
-	background-color: $primary-color-medium;
-	border-color: $primary-color-dark;
-	color: $body-background-color;
+	background-color: var(--primary-color);
+	border-color: var(--primary-color-dark);
+	color: var(--body-background-color);
 
 	&:hover, &:focus {
-		background-color: $primary-color-dark;
+		background-color: var(--primary-color-dark);
 		border-color: $button-primary-hover-border-color;
-		color: $body-background-color;
+		color: var(--body-background-color);
 	}
 	&:active {
 		color: $button-primary-active-color;
@@ -63,7 +63,7 @@
 		border-color: $button-primary-active-border-color;
 	}
 	&[disabled] {
-		background-color: $primary-color-medium;
+		background-color: var(--primary-color);
 	}
 }
 

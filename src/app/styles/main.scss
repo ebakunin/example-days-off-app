@@ -1,10 +1,76 @@
 @import './skeleton-sass/src/themes/custom/vars';
 @import './primeng-calendar';
 
+:root {
+    --font-family: Raleway, Arial, sans-serif;
+    --font-size: 15px;
+    --font-weight: 300;
+
+    --border-radius: 5px;
+    --calendar-height: 345px;
+
+    --success: #43c277;
+    --warning: #e68d31;
+    --danger: #d0021b;
+
+    --body-background-color: #fff;
+    --text-background-color: #fff;
+    --text-color: rgb(72, 72, 72);
+
+    --primary-color: rgb(90, 185, 234);
+    --primary-color-dark: #5a7b8c;
+    --secondary-color: rgb(86, 128, 233);
+    --tertiary-color: rgb(70, 72, 102);
+    --tertiary-color-dark: #444;
+
+    --gray-color: rgb(128, 128, 128);
+    --gray-color-light: rgb(176, 176, 176);
+    --gray-color-dark: rgba(128, 128, 128, 0.3);
+
+    --link-color: #464866;
+    --link-hover: #29648a;
+    --link-active: #2e9cca;
+}
+*[data-theme="dark"] {
+    --font-weight: 500;
+    --danger: #cf6679;
+    --body-background-color: #1c1e21;
+    --text-background-color: #d7d7d7;
+    --tertiary-color-dark: rgba(255, 255, 255, 0.87);
+    --text-color: rgba(255, 255, 255, 0.75);
+    --gray-color: rgb(200, 200, 200, 0.75);
+    --gray-color-dark: rgb(150, 150, 150);
+    --link-color: rgba(255, 255, 255, 0.6);
+}
+
 html {
     min-height: 100%;
 }
 
+body {
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+}
+
+a {
+    color: var(--link-color);
+
+    &:hover {
+        color: var(--link-hover);
+    }
+
+    &:active {
+        color: var(--link-active);
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--tertiary-color-dark);
+}
+
+input[type="text"], input[type="email"], textarea, option {
+    background-color: var(--text-background-color);
+}
 
 /* Mobile */
 @media only screen and (max-width: 600px) {
@@ -27,12 +93,12 @@ html {
     }
 
     &::-webkit-scrollbar-track {
-        background-color: $body-background-color;
+        background-color: var(--body-background-color);
     }
 
     &::-webkit-scrollbar-thumb {
         background-color: #c2c2c2;
-        border: 4px solid $body-background-color;
+        border: 4px solid var(--body-background-color);
         border-radius: 16px;
         min-height: 30px;
 
@@ -82,15 +148,21 @@ html {
 }
 
 .p-dropdown-panel {
+    //background-color: var(--text-background-color);
     margin-left: 0;
 }
 
-.p-dropdown:not(.p-disabled) {
-    &:hover {
-        border-color: $secondary-color-dark;
-    }
-    &.p-focus {
-        box-shadow: none;
+.p-dropdown {
+    //background-color: var(--text-background-color);
+
+    &:not(.p-disabled) {
+        &:hover {
+            border-color: $secondary-color-dark;
+        }
+        &.p-focus {
+            box-shadow: none;
+        }
+
     }
 }
 
@@ -102,21 +174,14 @@ html {
 /*********************
   Helper Classes
 **********************/
-.truncate {
-    display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 .ng-invalid.ng-touched {
-    border-color: $danger;
+    border-color: var(--danger);
 }
 
 .badge {
-    background-color: $primary-color-medium;
+    background-color: var(--primary-color);
     border-radius: 50%;
-    color: $body-background-color;
+    color: var(--body-background-color);
     display: inline-block;
     font-size: 90%;
     font-weight: bold;
@@ -125,104 +190,5 @@ html {
 
     &:empty {
         display: none;
-    }
-}
-
-/* Placeholder skeleton shimmer effect */
-.skeleton:empty {
-    background-color: #f6f7f8;
-    background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
-    background-repeat: no-repeat;
-    animation: skeletonShimmer 0.7s linear infinite forwards;
-    display: inline-block;
-    position: relative;
-}
-@keyframes skeletonShimmer {
-    from {
-        background-position: -500px 0;
-    }
-    to {
-        background-position: 500px 0;
-    }
-}
-
-/*********************
-  Media Query Classes
-**********************/
-@media only screen and (max-width: 600px) {
-    .hide-on-small-only, .hide-on-small-and-down {
-        display: none !important;
-    }
-}
-
-@media only screen and (max-width: 992px) {
-    .hide-on-medium-and-down {
-        display: none !important;
-    }
-}
-
-@media only screen and (min-width: 601px) {
-    .hide-on-medium-and-up {
-        display: none !important;
-    }
-}
-
-@media only screen and (min-width: 600px) and (max-width: 992px) {
-    .hide-on-medium-only {
-        display: none !important;
-    }
-}
-
-@media only screen and (min-width: 993px) {
-    .hide-on-large-only {
-        display: none !important;
-    }
-}
-
-@media only screen and (min-width: 1201px) {
-    .hide-on-extra-large-only {
-        display: none !important;
-    }
-}
-
-@media only screen and (min-width: 1201px) {
-    .show-on-extra-large {
-        display: block !important;
-    }
-}
-
-@media only screen and (min-width: 993px) {
-    .show-on-large {
-        display: block !important;
-    }
-}
-
-@media only screen and (min-width: 600px) and (max-width: 992px) {
-    .show-on-medium {
-        display: block !important;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .show-on-small {
-        display: block !important;
-    }
-}
-
-@media only screen and (min-width: 601px) {
-    .show-on-medium-and-up {
-        display: block !important;
-    }
-}
-
-@media only screen and (max-width: 992px) {
-    .show-on-medium-and-down {
-        display: block !important;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .center-on-small-only {
-        text-align: center;
     }
 }

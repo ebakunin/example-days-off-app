@@ -1,4 +1,4 @@
-@import './../../styles/skeleton-sass/src/themes/custom/vars';
+@import '../../styles/skeleton-sass/src/themes/custom/vars';
 
 .month-separator {
     line-height: 50%;
@@ -6,8 +6,8 @@
     padding-top: 14px;
 
     span {
-        background-color: $body-background-color;
-        color: $gray-color-dark;
+        background-color: var(--body-background-color);
+        color: var(--gray-color);
         font-size: 1.2rem;
         font-weight: bold;
         height: 20px;
@@ -17,7 +17,7 @@
     }
 
     hr {
-        border-color: $gray-color-light;
+        border-color: var(--gray-color-light);
         margin: 0;
         position: relative;
         top: 6px;
@@ -25,8 +25,8 @@
 }
 
 .day-off-card {
-    border: 1px solid $gray-color-medium;
-    border-radius: $border-radius;
+    border: 1px solid var(--gray-color);
+    border-radius: var(--border-radius);
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -35,46 +35,46 @@
     padding: 12px;
 
     &:hover {
-        border-color: $danger;
+        border-color: var(--danger);
 
         .delete-day {
-            color: $danger;
+            color: var(--danger);
         }
     }
 
     &.pending-delete {
         &:hover {
-            border-color: $primary-color-medium;
+            border-color: var(--primary-color);
 
             .show-restore {
-                color: $primary-color-medium;
+                color: var(--primary-color);
             }
         }
 
         .cal-day-month {
-            background-color: $danger !important;
+            background-color: var(--danger) !important;
         }
     }
 
     .cal-day {
-        border: 1px solid $gray-color-light;
-        border-radius: $border-radius;
+        border: 1px solid var(--gray-color-light);
+        border-radius: var(--border-radius);
         margin-right: 12px;
         text-align: center;
         width: 45px;
 
         .cal-day-month {
-            background-color: $primary-color-medium;
+            background-color: var(--primary-color);
             border-top-left-radius: 3px;
             border-top-right-radius: 3px;
-            color: $body-background-color;
+            color: var(--body-background-color);
             font-size: 1.1rem;
             margin-top: 0.5px;
             text-transform: uppercase;
         }
 
         .cal-day-date {
-            color: $gray-color-dark;
+            color: var(--gray-color);
             font-size: 2rem;
             font-weight: bold;
             line-height: 125%;
@@ -86,13 +86,13 @@
         flex-grow: 1;
 
         .long-date {
-            color: $primary-color-dark;
+            color: var(--primary-color-dark);
             font-weight: 500;
             margin-bottom: -5px;
         }
 
         .full-day {
-            color: $gray-color-dark;
+            color: var(--gray-color);
             font-size: 1.25rem;
             font-weight: 500;
             text-transform: uppercase;
@@ -101,12 +101,12 @@
 
     .delete-day {
         align-self: center;
-        color: $gray-color-medium;
+        color: var(--gray-color);
         font-size: 2rem;
 
         &:hover {
             .show-restore {
-                color: $gray-color-dark;
+                color: var(--gray-color);
             }
         }
     }

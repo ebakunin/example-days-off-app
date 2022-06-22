@@ -1,7 +1,7 @@
 /* LINKS
  * ------------------------------------------------ */
 a, a:visited {
-	color: $link-color;
-	text-decoration: $link-decoration;
+	color: var(--link-color);
+	text-decoration: underline;
 }
-a:hover, a:focus, a:active { color: $link-hover; }
+a:hover, a:focus, a:active { color: var(--link-hover); }
