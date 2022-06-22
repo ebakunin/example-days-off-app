@@ -4,15 +4,13 @@ import { CommonModule } from '@angular/common';
 import {
     CallFunctionPipe,
     ToDatePipe,
-    FormGroupTypePipe,
-    FormKeysPipe,
-    LocaleDatePipe,
     SortByDatePipe,
-    TranslatePipe,
     UcFirstPipe,
     UcWordsPipe,
-    FormControlTypePipe
-} from './common.pipe';
+} from './common.pipes';
+import { LocaleDatePipe } from './pipes/local-date.pipe';
+import { FormControlTypePipe, FormGroupTypePipe, FormKeysPipe } from './pipes/reactive-form.pipes';
+import { TranslatePipe } from './pipes/translate.pipe';
 
 @NgModule({
     declarations: [
@@ -43,4 +41,5 @@ import {
         UcWordsPipe
     ]
 })
-export class CommonPipesModule {}
+export class CommonPipesModule {
+}
