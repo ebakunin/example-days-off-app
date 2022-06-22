@@ -14,7 +14,7 @@ export class BaseService<M extends BaseModel> {
      * @param {<M extends BaseModel>[]} models
      */
     setData(models: M[]): void {
-        this.#storage = [...this.#storage, ...models];
+        this.#storage = this.#storage.concat(models);
         this.#data$.next(this.#storage);
     }
 

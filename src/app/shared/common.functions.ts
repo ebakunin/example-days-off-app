@@ -34,7 +34,7 @@ String.prototype.ucwords = function () {
  */
 String.prototype.toSentenceCase = function () {
     const temp = this.toString().split(/(\.\s+)/g);
-    return temp.map(a => a.charAt(0).toUpperCase() + a.slice(1).toLowerCase()).join('');
+    return temp.map((a) => a.charAt(0).toUpperCase() + a.slice(1).toLowerCase()).join('');
 };
 
 /**
@@ -43,7 +43,7 @@ String.prototype.toSentenceCase = function () {
  * @returns {string}
  */
 String.prototype.toSnakeCase = function () {
-    return this.replace(/\W+/g, ' ').split(/\s|\B(?=[A-Z])/).map(word => word.toLowerCase()).join('_');
+    return this.replace(/\W+/g, ' ').split(/\s|\B(?=[A-Z])/).map((word) => word.toLowerCase()).join('_');
 };
 
 /**
@@ -52,9 +52,9 @@ String.prototype.toSnakeCase = function () {
  * @returns {string}
  */
 String.prototype.toCamelCase = function () {
-    return this.replace(/[^a-z0-9 ]/ig, '').replace(/^\w|[A-Z]|\b\w|\s+/g, (match, index) => {
-        return +match === 0 ? '' : index === 0 ? match.toLowerCase() : match.toUpperCase();
-    });
+    return this.replace(/[^a-z0-9 ]/ig, '').replace(/^\w|[A-Z]|\b\w|\s+/g, (match, index) =>
+        +match === 0 ? '' : index === 0 ? match.toLowerCase() : match.toUpperCase()
+    );
 };
 
 /**
@@ -64,7 +64,7 @@ String.prototype.toCamelCase = function () {
  * @returns {any[]}
  */
 export function arrayIntersection(array1: any[], array2: any[]): any[] {
-    return array1.filter(x => !array2.includes(x));
+    return array1.filter((x) => !array2.includes(x));
 }
 
 /**
@@ -75,8 +75,8 @@ export function arrayIntersection(array1: any[], array2: any[]): any[] {
  */
 export function arrayDiff(array1: any[], array2: any[]): any[] {
     return array2.length > array1.length
-        ? array2.filter(x => !array1.includes(x))
-        : array1.filter(x => !array2.includes(x));
+        ? array2.filter((x) => !array1.includes(x))
+        : array1.filter((x) => !array2.includes(x));
 }
 
 /**
@@ -86,7 +86,7 @@ export function arrayDiff(array1: any[], array2: any[]): any[] {
  * @returns {any[]}
  */
 export function arraySymmetricDiff(array1: any[], array2: any[]): any[] {
-    return array1.filter(x => !array2.includes(x)).concat(array2.filter(x => !array1.includes(x)));
+    return array1.filter((x) => !array2.includes(x)).concat(array2.filter((x) => !array1.includes(x)));
 }
 
 /**
@@ -96,7 +96,8 @@ export function arraySymmetricDiff(array1: any[], array2: any[]): any[] {
  * @returns {boolean}
  */
 export function arrayMatch(array1: any[], array2: any[]): boolean {
-    return Array.isArray(array1) && Array.isArray(array2) &&
+    return Array.isArray(array1) &&
+        Array.isArray(array2) &&
         array1.length === array2.length &&
         array1.sort().every((value, index) => value === array2.sort()[index]);
 }

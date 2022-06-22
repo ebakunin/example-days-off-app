@@ -60,24 +60,27 @@ ExampleEmployee.init({
  * @returns {Date[]}
  */
 function createMockDaysOff(): Date[] {
-    const today = startOfToday();
-    const daysOff: Date[] = [];
-    const usedRandomDayOff: number[] = [];
+    let datesOff: Date[] = [];
+    let usedRandomDayOff: number[] = [];
 
+    const today = startOfToday();
     let i = 0;
     while (i < 4) {
-        const randomInt = Math.floor(Math.random() * 30) + 1;
-        if (!usedRandomDayOff.includes(randomInt)) {
-            usedRandomDayOff.push(randomInt);
-            const date = addDays(today, randomInt);
+        const randomDay = Math.floor(Math.random() * 30) + 1;
+        if (!usedRandomDayOff.includes(randomDay)) {
+            usedRandomDayOff = [...usedRandomDayOff, randomDay];
+            const date = addDays(today, randomDay);
             if (!ExampleOffice.closedDays.includes(getDay(date))) {
-                daysOff.push(date);
+                datesOff = [...datesOff, date];
                 i++;
             }
         }
     }
 
-    daysOff.push(addMonths(daysOff[0], 1), addMonths(daysOff[0], 2), addMonths(daysOff[0], 3));
-
-    return daysOff;
+    return [
+        ...datesOff,
+        addMonths(datesOff[0], 1),
+        addMonths(datesOff[0], 2),
+        addMonths(datesOff[0], 3)
+    ];
 }

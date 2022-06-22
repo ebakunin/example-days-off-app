@@ -6,20 +6,26 @@ import { Calendar } from 'primeng/calendar';
 import { addDays } from 'date-fns';
 
 import { CommonPipesModule } from '../shared/pipes.module';
-import { DaysOffManagementComponent } from '../days-off/components/days-off-management.component';
+import { DaysOffManagementComponent } from '../days-off/days-off-management/days-off-management.component';
 import { LanguageService } from '../services/language.service';
 import { MockLanguageService } from './mock-services.spec';
-import { MonthNumberType } from '../shared/common.type';
+import { MonthNumberType } from '../shared/common.types';
 
 class MockCalendar {
-    public currentMonth: MonthNumberType = 9;
-    public currentYear = 2020;
-    public navBackward(e: Event) {}
-    public navForward(e: Event) {}
+    currentMonth: MonthNumberType = 9;
+    currentYear = 2020;
+    navBackward(e: Event) {}
+    navForward(e: Event) {}
 }
 
 const startDate = new Date('10/01/2020 00:00:00');
-const newDaysOff: Date[] = [startDate, addDays(startDate, 4), addDays(startDate, 7), addDays(startDate, 35), addDays(startDate, 45)];
+const newDaysOff: Date[] = [
+    startDate,
+    addDays(startDate, 4),
+    addDays(startDate, 7),
+    addDays(startDate, 35),
+    addDays(startDate, 45)
+];
 
 describe('DaysOffManagementComponent', () => {
     let fixture: ComponentFixture<DaysOffManagementComponent>;
@@ -50,7 +56,7 @@ describe('DaysOffManagementComponent', () => {
 
     describe('given new days off', () => {
         beforeEach(() => {
-            comp.newExceptionsBucket = new Set([...Array.from(newDaysOff).map(date => date.getTime())]);
+            comp.newExceptionsBucket = new Set([...newDaysOff.map((date) => date.getTime())]);
             fixture.detectChanges();
         });
 

@@ -11,7 +11,7 @@ import { ToastService } from '../services/toast.service';
 
 import { MockLanguageService, MockToastService } from './mock-services.spec';
 import { ContactComponent } from '../contact/contact.component';
-import { ApiResponseType } from '../shared/common.type';
+import { ApiResponseType } from '../shared/common.types';
 import { By } from '@angular/platform-browser';
 
 const EMAIL_URL = '//www.ericchristenson.com/message';
@@ -54,7 +54,7 @@ describe('ContactComponent', () => {
     });
 
     it('dialog box should be visible', () => {
-        expect(comp.visible).toBeTrue();
+        expect(comp.isVisible).toBeTrue();
     });
 
     describe('given an empty form', () => {
@@ -64,7 +64,7 @@ describe('ContactComponent', () => {
         });
 
         it('should not send message', () => {
-            expect(comp.sendingMessage).toBeFalse();
+            expect(comp.isSendingMessage).toBeFalse();
         });
     });
 
@@ -93,7 +93,7 @@ describe('ContactComponent', () => {
         });
 
         it('should disable contact dialog', fakeAsync(() => {
-            comp.showContactDialog$.subscribe(status => expect(status).toBeFalse());
+            comp.showContactDialog$.subscribe((status) => expect(status).toBeFalse());
             flush();
         }));
     });
@@ -108,7 +108,7 @@ describe('ContactComponent', () => {
         });
 
         it('should disable contact dialog', fakeAsync(() => {
-            comp.showContactDialog$.subscribe(status => expect(status).toBeFalse());
+            comp.showContactDialog$.subscribe((status) => expect(status).toBeFalse());
             flush();
         }));
     });
