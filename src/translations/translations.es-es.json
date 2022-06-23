@@ -32,5 +32,7 @@
     "UI_EXPLANATION_2": "La aplicación es totalmente móvil. Es compatible con varios idiomas y puede cambiar sobre la marcha. Debido a que se trata de una demostración, todos los datos predeterminados se simulan y no se comunican con una API. Las acciones CRUD funcionan como se esperaba, pero se pierden si se actualiza la página.",
     "UI_EXPLANATION_3": "El código base se basa en Angular 12. El calendario es una versión muy personalizada de un componente PrimeNG. También se utilizan otros componentes de la interfaz de usuario de PrimeNG. El marco CSS básico se basa en Skeleton. El código base de la aplicación está disponible en GitHub.",
     "UI_EXPLANATION_4": "La aplicación se basa en mi código de un trabajo anterior. Está algo sobre-diseñado para mostrar varias tecnologías. Si tiene alguna pregunta, sugerencia o (horror) encuentra un error, no dude en enviarme un mensaje.",
-    "UI_BACK_TO": "De vuelta a"
+    "UI_BACK_TO": "De vuelta a",
+    "UI_DARK_MODE": "Cambiar al modo oscuro",
+    "UI_LIGHT_MODE": "Cambiar al modo de luz"
 }

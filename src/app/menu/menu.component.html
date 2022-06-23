@@ -6,8 +6,8 @@
              'fa-sun': inDarkMode,
              'fa-adjust': !inDarkMode
            }"
-           [attr.aria-label]="(inDarkMode ? 'Switch to light mode' : 'Switch to dark mode') | translate | async"
-           [pTooltip]="((inDarkMode ? 'Switch to light mode' : 'Switch to dark mode') | translate | async) || ''"
+           [attr.aria-label]="(inDarkMode ? 'UI_LIGHT_MODE' : 'UI_DARK_MODE') | translate | async"
+           [pTooltip]="((inDarkMode ? 'UI_LIGHT_MODE' : 'UI_DARK_MODE') | translate | async) || ''"
            tooltipPosition="left"
            (click)="toggleDarkMode()">
         </i>
