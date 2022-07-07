@@ -44,7 +44,7 @@
         "SELECT_LANGUAGE": "Sélectionnez une langue",
         "SEND_MESSAGE": "Envoyez-moi un message"
     },
-    "primeng": {
+    "PRIMENG": {
         "dayNamesMin": ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"]
     }
 }

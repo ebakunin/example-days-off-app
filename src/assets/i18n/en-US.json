@@ -44,7 +44,7 @@
         "SELECT_LANGUAGE": "Select a language",
         "SEND_MESSAGE": "Send me a message"
     },
-    "primeng": {
+    "PRIMENG": {
         "dayNamesMin": ["S", "M", "T", "W", "T", "F", "S"]
     }
 }

@@ -44,7 +44,7 @@
         "SELECT_LANGUAGE": "Error al actualizar los días libres",
         "SEND_MESSAGE": "Envíeme un mensaje"
     },
-    "primeng": {
+    "PRIMENG": {
         "dayNamesMin": ["D", "L", "M", "X", "J", "V", "S"]
     }
 }
