@@ -1,13 +1,13 @@
 <aside>
     <div #showSteps id="explanation1" class="explanation">
-        {{ 'UI_EXPLANATION_1' | translate | async }}
+        {{ 'UI_EXPLANATION_1' | translate }}
         <i class="fas fa-angle-double-right" (click)="showNextExplanationText(1)"></i>
     </div>
 </aside>
 
 <aside>
     <div #showSteps id="explanation2" class="explanation down-left">
-        {{ 'UI_EXPLANATION_2' | translate | async }}
+        {{ 'UI_EXPLANATION_2' | translate }}
         <i class="fas fa-angle-double-right" (click)="showNextExplanationText(2)"></i>
         <div class="corner-arrow bottom-left"></div>
     </div>
@@ -15,7 +15,7 @@
 
 <aside>
     <div #showSteps id="explanation3" class="explanation down-right">
-        {{ 'UI_EXPLANATION_3' | translate | async }}
+        {{ 'UI_EXPLANATION_3' | translate }}
         <i class="fas fa-angle-double-right" (click)="showNextExplanationText(3)"></i>
         <div class="corner-arrow bottom-right"></div>
     </div>
@@ -23,7 +23,7 @@
 
 <aside>
     <div #showSteps id="explanation4" class="explanation up-right">
-        {{ 'UI_EXPLANATION_4' | translate | async }}
+        {{ 'UI_EXPLANATION_4' | translate }}
         <i class="fas fa-check-circle" (click)="onClose()"></i>
         <div class="corner-arrow top-right"></div>
     </div>

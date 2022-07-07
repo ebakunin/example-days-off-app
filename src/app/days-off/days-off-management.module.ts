@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
-import { MaterialModule } from '../shared/material.module';
 import { CommonPipesModule } from '../shared/pipes.module';
+import { MaterialModule } from '../shared/material.module';
+import { TranslateWrapperModule } from '../translations/translation-wrapper.module';
 
 import { DayOffCardComponent } from './day-off-card/day-off-card.component';
 import { DaysOffManagementComponent } from './days-off-management/days-off-management.component';
@@ -17,7 +19,9 @@ import { DaysOffManagementComponent } from './days-off-management/days-off-manag
         CommonModule,
         CommonPipesModule,
         MaterialModule,
-        FormsModule
+        FormsModule,
+        TranslateModule,
+        TranslateWrapperModule.forRoot()
     ],
     exports: [
         DaysOffManagementComponent

@@ -1,7 +1,8 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef, HostListener,
+    ElementRef,
+    HostListener,
     OnInit,
     QueryList,
     Renderer2,
@@ -46,10 +47,7 @@ export class ExplanationsComponent implements OnInit {
      * @param {number} step
      */
     showNextExplanationText(step: number): void {
-        this.showSteps.forEach((el) => {
-            this._renderer.setStyle(el.nativeElement, 'display', 'none');
-        });
-
+        this.showSteps.forEach((el) => this._renderer.setStyle(el.nativeElement, 'display', 'none'));
         this._renderer.setStyle(this.showSteps.get(step)?.nativeElement, 'display', 'block');
     }
 
@@ -57,9 +55,7 @@ export class ExplanationsComponent implements OnInit {
      *
      */
     onClose(): void {
-        this.showSteps.forEach((el) => {
-            this._renderer.setStyle(el.nativeElement, 'display', 'none');
-        });
+        this.showSteps.forEach((el) => this._renderer.setStyle(el.nativeElement, 'display', 'none'));
         this._appService.showExplanation$.next(false);
     }
 }

@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
+import { RippleModule } from 'primeng/ripple';
 
 import { CommonPipesModule } from './shared/pipes.module';
-import { MaterialModule } from './shared/material.module';
-import { RippleModule } from 'primeng/ripple';
 import { DaysOffManagementModule } from './days-off/days-off-management.module';
+import { MaterialModule } from './shared/material.module';
 import { ServicesModule } from './services/services.module';
+import { TranslateWrapperModule } from './translations/translation-wrapper.module';
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
@@ -34,7 +36,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
         ReactiveFormsModule,
         RippleModule,
         DaysOffManagementModule,
-        ServicesModule.forRoot()
+        ServicesModule.forRoot(),
+        TranslateModule,
+        TranslateWrapperModule.forRoot()
     ],
     bootstrap: [AppComponent]
 })

@@ -159,7 +159,10 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
         setTimeout(() => {
             if (this.startingViewDate) {
                 this.goToMonth(this.startingViewDate);
-            } else if (this.calendar.currentYear !== this.todaysYear || this.calendar.currentMonth !== this.todaysMonth) {
+            } else if (
+                this.calendar.currentYear !== this.todaysYear ||
+                this.calendar.currentMonth !== this.todaysMonth
+            ) {
                 this.goToToday();
             }
         });
@@ -416,14 +419,18 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
         let startOfTheYear = startOfYear(new Date());
         const endOfTheYear = endOfYear(startOfTheYear);
         while (isBefore(startOfTheYear, endOfTheYear)) {
-            this.calendarLocale.monthNames!.push(new Intl.DateTimeFormat(isoCode, {month: 'long'}).format(startOfTheYear));
+            this.calendarLocale.monthNames!.push(
+                new Intl.DateTimeFormat(isoCode, {month: 'long'}).format(startOfTheYear)
+            );
             startOfTheYear = addMonths(startOfTheYear, 1);
         }
 
         let startOfTheWeek = startOfWeek(new Date());
         const endOfTheWeek = endOfWeek(startOfTheWeek);
         while (isBefore(startOfTheWeek, endOfTheWeek)) {
-            this.calendarLocale.dayNames!.push(new Intl.DateTimeFormat(isoCode, {weekday: 'narrow'}).format(startOfTheWeek));
+            this.calendarLocale.dayNames!.push(
+                new Intl.DateTimeFormat(isoCode, {weekday: 'narrow'}).format(startOfTheWeek)
+            );
             startOfTheWeek = addDays(startOfTheWeek, 1);
         }
 
@@ -523,16 +530,25 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
         const removedExceptions: string[] = [...this.markedForDeletionBucket]
             .map((datetime) => new Date(datetime))
-            .filter((date) => date.getMonth() === this.calendar.currentMonth && date.getFullYear() === this.calendar.currentYear)
+            .filter((date) => (
+                date.getMonth() === this.calendar.currentMonth &&
+                date.getFullYear() === this.calendar.currentYear)
+            )
             .map((date) => date.getDate().toString());
 
         const originalExceptions: string[] = this.#daysOff
-            .filter((date) => date.getMonth() === this.calendar.currentMonth && date.getFullYear() === this.calendar.currentYear)
+            .filter((date) => (
+                date.getMonth() === this.calendar.currentMonth &&
+                date.getFullYear() === this.calendar.currentYear)
+            )
             .map((date) => date.getDate().toString());
 
         const newExceptions: string[] = [...this.newExceptionsBucket]
             .map((datetime) => new Date(datetime))
-            .filter((date) => date.getMonth() === this.calendar.currentMonth && date.getFullYear() === this.calendar.currentYear)
+            .filter((date) => (
+                date.getMonth() === this.calendar.currentMonth &&
+                date.getFullYear() === this.calendar.currentYear)
+            )
             .map((date) => date.getDate().toString());
 
         for (let i = 0; i < elements?.length; i++) {

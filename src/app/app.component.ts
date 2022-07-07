@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { merge, of } from 'rxjs';
 import { delay, first, switchMap, take, tap } from 'rxjs/operators';
 
 import { AppService } from './services/app.service';
 import { EmployeeService } from './services/employee.service';
-import { LanguageService } from './services/language.service';
 import { OfficeService } from './services/office.service';
 import { SpinnerService } from './services/spinner.service';
 import { ToastService } from './services/toast.service';
@@ -28,10 +28,10 @@ export class AppComponent {
 
     constructor(private _appService: AppService,
                 private _employeeService: EmployeeService,
-                private _languageService: LanguageService,
                 private _officeService: OfficeService,
                 private _spinnerService: SpinnerService,
-                private _toastService: ToastService) {}
+                private _toastService: ToastService,
+                private _translate: TranslateService) {}
 
     /**
      *
@@ -74,13 +74,13 @@ export class AppComponent {
                     this.startingViewDate = this.currentViewedMonth;
                     this.newExceptionDates = [];
                     this.exceptionDatesToBeDeleted = [];
-                    this._toastService.successToast(this._languageService.getTranslation('UI_UPDATE_SUCCESS'));
+                    this._toastService.successToast(this._translate.instant('UI_UPDATE_SUCCESS'));
                 } else {
-                    this._toastService.errorToast(this._languageService.getTranslation('UI_ERROR_SUCCESS'));
+                    this._toastService.errorToast(this._translate.instant('UI_ERROR_SUCCESS'));
                 }
             },
             error: () => {
-                this._toastService.errorToast(this._languageService.getTranslation('UI_ERROR_SUCCESS'));
+                this._toastService.errorToast(this._translate.instant('UI_ERROR_SUCCESS'));
             }
         });
     }

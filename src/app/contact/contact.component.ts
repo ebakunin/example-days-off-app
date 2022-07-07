@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { finalize, Subject } from 'rxjs';
 import { distinctUntilChanged, filter, take, takeUntil } from 'rxjs/operators';
 
 import { AppService } from '../services/app.service';
-import { LanguageService } from '../services/language.service';
 import { ToastService } from '../services/toast.service';
 
 import { CommonValidators } from '../shared/common.validators';
@@ -35,8 +35,8 @@ export class ContactComponent implements OnDestroy, OnInit {
     constructor(private _appService: AppService,
                 private _cdr: ChangeDetectorRef,
                 private _http: HttpClient,
-                private _languageService: LanguageService,
-                private _toastService: ToastService) {}
+                private _toastService: ToastService,
+                private _translate: TranslateService) {}
 
     /**
      *
@@ -90,13 +90,13 @@ export class ContactComponent implements OnDestroy, OnInit {
         ).subscribe({
             next: (result) => {
                 if (result.response === 200) {
-                    this._toastService.successToast(this._languageService.getTranslation('UI_MESSAGE_SUCCESS'));
+                    this._toastService.successToast(this._translate.instant('UI_MESSAGE_SUCCESS'));
                 } else {
-                    this._toastService.errorToast(`${this._languageService.getTranslation('UI_MESSAGE_ERROR')}: ${result.message}`);
+                    this._toastService.errorToast(`${this._translate.instant('UI_MESSAGE_ERROR')}: ${result.message}`);
                 }
             },
             error: (error: HttpErrorResponse) => {
-                this._toastService.errorToast(`${this._languageService.getTranslation('UI_MESSAGE_ERROR')}: ${error.message}`);
+                this._toastService.errorToast(`${this._translate.instant('UI_MESSAGE_ERROR')}: ${error.message}`);
             }
         });
     }

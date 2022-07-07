@@ -1,105 +1,40 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
-import {
-    delay,
-    distinctUntilKeyChanged,
-    filter,
-    map,
-    pluck,
-    startWith,
-    switchMap,
-    take,
-    tap
-} from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject, tap } from 'rxjs';
+import { distinctUntilKeyChanged, switchMap } from 'rxjs/operators';
 
 import { SpinnerService } from './spinner.service';
 import { Language } from '../models/language.model';
-import { English, French, Spanish } from '../data/mock.data';
-
-type TranslationType = Record<Language['isoCode'], Map<string, string>>;
+import { AVAILABLE_LANGUAGES, English } from '../data/mock.data';
 
 @Injectable()
 export class LanguageService {
-    readonly languages$ = new BehaviorSubject<Language[]>([English, French, Spanish]);
+    readonly languages$ = new BehaviorSubject<Language[]>(AVAILABLE_LANGUAGES as Language[]);
     readonly selectedLanguage$ = new BehaviorSubject<Language>(English);
 
-    readonly #translations$ = new BehaviorSubject<TranslationType>({});
-    readonly #storage: TranslationType = {};
-    #loadingLanguage = false;
-
-    constructor(private _http: HttpClient, private _spinnerService: SpinnerService) {
-        /* Load initial language */
-        this.#retrieveTranslations$('en-US').pipe(take(1)).subscribe();
+    constructor(private _http: HttpClient,
+                private _spinnerService: SpinnerService,
+                private _translateService: TranslateService) {
+        this.#listenForLanguageChange();
     }
 
     /**
-     * @param {string[]} tokens
-     * @return {Observable<string[]>}
-     */
-    translate$(tokens: string[]): Observable<string[]> {
-        const translations$ = tokens.map((token) => this.#translateByToken$(token));
-        return combineLatest(translations$).pipe(startWith(['']));
-    }
-
-    /**
-     * Returns a translated term by token. If no term exists the token is returned instead.
-     *
-     * @param {string} token
-     * @returns {string}
-     */
-    getTranslation(token: string): string {
-        const isoCode = this.selectedLanguage$.getValue().isoCode.toLowerCase();
-        return this.#storage[isoCode].get(token) || token;
-    }
-
-    /**
-     * @param {string} isoCode
-     * @returns {Observable<Language["isoCode"]>}
+     * On initialization, switch to pre-selected language if appropriate.
+     * Listen for a language selection change and update translations throughout the app.
      * @private
      */
-    #retrieveTranslations$(isoCode = 'en-US'): Observable<Language['isoCode']> {
-        isoCode = isoCode.toLowerCase();
-
-        /* Only retrieve data if it has not yet been loaded */
-        if (!this.#loadingLanguage && !this.#storage.hasOwnProperty(isoCode)) {
-            this.#loadingLanguage = true;
-            const path = 'translations/' + `translations.${isoCode}.json`;
-            const headers = new HttpHeaders().set('Content-Type', 'text/json');
-
-            return this._http.get<[string, string]>(path, {headers}).pipe(
-                delay(800), // mock loading time
-                map((json) => {
-                    this.#storage[isoCode] = new Map(Object.entries(json));
-                    this.#translations$.next(this.#storage);
-                    this.#loadingLanguage = false;
-                    return isoCode;
-                })
-            );
-        } else {
-            return of(isoCode);
+    #listenForLanguageChange(): void {
+        const storedIso = localStorage.getItem('currentLanguage');
+        if (storedIso) {
+            const preselectedLanguage = AVAILABLE_LANGUAGES.find((lang) => lang.isoCode === storedIso);
+            this.selectedLanguage$.next(preselectedLanguage as Language);
         }
-    }
 
-    /**
-     * Returns a translated term by token. If no term exists the token is returned instead.
-     * Displays the spinner during the loading process.
-     *
-     * @param {string} token The token of the desired term to translate
-     * @returns {Observable<string>}
-     */
-    #translateByToken$(token: string): Observable<string> {
-        return this.selectedLanguage$.pipe(
+        this.selectedLanguage$.pipe(
             distinctUntilKeyChanged('isoCode'),
-            tap(() => this._spinnerService.start()),
-            switchMap((language) => this.#retrieveTranslations$(language.isoCode)),
-            switchMap((isoCode) => this.#translations$.pipe(pluck(isoCode.toLowerCase()))),
-            filter(Boolean),
-            map((translations) => {
-                const text = translations.get(token) as string;
-                return text?.length > 0 ? text : token;
-            }),
-            tap(() => this._spinnerService.stop())
-        );
+            tap((language) => localStorage.setItem('currentLanguage', language.isoCode)),
+            switchMap((language) => this._translateService.use(language.isoCode)),
+        ).subscribe();
     }
 }

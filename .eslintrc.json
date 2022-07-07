@@ -36,10 +36,11 @@
                     }
                 ],
                 "no-console": [
-                    "error",
+                    "warn",
                     {
                         "allow": [
-                            "error"
+                            "error",
+                            "warn"
                         ]
                     }
                 ]

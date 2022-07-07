@@ -1,13 +1,13 @@
 import { BaseModel } from './base.model';
 
 export class Language extends BaseModel {
-    description = '';
-    nativeDescription = '';
-    abbreviation = '';
-    isoCode = '';
-    createTimestamp = '';
-    lastUpdateTimestamp = '';
-    active = false;
+    description!: string;
+    nativeDescription!: string;
+    abbreviation!: string;
+    isoCode!: string;
+    createTimestamp!: string;
+    lastUpdateTimestamp!: string;
+    active!: boolean;
 
     /**
      * @param {Partial<Language>} modelInfo

@@ -10,7 +10,6 @@ import {
 } from './common.pipes';
 import { LocaleDatePipe } from './pipes/local-date.pipe';
 import { FormControlTypePipe, FormGroupTypePipe, FormKeysPipe } from './pipes/reactive-form.pipes';
-import { TranslatePipe } from './pipes/translate.pipe';
 
 @NgModule({
     declarations: [
@@ -21,7 +20,6 @@ import { TranslatePipe } from './pipes/translate.pipe';
         FormKeysPipe,
         LocaleDatePipe,
         SortByDatePipe,
-        TranslatePipe,
         UcFirstPipe,
         UcWordsPipe
     ],
@@ -36,10 +34,8 @@ import { TranslatePipe } from './pipes/translate.pipe';
         FormKeysPipe,
         LocaleDatePipe,
         SortByDatePipe,
-        TranslatePipe,
         UcFirstPipe,
         UcWordsPipe
     ]
 })
-export class CommonPipesModule {
-}
+export class CommonPipesModule {}

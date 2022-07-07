@@ -36,6 +36,7 @@ French.init({
     lastUpdateTimestamp: '',
     active: true
 });
+export const AVAILABLE_LANGUAGES: ReadonlyArray<Language> = [English, Spanish, French];
 
 export const ExampleOffice = new Office();
 ExampleOffice.init({

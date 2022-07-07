@@ -6,8 +6,8 @@
              'fa-sun': inDarkMode,
              'fa-adjust': !inDarkMode
            }"
-           [attr.aria-label]="(inDarkMode ? 'UI_LIGHT_MODE' : 'UI_DARK_MODE') | translate | async"
-           [pTooltip]="((inDarkMode ? 'UI_LIGHT_MODE' : 'UI_DARK_MODE') | translate | async) || ''"
+           [attr.aria-label]="(inDarkMode ? 'UI_LIGHT_MODE' : 'UI_DARK_MODE') | translate"
+           [pTooltip]="(inDarkMode ? 'UI_LIGHT_MODE' : 'UI_DARK_MODE') | translate"
            tooltipPosition="left"
            (click)="toggleDarkMode()">
         </i>
@@ -15,8 +15,8 @@
 
     <div class="menu-item">
         <span id="selectLanguage"
-              [attr.aria-label]="'UI_SELECT_LANGUAGE' | translate | async"
-              [pTooltip]="('UI_SELECT_LANGUAGE' | translate | async) || ''"
+              [attr.aria-label]="'UI_SELECT_LANGUAGE' | translate"
+              [pTooltip]="'UI_SELECT_LANGUAGE' | translate"
               tooltipPosition="left"
               (click)="showDropdown = !showDropdown">
             <i class="globe" aria-hidden="true" [ngClass]="(globeIcon$ | async) || ''"></i>
@@ -35,8 +35,8 @@
     <div class="menu-item">
         <i id="showExplanation"
            class="far fa-comment"
-           [attr.aria-label]="'UI_APP_EXPLANATION' | translate | async"
-           [pTooltip]="('UI_APP_EXPLANATION' | translate | async) || ''"
+           [attr.aria-label]="'UI_APP_EXPLANATION' | translate"
+           [pTooltip]="'UI_APP_EXPLANATION' | translate"
            tooltipPosition="left"
            (click)="showExplanation$.next(true)">
         </i>
@@ -45,8 +45,8 @@
     <div class="menu-item">
         <a id="toGitHub" href="https://github.com/ebakunin/example-days-off-app" target="_blank">
             <i class="fab fa-github"
-               [attr.aria-label]="'UI_GITHUB_CODE' | translate | async"
-               [pTooltip]="('UI_GITHUB_CODE' | translate | async) || ''"
+               [attr.aria-label]="'UI_GITHUB_CODE' | translate"
+               [pTooltip]="'UI_GITHUB_CODE' | translate"
                tooltipPosition="left">
             </i>
         </a>
@@ -55,8 +55,8 @@
     <div class="menu-item">
         <i id="sendMessage"
            class="far fa-paper-plane"
-           [attr.aria-label]="'UI_SEND_MESSAGE' | translate | async"
-           [pTooltip]="('UI_SEND_MESSAGE' | translate | async) || ''"
+           [attr.aria-label]="'UI_SEND_MESSAGE' | translate"
+           [pTooltip]="'UI_SEND_MESSAGE' | translate"
            tooltipPosition="left"
            (click)="showContactDialog$.next(true)">
         </i>
