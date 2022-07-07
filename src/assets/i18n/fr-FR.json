@@ -1,38 +1,50 @@
 {
-    "UI_PAGE_TITLE": "Exemple d'application de gestion des jours de congé",
-    "UI_TODAY": "Aujourd'hui",
-    "UI_SELECT_MONTH": "Sélectionnez le mois",
-    "UI_SELECT_YEAR": "Sélectionnez l'année",
-    "UI_CLEAR_MONTH": "Effacez le mois",
-    "UI_CLEAR_ALL_DATES": "Effacez les dates",
-    "UI_SAVED_DAYS_OFF": "Jours de congé enregistrés",
-    "UI_RESTORE_ALL_QUESTION": "Tout restaurer",
-    "UI_SLOTS_DELETE_ALL": "Tout supprimer",
-    "UI_NO_DATES_SAVED": "Aucune date n'a été sauvegardée",
-    "UI_SELECT_DATE_EXPLANATION": "Sélectionnez une date dans le calendrier et cliquez sur le bouton Enregistrer.",
-    "UI_SAVE": "Enregistrer",
-    "UI_NEXT": "suivante",
-    "UI_CLOSE": "fermer",
-    "UI_DAYS_OFF_EXPLANATION": "Utilisez le calendrier pour sélectionner ou supprimer jusqu'à 365 jours de congé au cours des deux prochaines années.",
-    "UI_DAYS_OFF_TITLE": "Exemple d'application de planification des jours de congé",
-    "UI_UPDATE_SUCCESS": "Jours de congé mis à jour",
-    "UI_UPDATE_ERROR": "Erreur lors de la mise à jour des jours de congé",
-    "UI_SELECT_LANGUAGE": "Sélectionnez une langue",
-    "UI_APP_EXPLANATION": "Comment fonctionne l'application",
-    "UI_GITHUB_CODE": "Voir le code sur Github",
-    "UI_SEND_MESSAGE": "Envoyez-moi un message",
-    "UI_MESSAGE_SUCCESS": "Thanks for the message",
-    "UI_MESSAGE_ERROR": "Une erreur est survenue lors de l'envoi de votre message",
-    "UI_MESSAGE_ME": "Envoie moi un message",
-    "UI_MESSAGE_PLACEHOLDER": "Dites quelque chose de gentil, ou au moins d'intéressant...",
-    "UI_NAME_PLACEHOLDER": "Votre nom",
-    "UI_EMAIL_PLACEHOLDER": "Votre e-mail",
-    "UI_SEND": "Envoyer",
-    "UI_EXPLANATION_1": "Cette application montre comment un employé peut planifier ses jours de congé. Dans cet exemple, le bureau est fermé pendant le week-end. L'employé a déjà plusieurs jours de congé prévus. En cliquant sur les dates du calendrier, vous pouvez ajouter ou supprimer jusqu'à 365 jours de congé à la fois.",
-    "UI_EXPLANATION_2": "L'application est entièrement mobile. Il prend en charge plusieurs langues et peut basculer à la volée. Comme il s'agit d'une démonstration, toutes les données par défaut sont simulées et ne communiquent pas avec une API. Les actions CRUD fonctionnent comme prévu mais sont perdues si la page est actualisée.",
-    "UI_EXPLANATION_3": "La base de code est construite sur Angular 12. Le calendrier est une version fortement personnalisée d'un composant PrimeNG. D'autres composants PrimeNG UI sont également utilisés. Le framework CSS bare bones est basé sur Skeleton. La base de code de l'application est disponible sur GitHub.",
-    "UI_EXPLANATION_4": "L'application est basée sur mon code d'un emploi précédent. Il est quelque peu sur-conçu pour montrer diverses technologies. Si vous avez des questions, des suggestions ou (d'horreur) trouvez un bug, n'hésitez pas à m'envoyer un message.",
-    "UI_BACK_TO": "Retour à",
-    "UI_DARK_MODE": "Passer en mode sombre",
-    "UI_LIGHT_MODE": "Passer en mode lumière"
+    "CONTACT": {
+        "EMAIL_PLACEHOLDER": "Votre e-mail",
+        "MESSAGE_ERROR": "Une erreur est survenue lors de l'envoi de votre message",
+        "MESSAGE_ME": "Envoie moi un message",
+        "MESSAGE_PLACEHOLDER": "Dites quelque chose de gentil, ou au moins d'intéressant...",
+        "MESSAGE_SUCCESS": "Merci pour le message",
+        "NAME_PLACEHOLDER": "Votre nom",
+        "SEND": "Envoyer"
+    },
+    "DAYS_OFF": {
+        "MAIN": {
+            "BACK_TO": "Retour à",
+            "EXPLANATION": "Utilisez le calendrier pour sélectionner ou supprimer jusqu'à 365 jours de congé au cours des deux prochaines années.",
+            "SAVE": "Enregistrer",
+            "TITLE": "Exemple d'application de gestion des jours de congé",
+            "UPDATE_SUCCESS": "Jours de congé mis à jour",
+            "UPDATE_ERROR": "Erreur lors de la mise à jour des jours de congé"
+        },
+        "MANAGEMENT": {
+            "CLEAR_MONTH": "Effacez le mois",
+            "CLEAR_ALL_DATES": "Effacez les dates",
+            "NO_DATES_SAVED": "Aucune date n'a été sauvegardée",
+            "RESTORE_ALL": "Tout restaurer",
+            "SAVED_DAYS_OFF": "Jours de congé enregistrés",
+            "SELECT_DATE_EXPLANATION": "Sélectionnez une date dans le calendrier et cliquez sur le bouton Enregistrer.",
+            "SELECT_MONTH": "Sélectionnez le mois",
+            "SELECT_YEAR": "Sélectionnez l'année",
+            "SLOTS_DELETE_ALL": "Tout supprimer",
+            "TODAY": "Aujourd'hui"
+        }
+    },
+    "EXPLANATIONS": {
+        "BOX_1": "Cette application montre comment un employé peut planifier ses jours de congé. Dans cet exemple, le bureau est fermé pendant le week-end. L'employé a déjà plusieurs jours de congé prévus. En cliquant sur les dates du calendrier, vous pouvez ajouter ou supprimer jusqu'à 365 jours de congé à la fois.",
+        "BOX_2": "L'application est entièrement mobile. Il prend en charge plusieurs langues et peut basculer à la volée. Comme il s'agit d'une démonstration, toutes les données par défaut sont simulées et ne communiquent pas avec une API. Les actions CRUD fonctionnent comme prévu mais sont perdues si la page est actualisée.",
+        "BOX_3": "La base de code est construite sur Angular 12. Le calendrier est une version fortement personnalisée d'un composant PrimeNG. D'autres composants PrimeNG UI sont également utilisés. Le framework CSS bare bones est basé sur Skeleton. La base de code de l'application est disponible sur GitHub.",
+        "BOX_4": "L'application est basée sur mon code d'un emploi précédent. Il est quelque peu sur-conçu pour montrer diverses technologies. Si vous avez des questions, des suggestions ou (d'horreur) trouvez un bug, n'hésitez pas à m'envoyer un message."
+    },
+    "MENU": {
+        "APP_EXPLANATION": "Comment fonctionne l'application",
+        "DARK_MODE": "Passer en mode sombre",
+        "GITHUB_CODE": "Voir le code sur Github",
+        "LIGHT_MODE": "Passer en mode lumière",
+        "SELECT_LANGUAGE": "Sélectionnez une langue",
+        "SEND_MESSAGE": "Envoyez-moi un message"
+    },
+    "primeng": {
+        "dayNamesMin": ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"]
+    }
 }

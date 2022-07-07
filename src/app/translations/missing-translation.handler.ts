@@ -6,8 +6,9 @@ export class CustomMissingTranslationHandler implements MissingTranslationHandle
         if (environment.debug.translate) {
             console.warn(`Missing translation: ${params.key}`);
         }
+
         if (params.interpolateParams?.hasOwnProperty('default')) {
-            return (params.interpolateParams as any)['default'] ?? '';
+            return (params.interpolateParams as any).default ?? '';
         } else {
             return params.key;
         }

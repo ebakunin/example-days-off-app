@@ -90,13 +90,13 @@ export class ContactComponent implements OnDestroy, OnInit {
         ).subscribe({
             next: (result) => {
                 if (result.response === 200) {
-                    this._toastService.successToast(this._translate.instant('UI_MESSAGE_SUCCESS'));
+                    this._toastService.successToast(this._translate.instant('CONTACT.MESSAGE_SUCCESS'));
                 } else {
-                    this._toastService.errorToast(`${this._translate.instant('UI_MESSAGE_ERROR')}: ${result.message}`);
+                    this._toastService.errorToast(`${this._translate.instant('CONTACT.MESSAGE_ERROR')}: ${result.message}`);
                 }
             },
             error: (error: HttpErrorResponse) => {
-                this._toastService.errorToast(`${this._translate.instant('UI_MESSAGE_ERROR')}: ${error.message}`);
+                this._toastService.errorToast(`${this._translate.instant('CONTACT.MESSAGE_ERROR')}: ${error.message}`);
             }
         });
     }

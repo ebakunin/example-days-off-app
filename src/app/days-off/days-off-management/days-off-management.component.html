@@ -6,13 +6,13 @@
                     <li id="goToToday"
                         [class.enabled]="todaysMonth !== calendar.currentMonth || todaysYear !== calendar.currentYear"
                         (click)="goToToday()">
-                        {{ 'UI_TODAY' | translate }}
+                        {{ 'DAYS_OFF.MANAGEMENT.TODAY' | translate }}
                     </li>
                     <li id="selectMonth" class="enabled" (click)="onSelectMonth()">
-                        {{ 'UI_SELECT_MONTH' | translate }}
+                        {{ 'DAYS_OFF.MANAGEMENT.SELECT_MONTH' | translate }}
                     </li>
                     <li id="selectYear" class="enabled" (click)="onSelectYear()">
-                        {{ 'UI_SELECT_YEAR' | translate }}
+                        {{ 'DAYS_OFF.MANAGEMENT.SELECT_YEAR' | translate }}
                     </li>
                 </ul>
 
@@ -20,12 +20,12 @@
                     <li id="clearMonth"
                         [class.enabled]="newExceptionsBucket.size > 0"
                         (click)="newExceptionsBucket.size > 0 ? onClearMonth() : null">
-                        {{ 'UI_CLEAR_MONTH' | translate }}
+                        {{ 'DAYS_OFF.MANAGEMENT.CLEAR_MONTH' | translate }}
                     </li>
                     <li id="clearAllDates"
                         [class.enabled]="newExceptionsBucket.size > 0"
                         (click)="newExceptionsBucket.size > 0 ? onClearAllNewDates() : null">
-                        {{ 'UI_CLEAR_ALL_DATES' | translate }}
+                        {{ 'DAYS_OFF.MANAGEMENT.CLEAR_ALL_DATES' | translate }}
                         <span id="dateCounter">&nbsp;{{ newExceptionsBucket.size }}</span>
                     </li>
                 </ul>
@@ -38,13 +38,14 @@
                     selectionMode="multiple"
                     panelStyleClass="primeng-calendar"
                     [ngModel]="daysOff"
-                    [disabledDays]="closedDays"
                     [disabledDates]="closedDates"
-                    [minDate]="todaysDate"
-                    [maxDate]="maxDate"
+                    [disabledDays]="closedDays"
+                    [firstDayOfWeek]="1"
                     [inline]="true"
-                    [showOtherMonths]="false"
+                    [maxDate]="maxDate"
+                    [minDate]="todaysDate"
                     [monthNavigator]="true"
+                    [showOtherMonths]="false"
                     [yearNavigator]="true"
                     [yearRange]="yearRange"
                     (onMonthChange)="onDateChange($event)"
@@ -57,7 +58,7 @@
     <div id="daysOffList">
         <div id="daysOffListSummary">
             <div id="saveDaysOff">
-                {{ 'UI_SAVED_DAYS_OFF' | translate }}&nbsp;
+                {{ 'DAYS_OFF.MANAGEMENT.SAVED_DAYS_OFF' | translate }}&nbsp;
                 <span *ngIf="existingExceptionsBucket.size > 0" class="badge">
                     {{ existingExceptionsBucket.size }}
                 </span>
@@ -65,10 +66,10 @@
 
             <ng-container *ngIf="cardData.length > 0">
                 <div *ngIf="markedForDeletionBucket.size > 0" id="restoreAll" (click)="onRestoreAll()">
-                    {{ 'UI_RESTORE_ALL_QUESTION' | translate }} &nbsp;<i class="fa fa-undo"></i>
+                    {{ 'DAYS_OFF.MANAGEMENT.RESTORE_ALL' | translate }} &nbsp;<i class="fa fa-undo"></i>
                 </div>
                 <div *ngIf="markedForDeletionBucket.size === 0" id="deleteAll" (click)="onDeleteAll()">
-                    {{ 'UI_SLOTS_DELETE_ALL' | translate }} &nbsp;<i class="far fa-times-circle"></i>
+                    {{ 'DAYS_OFF.MANAGEMENT.SLOTS_DELETE_ALL' | translate }} &nbsp;<i class="far fa-times-circle"></i>
                 </div>
             </ng-container>
         </div> <!-- /#daysOffListSummary -->
@@ -90,8 +91,8 @@
             <ng-template #noCards>
                 <div id="noDaysOff">
                     <i class="far fa-calendar-times"></i>
-                    <div class="no-dates-saved">{{ 'UI_NO_DATES_SAVED' | translate }}</div>
-                    {{ 'UI_SELECT_DATE_EXPLANATION' | translate }}
+                    <div class="no-dates-saved">{{ 'DAYS_OFF.MANAGEMENT.NO_DATES_SAVED' | translate }}</div>
+                    {{ 'DAYS_OFF.MANAGEMENT.SELECT_DATE_EXPLANATION' | translate }}
                 </div>
             </ng-template>
         </div> <!-- /#exceptionsListContainer -->

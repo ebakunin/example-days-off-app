@@ -74,13 +74,13 @@ export class AppComponent {
                     this.startingViewDate = this.currentViewedMonth;
                     this.newExceptionDates = [];
                     this.exceptionDatesToBeDeleted = [];
-                    this._toastService.successToast(this._translate.instant('UI_UPDATE_SUCCESS'));
+                    this._toastService.successToast(this._translate.instant('DAYS_OFF.MAIN.UPDATE_SUCCESS'));
                 } else {
-                    this._toastService.errorToast(this._translate.instant('UI_ERROR_SUCCESS'));
+                    this._toastService.errorToast(this._translate.instant('DAYS_OFF.MAIN.ERROR_SUCCESS'));
                 }
             },
             error: () => {
-                this._toastService.errorToast(this._translate.instant('UI_ERROR_SUCCESS'));
+                this._toastService.errorToast(this._translate.instant('DAYS_OFF.MAIN.ERROR_SUCCESS'));
             }
         });
     }

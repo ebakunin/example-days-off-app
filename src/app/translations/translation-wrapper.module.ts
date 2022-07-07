@@ -1,7 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {
-    LangChangeEvent,
     MissingTranslationHandler,
     TranslateLoader,
     TranslateModule,
@@ -35,21 +34,15 @@ export function HttpLoaderFactory(http: HttpClient) {
 })
 export class TranslateWrapperModule {
     constructor(
-        @Optional() @SkipSelf() parentModule: TranslateWrapperModule,
+        @Optional() @SkipSelf() private _parentModule: TranslateWrapperModule,
         private _translateService: TranslateService
     ) {
-        if (parentModule) {
+        if (_parentModule) {
             throw new Error('TranslateWrapperModule is already loaded.');
         }
 
         const availableIsoCodes = AVAILABLE_LANGUAGES.map((lang) => lang.isoCode);
-        const defaultIsoCode = English.isoCode;
-
-        _translateService.onLangChange.subscribe((e: LangChangeEvent) => {
-            const browserLang = _translateService.getBrowserCultureLang();
-            const lang = browserLang?.startsWith(e.lang) ? browserLang : e.lang;
-            localStorage.setItem('currentLanguage', lang === 'en' ? English.isoCode : lang);
-        });
+        const defaultIsoCode = localStorage.getItem('currentLanguage') ?? English.isoCode;
 
         _translateService.addLangs(availableIsoCodes);
         _translateService.setDefaultLang(defaultIsoCode);

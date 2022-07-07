@@ -1,38 +1,50 @@
 {
-    "UI_PAGE_TITLE": "Example Day Off Management App",
-    "UI_TODAY": "Today",
-    "UI_SELECT_MONTH": "Select Month",
-    "UI_SELECT_YEAR": "Select Year",
-    "UI_CLEAR_MONTH": "Clear Month",
-    "UI_CLEAR_ALL_DATES": "Clear All Dates",
-    "UI_SAVED_DAYS_OFF": "Saved Days Off",
-    "UI_RESTORE_ALL_QUESTION": "Restore All",
-    "UI_SLOTS_DELETE_ALL": "Delete All",
-    "UI_NO_DATES_SAVED": "No Dates Saved",
-    "UI_SELECT_DATE_EXPLANATION": "Select a date from the calendar and click the save button.",
-    "UI_SAVE": "Save",
-    "UI_NEXT": "next",
-    "UI_CLOSE": "close",
-    "UI_DAYS_OFF_EXPLANATION": "Use the calendar to select or remove up to 365 days off within the next two years.",
-    "UI_DAYS_OFF_TITLE": "Example Days Off Scheduling App",
-    "UI_UPDATE_SUCCESS": "Days off updated",
-    "UI_UPDATE_ERROR": "Error updating days off",
-    "UI_SELECT_LANGUAGE": "Select a language",
-    "UI_APP_EXPLANATION": "How the app works",
-    "UI_GITHUB_CODE": "See the code on Github",
-    "UI_SEND_MESSAGE": "Send me a message",
-    "UI_MESSAGE_SUCCESS": "Thanks for the message",
-    "UI_MESSAGE_ERROR": "There was an error sending your message",
-    "UI_MESSAGE_ME": "Message Me",
-    "UI_MESSAGE_PLACEHOLDER": "Say something nice, or at least interesting...",
-    "UI_NAME_PLACEHOLDER": "Your name",
-    "UI_EMAIL_PLACEHOLDER": "Your email",
-    "UI_SEND": "Send",
-    "UI_EXPLANATION_1": "This app demonstrates how an employee can schedule their days off from work. In this example the office is closed during the weekend. The employee already has several days off scheduled. By clicking dates on the calendar you can add or remove as many as 365 days off at a time.",
-    "UI_EXPLANATION_2": "The app is fully mobile responsive. It supports multiple languages and can switch on the fly. Because this is a demonstration, all default data is mocked and does not communicate with an API. CRUD actions do work as expected but are lost if the page is refreshed.",
-    "UI_EXPLANATION_3": "The codebase is built on Angular 12. The calendar is a heavily customized version of a PrimeNG component. Other PrimeNG UI components are used as well. The bare bones CSS framework is based on Skeleton. The app codebase is available on GitHub.",
-    "UI_EXPLANATION_4": "The app is based on my code from a previous job. It is somewhat over-engineered to show off various technologies. If you have any questions, suggestions, or (horror) find a bug feel free to message me.",
-    "UI_BACK_TO": "Back to",
-    "UI_DARK_MODE": "Switch to dark mode",
-    "UI_LIGHT_MODE": "Switch to light mode"
+    "CONTACT": {
+        "EMAIL_PLACEHOLDER": "Your email",
+        "MESSAGE_ERROR": "There was an error sending your message",
+        "MESSAGE_ME": "Message Me",
+        "MESSAGE_PLACEHOLDER": "Say something nice, or at least interesting...",
+        "MESSAGE_SUCCESS": "Thanks for the message",
+        "NAME_PLACEHOLDER": "Your name",
+        "SEND": "Send"
+    },
+    "DAYS_OFF": {
+        "MAIN": {
+            "BACK_TO": "Back to",
+            "EXPLANATION": "Use the calendar to select or remove up to 365 days off within the next two years.",
+            "SAVE": "Save",
+            "TITLE": "Example Days Off Scheduling App",
+            "UPDATE_ERROR": "Error updating days off",
+            "UPDATE_SUCCESS": "Days off updated"
+        },
+        "MANAGEMENT": {
+            "CLEAR_ALL_DATES": "Clear All Dates",
+            "CLEAR_MONTH": "Clear Month",
+            "NO_DATES_SAVED": "No Dates Saved",
+            "RESTORE_ALL": "Restore All",
+            "SAVED_DAYS_OFF": "Saved Days Off",
+            "SELECT_DATE_EXPLANATION": "Select a date from the calendar and click the save button.",
+            "SELECT_MONTH": "Select Month",
+            "SELECT_YEAR": "Select Year",
+            "SLOTS_DELETE_ALL": "Delete All",
+            "TODAY": "Today"
+        }
+    },
+    "EXPLANATIONS": {
+        "BOX_1": "This app demonstrates how an employee can schedule their days off from work. In this example the office is closed during the weekend. The employee already has several days off scheduled. By clicking dates on the calendar you can add or remove as many as 365 days off at a time.",
+        "BOX_2": "The app is fully mobile responsive. It supports multiple languages and can switch on the fly. Because this is a demonstration, all default data is mocked and does not communicate with an API. CRUD actions do work as expected but are lost if the page is refreshed.",
+        "BOX_3": "The codebase is built on Angular 12. The calendar is a heavily customized version of a PrimeNG component. Other PrimeNG UI components are used as well. The bare bones CSS framework is based on Skeleton. The app codebase is available on GitHub.",
+        "BOX_4": "The app is based on my code from a previous job. It is somewhat over-engineered to show off various technologies. If you have any questions, suggestions, or (horror) find a bug feel free to message me."
+    },
+    "MENU": {
+        "APP_EXPLANATION": "How the app works",
+        "DARK_MODE": "Switch to dark mode",
+        "GITHUB_CODE": "See the code on Github",
+        "LIGHT_MODE": "Switch to light mode",
+        "SELECT_LANGUAGE": "Select a language",
+        "SEND_MESSAGE": "Send me a message"
+    },
+    "primeng": {
+        "dayNamesMin": ["S", "M", "T", "W", "T", "F", "S"]
+    }
 }

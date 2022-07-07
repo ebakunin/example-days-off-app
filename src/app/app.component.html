@@ -1,8 +1,8 @@
 <app-menu></app-menu>
 
-<h1 id="title">{{ 'UI_DAYS_OFF_TITLE' | translate }}&nbsp;</h1>
+<h1 id="title">{{ 'DAYS_OFF.MAIN.TITLE' | translate }}&nbsp;</h1>
 
-<p id="summary">{{ 'UI_DAYS_OFF_EXPLANATION' | translate }}&nbsp;</p>
+<p id="summary">{{ 'DAYS_OFF.MAIN.EXPLANATION' | translate }}&nbsp;</p>
 
 <section>
     <ng-container *ngIf="dataIsReady; else showSkeleton">
@@ -29,14 +29,14 @@
                 class="button-primary"
                 [disabled]="newExceptionDates.length === 0 && exceptionDatesToBeDeleted.length === 0"
                 (click)="onSave()">
-            {{ 'UI_SAVE' | translate }}
+            {{ 'DAYS_OFF.MAIN.SAVE' | translate }}
         </button>
     </div>
 </section>
 
 <footer>
     © 2021<br>
-    <span>{{ 'UI_BACK_TO' | translate }} <a href="http://ericchristenson.com">ericchristenson.com</a></span>
+    <span>{{ 'DAYS_OFF.MAIN.BACK_TO' | translate }} <a href="http://ericchristenson.com">ericchristenson.com</a></span>
 </footer>
 
 <div *ngIf="showMesh$ | async" class="mesh"></div>
