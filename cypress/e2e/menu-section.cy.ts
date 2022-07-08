@@ -1,15 +1,33 @@
-const EnglishTitleText = 'Example Days Off Scheduling App';
-const FrenchTitleText = `Exemple d'application de planification des jours de congé`;
-const SpanishTitleText = 'Ejemplo de aplicación de programación de días libres';
-const sentMessage = { message: 'Testing', name: 'Mr Test', email: 'test@testing.com' };
 
 describe('Menu Section', () => {
-    it('Visit the page', () => {
-        cy.visit('/')
-        cy.get('#title').contains(EnglishTitleText);
+    let EnglishTitle: string;
+    let SpanishTitle: string;
+    let FrenchTitle: string;
+
+    it('Load translations', () => {
+        cy.fixture('../../src/assets/i18n/en-US.json').then((data) => EnglishTitle = data.DAYS_OFF.MAIN.TITLE);
+        cy.fixture('../../src/assets/i18n/es-ES.json').then((data) => SpanishTitle = data.DAYS_OFF.MAIN.TITLE);
+        cy.fixture('../../src/assets/i18n/fr-FR.json').then((data) => FrenchTitle = data.DAYS_OFF.MAIN.TITLE);
     });
 
-    context.skip('Language selection', () => {
+    it('Visit the page', () => {
+        cy.visit('/')
+        cy.get('#title').contains(EnglishTitle);
+    });
+
+    context('Toggle dark mode', () => {
+        it('should switch to dark mode', () => {
+            cy.get('#selectTheme').click();
+            cy.get('body').should('have.attr', 'data-theme', 'dark');
+        });
+
+        it('should switch back to light mode', () => {
+            cy.get('#selectTheme').click();
+            cy.get('body').should('have.attr', 'data-theme', '');
+        });
+    });
+
+    context('Language selection', () => {
         beforeEach(() => {
             cy.get('#selectLanguage').click();
             cy.get('.p-dropdown-label').click();
@@ -19,21 +37,21 @@ describe('Menu Section', () => {
 
         it('should change to Spanish', () => {
             cy.get('@dropdown').find('.p-dropdown-item').contains('Español').click();
-            cy.get('@title').contains(SpanishTitleText);
+            cy.get('@title').contains(SpanishTitle);
         });
 
         it('should change to French', () => {
             cy.get('@dropdown').find('.p-dropdown-item').contains('Française').click();
-            cy.get('@title').contains(FrenchTitleText);
+            cy.get('@title').contains(FrenchTitle);
         });
 
         it('should change to English', () => {
             cy.get('@dropdown').find('.p-dropdown-item').contains('English').click();
-            cy.get('@title').contains(EnglishTitleText);
+            cy.get('@title').contains(EnglishTitle);
         });
     });
 
-    context.skip('Show explanation', () => {
+    context('Show explanation', () => {
         it('should show first container', () => {
             cy.get('#showExplanation').click();
             cy.get('.mesh').should('exist');
@@ -49,15 +67,18 @@ describe('Menu Section', () => {
         });
     });
 
-    context.skip('Go to GitHub', () => {
+    context('Go to GitHub', () => {
         it('should have the correct link', () => {
             cy.get('#toGitHub').should('have.attr', 'href', 'https://github.com/ebakunin/example-days-off-app');
         });
     });
 
     context('Message me', () => {
-        beforeEach(() => {
-        });
+        const sentMessage = {
+            message: 'Testing',
+            name: 'Mr Test',
+            email: 'test@testing.com'
+        };
 
         it('should show the dialog box', () => {
             cy.get('#sendMessage').click();
