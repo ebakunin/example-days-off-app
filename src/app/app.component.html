@@ -1,8 +1,12 @@
 <app-menu></app-menu>
 
-<h1 id="title">{{ 'DAYS_OFF.MAIN.TITLE' | translate }}&nbsp;</h1>
+<h1 id="title">{{ 'DAYS_OFF.MAIN.TITLE' | translate }}</h1>
 
-<p id="summary">{{ 'DAYS_OFF.MAIN.EXPLANATION' | translate }}&nbsp;</p>
+<p id="summary">
+    {{ 'DAYS_OFF.MAIN.EXPLANATION_1' | translate }}<br>
+    {{ 'DAYS_OFF.MAIN.EXPLANATION_2' | translate }}<br>
+    {{ 'DAYS_OFF.MAIN.EXPLANATION_3' | translate }}
+</p>
 
 <section>
     <ng-container *ngIf="dataIsReady; else showSkeleton">

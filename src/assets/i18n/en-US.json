@@ -3,7 +3,7 @@
         "EMAIL_PLACEHOLDER": "Your email",
         "MESSAGE_ERROR": "There was an error sending your message",
         "MESSAGE_ME": "Message Me",
-        "MESSAGE_PLACEHOLDER": "Say something nice, or at least interesting...",
+        "MESSAGE_PLACEHOLDER": "Say something nice, or at least interesting…",
         "MESSAGE_SUCCESS": "Thanks for the message",
         "NAME_PLACEHOLDER": "Your name",
         "SEND": "Send"
@@ -11,9 +11,11 @@
     "DAYS_OFF": {
         "MAIN": {
             "BACK_TO": "Back to",
-            "EXPLANATION": "Use the calendar to select or remove up to 365 days off within the next two years.",
+            "EXPLANATION_1": "Use the calendar to schedule your days off work. 7 days off have already been scheduled for you.",
+            "EXPLANATION_2": "Clicking on a currently scheduled day will turn it red as it will be canceled. You can select or deselect any other date to schedule new days off.",
+            "EXPLANATION_3": "Click SAVE to update your schedule.",
             "SAVE": "Save",
-            "TITLE": "Example Days Off Scheduling App",
+            "TITLE": "Schedule Your Days Off Work (example app)",
             "UPDATE_ERROR": "Error updating days off",
             "UPDATE_SUCCESS": "Days off updated"
         },
@@ -27,7 +29,7 @@
             "SELECT_MONTH": "Select Month",
             "SELECT_YEAR": "Select Year",
             "SLOTS_DELETE_ALL": "Delete All",
-            "TODAY": "Today"
+            "TODAY": "Go To Today"
         }
     },
     "EXPLANATIONS": {

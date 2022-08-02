@@ -3,7 +3,7 @@
         "EMAIL_PLACEHOLDER": "Votre e-mail",
         "MESSAGE_ERROR": "Une erreur est survenue lors de l'envoi de votre message",
         "MESSAGE_ME": "Envoie moi un message",
-        "MESSAGE_PLACEHOLDER": "Dites quelque chose de gentil, ou au moins d'intéressant...",
+        "MESSAGE_PLACEHOLDER": "Dites quelque chose de gentil, ou au moins d'intéressant…",
         "MESSAGE_SUCCESS": "Merci pour le message",
         "NAME_PLACEHOLDER": "Votre nom",
         "SEND": "Envoyer"
@@ -11,9 +11,11 @@
     "DAYS_OFF": {
         "MAIN": {
             "BACK_TO": "Retour à",
-            "EXPLANATION": "Utilisez le calendrier pour sélectionner ou supprimer jusqu'à 365 jours de congé au cours des deux prochaines années.",
+            "EXPLANATION_1": "Utilisez le calendrier pour planifier vos jours de congé. 7 jours de repos ont déjà été programmés pour vous.",
+            "EXPLANATION_2": "Cliquer sur un jour actuellement programmé le rendra rouge car il sera annulé. Vous pouvez sélectionner ou désélectionner toute autre date pour planifier de nouveaux jours de congé.",
+            "EXPLANATION_3": "Cliquez sur ENREGISTRER pour mettre à jour votre horaire.",
             "SAVE": "Enregistrer",
-            "TITLE": "Exemple d'application de gestion des jours de congé",
+            "TITLE": "Planifiez vos jours de congé (exemple d'application)",
             "UPDATE_SUCCESS": "Jours de congé mis à jour",
             "UPDATE_ERROR": "Erreur lors de la mise à jour des jours de congé"
         },
@@ -27,7 +29,7 @@
             "SELECT_MONTH": "Sélectionnez le mois",
             "SELECT_YEAR": "Sélectionnez l'année",
             "SLOTS_DELETE_ALL": "Tout supprimer",
-            "TODAY": "Aujourd'hui"
+            "TODAY": "Aller à aujourd'hui"
         }
     },
     "EXPLANATIONS": {

@@ -3,7 +3,7 @@
         "EMAIL_PLACEHOLDER": "Tu e-mail",
         "MESSAGE_ERROR": "Hubo un error al enviar su mensaje",
         "MESSAGE_ME": "Mensajeame",
-        "MESSAGE_PLACEHOLDER": "Di algo agradable, o al menos interesante...",
+        "MESSAGE_PLACEHOLDER": "Di algo agradable, o al menos interesante…",
         "MESSAGE_SUCCESS": "Gracias por el mensaje",
         "NAME_PLACEHOLDER": "Tu nombre",
         "SEND": "Enviar"
@@ -11,9 +11,11 @@
     "DAYS_OFF": {
         "MAIN": {
             "BACK_TO": "De vuelta a",
-            "EXPLANATION": "Use el calendario para seleccionar o eliminar hasta 365 días libres dentro de los próximos dos años.",
+            "EXPLANATION_1": "Utilice el calendario para programar sus días de descanso. Ya se han programado 7 días libres para usted.",
+            "EXPLANATION_2": "Al hacer clic en un día programado actualmente, se volverá rojo ya que se cancelará. Puede seleccionar o deseleccionar cualquier otra fecha para programar nuevos días libres.",
+            "EXPLANATION_3": "Haz clic en GUARDAR para actualizar tu horario.",
             "SAVE": "Guardar",
-            "TITLE": "Ejemplo de aplicación de programación de días libres",
+            "TITLE": "Programe sus días libres de trabajo (aplicación de ejemplo)",
             "UPDATE_ERROR": "Error al actualizar los días libres",
             "UPDATE_SUCCESS": "Días libres actualizados"
         },
@@ -27,7 +29,7 @@
             "SELECT_MONTH": "Seleccionar mes",
             "SELECT_YEAR": "Seleccionar año",
             "SLOTS_DELETE_ALL": "Borre todo",
-            "TODAY": "Hoy"
+            "TODAY": "Ir a hoy"
         }
     },
     "EXPLANATIONS": {
