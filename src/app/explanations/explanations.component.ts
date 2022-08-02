@@ -9,7 +9,7 @@ import {
     ViewChildren
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { distinctUntilChanged, filter, takeUntil } from 'rxjs/operators';
+import { delay, distinctUntilChanged, filter, takeUntil, tap } from 'rxjs/operators';
 
 import { AppService } from '../services/app.service';
 
@@ -22,9 +22,12 @@ import { AppService } from '../services/app.service';
 export class ExplanationsComponent implements OnInit {
     @ViewChildren('showSteps') showSteps!: QueryList<ElementRef>;
 
-    readonly #destroy$ = new Subject<boolean>();
+    readonly #onDestroy$ = new Subject<boolean>();
+    #isVisible = false;
 
-    constructor(private _appService: AppService, private _renderer: Renderer2) {}
+    constructor(private _appService: AppService,
+                private _elementRef: ElementRef,
+                private _renderer: Renderer2) {}
 
     /**
      *
@@ -33,8 +36,20 @@ export class ExplanationsComponent implements OnInit {
         this._appService.showExplanation$.pipe(
             distinctUntilChanged(),
             filter(Boolean),
-            takeUntil(this.#destroy$)
-        ).subscribe(() => this._renderer.setStyle(this.showSteps.get(0)?.nativeElement, 'display', 'block'));
+            tap(() => this._renderer.setStyle(this.showSteps.get(0)?.nativeElement, 'display', 'block')),
+            delay(100),
+            tap(() => this.#isVisible = true),
+            takeUntil(this.#onDestroy$)
+        ).subscribe();
+    }
+
+    /**
+     *
+     */
+    onClose(): void {
+        this.showSteps.forEach((el) => this._renderer.setStyle(el.nativeElement, 'display', 'none'));
+        this.#isVisible = false;
+        this._appService.showExplanation$.next(false);
     }
 
     /**
@@ -44,18 +59,20 @@ export class ExplanationsComponent implements OnInit {
     onEscape = () => this.onClose();
 
     /**
+     * @param {MouseEvent} e
+     */
+    @HostListener('document:click', ['$event'])
+    onOffClick(e: MouseEvent): void {
+        if (this.#isVisible && !this._elementRef.nativeElement.contains(e.target)) {
+            this.onClose();
+        }
+    }
+
+    /**
      * @param {number} step
      */
     showNextExplanationText(step: number): void {
         this.showSteps.forEach((el) => this._renderer.setStyle(el.nativeElement, 'display', 'none'));
         this._renderer.setStyle(this.showSteps.get(step)?.nativeElement, 'display', 'block');
-    }
-
-    /**
-     *
-     */
-    onClose(): void {
-        this.showSteps.forEach((el) => this._renderer.setStyle(el.nativeElement, 'display', 'none'));
-        this._appService.showExplanation$.next(false);
     }
 }

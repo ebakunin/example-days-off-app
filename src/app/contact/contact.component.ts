@@ -30,7 +30,7 @@ export class ContactComponent implements OnDestroy, OnInit {
     isVisible = false;
     isSendingMessage = false;
 
-    readonly #destroy$ = new Subject<boolean>();
+    readonly #onDestroy$ = new Subject<boolean>();
 
     constructor(private _appService: AppService,
                 private _cdr: ChangeDetectorRef,
@@ -49,8 +49,8 @@ export class ContactComponent implements OnDestroy, OnInit {
      * Cancel subscriptions.
      */
     ngOnDestroy(): void {
-        this.#destroy$.next(true);
-        this.#destroy$.complete();
+        this.#onDestroy$.next(true);
+        this.#onDestroy$.complete();
     }
 
     /**
@@ -107,7 +107,7 @@ export class ContactComponent implements OnDestroy, OnInit {
     #setDialogVisibility(): void {
         this.showContactDialog$.pipe(
             distinctUntilChanged(),
-            takeUntil(this.#destroy$)
+            takeUntil(this.#onDestroy$)
         ).subscribe((visible) => {
             this.isVisible = visible;
             if (this.isVisible) {

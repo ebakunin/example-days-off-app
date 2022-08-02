@@ -123,7 +123,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     newExceptionsBucket = new Set<number>();
     #closedDatesBucket = new Set<number>();
 
-    readonly #destroy$ = new Subject<boolean>();
+    readonly #onDestroy$ = new Subject<boolean>();
     #monthHeaderTracker: number | null = null;
 
     /*
@@ -172,8 +172,8 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
      *
      */
     ngOnDestroy(): void {
-        this.#destroy$.next(true);
-        this.#destroy$.complete();
+        this.#onDestroy$.next(true);
+        this.#onDestroy$.complete();
     }
 
     /**
@@ -404,7 +404,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     #setSelectedLanguage(): void {
         this._languagesService.selectedLanguage$.pipe(
             distinctUntilKeyChanged('isoCode'),
-            takeUntil(this.#destroy$)
+            takeUntil(this.#onDestroy$)
         ).subscribe((language) => this.#setCalendarLocale(language.isoCode));
     }
 

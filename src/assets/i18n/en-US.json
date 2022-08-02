@@ -26,8 +26,8 @@
             "RESTORE_ALL": "Restore All",
             "SAVED_DAYS_OFF": "Saved Days Off",
             "SELECT_DATE_EXPLANATION": "Select a date from the calendar and click the save button.",
-            "SELECT_MONTH": "Select Month",
-            "SELECT_YEAR": "Select Year",
+            "SELECT_MONTH": "Select Entire Month",
+            "SELECT_YEAR": "Select Entire Year",
             "SLOTS_DELETE_ALL": "Delete All",
             "TODAY": "Go To Today"
         }
