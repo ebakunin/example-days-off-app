@@ -1,6 +1,5 @@
 @import './../styles/skeleton-sass/src/themes/custom/vars';
 
-
 .primeng-calendar {
     &.p-datepicker {
         border: none;
@@ -9,6 +8,7 @@
         font-family: var(--font-family);
         font-size: 1.5rem;
         padding-bottom: 0;
+        width: 100% !important;
 
         &:not(.p-disabled) table td span:not(.p-highlight):not(.p-disabled):hover {
             //background-color: red;
@@ -129,6 +129,10 @@
 
 /* CUSTOM ID STYLING */
 #scheduleExceptionCalendar {
+    .p-calendar {
+        width: 100%;
+    }
+
     .p-datepicker-calendar {
         td {
             &.p-datepicker-today {

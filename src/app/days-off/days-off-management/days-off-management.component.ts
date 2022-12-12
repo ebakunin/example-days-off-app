@@ -553,27 +553,28 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
         for (let i = 0; i < elements?.length; i++) {
             const textContent = elements[i].textContent as string;
+            const classList = elements[i].classList;
 
             if (removedExceptions.includes(textContent)) {
-                elements[i].classList.remove('existing-exception-dates');
-                elements[i].classList.remove('new-exception-dates');
-                elements[i].classList.add('removed-exception-dates');
-                elements[i].classList.add('p-highlight');
+                classList.remove('existing-exception-dates');
+                classList.remove('new-exception-dates');
+                classList.add('removed-exception-dates');
+                classList.add('p-highlight');
             } else if (originalExceptions.includes(textContent)) {
-                elements[i].classList.add('existing-exception-dates');
-                elements[i].classList.remove('new-exception-dates');
-                elements[i].classList.remove('removed-exception-dates');
-                elements[i].classList.add('p-highlight');
+                classList.add('existing-exception-dates');
+                classList.remove('new-exception-dates');
+                classList.remove('removed-exception-dates');
+                classList.add('p-highlight');
             } else if (newExceptions.includes(textContent)) {
-                elements[i].classList.remove('existing-exception-dates');
-                elements[i].classList.add('new-exception-dates');
-                elements[i].classList.remove('removed-exception-dates');
-                elements[i].classList.add('p-highlight');
+                classList.remove('existing-exception-dates');
+                classList.add('new-exception-dates');
+                classList.remove('removed-exception-dates');
+                classList.add('p-highlight');
             } else {
-                elements[i].classList.remove('existing-exception-dates');
-                elements[i].classList.remove('new-exception-dates');
-                elements[i].classList.remove('removed-exception-dates');
-                elements[i].classList.remove('p-highlight');
+                classList.remove('existing-exception-dates');
+                classList.remove('new-exception-dates');
+                classList.remove('removed-exception-dates');
+                classList.remove('p-highlight');
             }
         }
     }
