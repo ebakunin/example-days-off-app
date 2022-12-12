@@ -146,6 +146,13 @@
             .p-calendar, .p-datepicker {
                 border: none;
             }
+
+        }
+    }
+
+    #scheduleExceptionCalendar ::ng-deep {
+        .p-datepicker {
+            width: auto !important;
         }
     }
 }
