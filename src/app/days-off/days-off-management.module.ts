@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { CommonPipesModule } from '../shared/pipes.module';
-import { MaterialModule } from '../shared/material.module';
-import { TranslateWrapperModule } from '../translations/translation-wrapper.module';
+import { CommonPipesModule } from '@daysOff/shared/pipes.module';
+import { MaterialModule } from '@daysOff/shared/material.module';
+import { TranslateWrapperModule } from '@daysOff/translations/translation-wrapper.module';
 
-import { DayOffCardComponent } from './day-off-card/day-off-card.component';
-import { DaysOffManagementComponent } from './days-off-management/days-off-management.component';
+import { DayOffCardComponent } from '@daysOff/days-off/day-off-card/day-off-card.component';
+import { DaysOffManagementComponent } from '@daysOff/days-off/days-off-management/days-off-management.component';
 
 @NgModule({
     declarations: [

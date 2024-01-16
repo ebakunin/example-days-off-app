@@ -11,11 +11,11 @@ import {
     Renderer2,
     ViewChild
 } from '@angular/core';
-import { Calendar } from 'primeng/calendar';
-import { PrimeNGConfig } from 'primeng/api';
-import { Translation } from 'primeng/api/translation';
-import { Subject } from 'rxjs';
-import { distinctUntilKeyChanged, takeUntil } from 'rxjs/operators';
+import {Calendar} from 'primeng/calendar';
+import {PrimeNGConfig} from 'primeng/api';
+import {Translation} from 'primeng/api/translation';
+import {Subject} from 'rxjs';
+import {distinctUntilKeyChanged, takeUntil} from 'rxjs/operators';
 import {
     addDays,
     addMonths,
@@ -33,9 +33,9 @@ import {
     startOfYear
 } from 'date-fns';
 
-import { LanguageService } from '../../services/language.service';
-import { Language } from '../../models/language.model';
-import { DayNumberType } from '../../shared/common.types';
+import {LanguageService} from '@daysOff/services/language.service';
+import {Language} from '@daysOff/models/language.model';
+import {DayNumberType} from '@daysOff/shared/common.types';
 
 /*
  * Component logic:
@@ -78,6 +78,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     get closedDates() {
         return this.#closedDates;
     }
+
     @Input() set closedDates(dates: Date[]) {
         this.#closedDates = dates;
         this.#closedDates
@@ -90,6 +91,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
         /* PrimeNG Calendar throws an error if given an empty array but accepts `null` */
         return this.#daysOff.length > 0 ? this.#daysOff : null;
     }
+
     @Input() set daysOff(dates: Date[] | null) {
         if (!Array.isArray(dates)) {
             dates = [];
@@ -134,10 +136,11 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     private static _MAX_NEW_EXCEPTION_DATES = 365;
 
-    constructor(private _calendarConfig: PrimeNGConfig,
-                private _el: ElementRef,
-                private _languagesService: LanguageService,
-                private _renderer: Renderer2) {}
+    constructor(
+        private _calendarConfig: PrimeNGConfig,
+        private _languagesService: LanguageService,
+        private _renderer: Renderer2
+    ) {}
 
     /**
      *
@@ -177,7 +180,7 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     }
 
     /**
-     * @returns {ICardData[]}
+     *
      */
     get cardData(): ICardData[] {
         return [...this.existingExceptionsBucket]
@@ -190,7 +193,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * Note: month starts at 1 (e.g. August = 8)
-     * @param {{month: number, year: number}} e
      */
     onDateChange(e: { month: number, year: number }): void {
         if (!this.#disableUpdateCalendarView) {
@@ -279,7 +281,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * Mark an existing Schedule Exception for deletion and update the calendar.
-     * @param {Date} date
      */
     onMarkForDelete(date: Date): void {
         this.markedForDeletionBucket.add(date.getTime());
@@ -290,7 +291,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * Unmark an existing Schedule Exception set for deletion and update the calendar.
-     * @param {Date} date
      */
     onRestore(date: Date): void {
         this.markedForDeletionBucket.delete(date.getTime());
@@ -311,7 +311,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * Scroll to a month on the Calendar.
-     * @param {Date} selectedDate
      */
     goToMonth(selectedDate: Date): void {
         const viewedMonth = startOfMonth(
@@ -345,8 +344,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * Determines whether to show the month separator for cards in #exceptionsListContainer.
-     * @param {Date} date
-     * @param {number} index
      * @returns {boolean}
      */
     shouldShowCardMonthSeparator(date: Date, index: number): boolean {
@@ -358,11 +355,8 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * A `trackBy` method
-     * @param {number} index
-     * @param {ICardData} item
-     * @returns {number}
      */
-    trackCardData = (index: number, item: ICardData) => item.date.getTime();
+    trackCardData = (_: number, item: ICardData) => item.date.getTime();
 
     /**
      * Attach a listener to the Calendar to manage selection changes and emit results.
@@ -410,7 +404,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * Populates the `calendarLocale` value for the Calendar, which is needed for datetime translations.
-     * @param {Language["isoCode"]} isoCode
      * @private
      */
     #setCalendarLocale(isoCode: Language['isoCode']): void {
@@ -453,7 +446,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * Manage `markedForDeletionBucket` when selecting an existing Schedule Exception on the Calendar.
-     * @param {number} clickedDatetime
      * @private
      */
     #manageExistingException(clickedDatetime: number): void {
@@ -467,7 +459,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
     /**
      * Update `newExceptionsBucket` when adding new days on the Calendar.
      * The user cannot add more than `_MAX_NEW_EXCEPTION_DATES` days at a time.
-     * @param {number[]} selectedDateTimes
      * @private
      */
     #addDates(selectedDateTimes: number[]): void {
@@ -480,7 +471,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * Remove the selected days from `newExceptionsBucket`.
-     * @param {number[]} clickedDateTimes
      * @private
      */
     #removeDates(clickedDateTimes: number[]): void {
@@ -522,7 +512,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * Updates the styling of the Calendar month, marking removed, existing, and new Exception days as appropriate.
-     * @param {HTMLElement[]} elements
      * @private
      */
     #repaintCalendarMonth(elements: HTMLElement[]): void {
@@ -630,8 +619,6 @@ export class DaysOffManagementComponent implements AfterViewInit, OnDestroy, OnI
 
     /**
      * Add Dates within a range and update the Calendar.
-     * @param {Date} startDate
-     * @param {Date} endDate
      * @private
      */
     #selectedDaysInRange(startDate: Date, endDate: Date): void {

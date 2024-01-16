@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import 'numeral/locales';
 
-import './common.functions';
+import '@daysOff/shared/common.functions';
 
 @Pipe({name: 'ucfirst'})
 export class UcFirstPipe implements PipeTransform {

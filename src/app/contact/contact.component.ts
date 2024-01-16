@@ -5,11 +5,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { finalize, Subject } from 'rxjs';
 import { distinctUntilChanged, filter, take, takeUntil } from 'rxjs/operators';
 
-import { AppService } from '../services/app.service';
-import { ToastService } from '../services/toast.service';
+import { AppService } from '@daysOff/services/app.service';
+import { ToastService } from '@daysOff/services/toast.service';
 
-import { CommonValidators } from '../shared/common.validators';
-import { ApiResponseType } from '../shared/common.types';
+import { CommonValidators } from '@daysOff/shared/common.validators';
+import { ApiResponseType } from '@daysOff/shared/common.types';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -24,7 +24,7 @@ export class ContactComponent implements OnDestroy, OnInit {
     readonly form = new FormGroup({
         message: new FormControl<string>('', CommonValidators.requiredTrimmed),
         name: new FormControl<string>('', CommonValidators.requiredTrimmed),
-        email: new FormControl<string>('', [Validators.required, Validators.email]),
+        email: new FormControl<string>('', [Validators.required, Validators.email])
     });
 
     isVisible = false;
@@ -71,7 +71,7 @@ export class ContactComponent implements OnDestroy, OnInit {
 
         this.isSendingMessage = true;
 
-        const path = '//www.ericchristenson.com/message';
+        const path = 'https://ericchristenson.com/message';
         const body = 'message=' + encodeURIComponent(this.form.get('message')?.value?.trim() as string)
             + '&name=' + encodeURIComponent(this.form.get('name')?.value?.trim() as string)
             + '&email=' + encodeURIComponent(this.form.get('email')?.value?.trim() as string);

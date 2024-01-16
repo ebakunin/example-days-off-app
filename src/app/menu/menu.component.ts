@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { distinctUntilKeyChanged, map } from 'rxjs/operators';
+import {ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {distinctUntilKeyChanged, map} from 'rxjs/operators';
 
-import { AppService } from '../services/app.service';
-import { LanguageService } from '../services/language.service';
-import { Language } from '../models/language.model';
+import {AppService} from '@daysOff/services/app.service';
+import {LanguageService} from '@daysOff/services/language.service';
+import {Language} from '@daysOff/models/language.model';
 
 @Component({
     selector: 'app-menu',
@@ -21,9 +21,11 @@ export class MenuComponent implements OnInit {
     showDropdown = false;
     inDarkMode = false;
 
-    constructor(private _appService: AppService,
-                private _elementRef: ElementRef,
-                private _languageService: LanguageService) {}
+    constructor(
+        private _appService: AppService,
+        private _elementRef: ElementRef,
+        private _languageService: LanguageService
+    ) {}
 
     /**
      *
@@ -35,7 +37,7 @@ export class MenuComponent implements OnInit {
     }
 
     /**
-     * @returns {Observable<string>}
+     *
      */
     get globeIcon$(): Observable<string> {
         return this.selectedLanguage$.pipe(
@@ -75,7 +77,7 @@ export class MenuComponent implements OnInit {
     }
 
     /**
-     * @param {Language} language
+     *
      */
     onChangeLanguage(language: Language): void {
         this.selectedLanguage$.next(language)

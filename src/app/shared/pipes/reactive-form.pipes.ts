@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import {Pipe, PipeTransform} from '@angular/core';
+import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 
 @Pipe({name: 'formGroupType'})
 export class FormGroupTypePipe implements PipeTransform {
@@ -24,9 +24,6 @@ export class FormGroupTypePipe implements PipeTransform {
      * In the template:
      *   <input type="text" formControlName="name">
      *   <section [formGroup]="form.get('checkbox') | formGroupType">
-     *
-     * @param {AbstractControl} abstractControl
-     * @returns {FormGroup}
      */
     transform(abstractControl: AbstractControl): FormGroup {
         return abstractControl as FormGroup;
@@ -54,9 +51,6 @@ export class FormControlTypePipe implements PipeTransform {
      *   <section *ngFor="let options of form.get('options').controls">
      *       <input type="checkbox" [formControl]="options | formControlType">
      *   </section>
-     *
-     * @param {AbstractControl} abstractControl
-     * @returns {FormControl}
      */
     transform(abstractControl: AbstractControl): FormControl {
         return abstractControl as FormControl;
@@ -70,9 +64,6 @@ export class FormKeysPipe implements PipeTransform {
      *
      * @example
      *   <form *ngIf="(form | formKeys).length > 0" [formGroup]="form">
-     *
-     * @param {FormGroup} form
-     * @returns {string[]}
      */
     transform(form: FormGroup): string[] {
         return Object.keys(form.controls);

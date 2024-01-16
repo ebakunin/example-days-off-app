@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { merge, of } from 'rxjs';
-import { delay, first, switchMap, take, tap } from 'rxjs/operators';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import {merge, of} from 'rxjs';
+import {delay, first, switchMap, take, tap} from 'rxjs/operators';
 
-import { AppService } from './services/app.service';
-import { EmployeeService } from './services/employee.service';
-import { OfficeService } from './services/office.service';
-import { SpinnerService } from './services/spinner.service';
-import { ToastService } from './services/toast.service';
+import {AppService} from '@daysOff/services/app.service';
+import {EmployeeService} from '@daysOff/services/employee.service';
+import {OfficeService} from '@daysOff/services/office.service';
+import {SpinnerService} from '@daysOff/services/spinner.service';
+import {ToastService} from '@daysOff/services/toast.service';
 
 @Component({
     selector: 'app-root',
@@ -20,22 +20,25 @@ export class AppComponent {
     readonly employee$ = this._employeeService.employees.first$;
     readonly office$ = this._officeService.offices.first$;
 
+    readonly TODAY = new Date().getUTCFullYear();
+
     newExceptionDates: Date[] = [];
     exceptionDatesToBeDeleted: Date[] = [];
     startingViewDate!: Date;
     currentViewedMonth!: Date;
     dataIsReady = true;
 
-    constructor(private _appService: AppService,
-                private _employeeService: EmployeeService,
-                private _officeService: OfficeService,
-                private _spinnerService: SpinnerService,
-                private _toastService: ToastService,
-                private _translate: TranslateService) {}
+    readonly #DELAY_TIME = 0;
 
-    /**
-     *
-     */
+    constructor(
+        private _appService: AppService,
+        private _employeeService: EmployeeService,
+        private _officeService: OfficeService,
+        private _spinnerService: SpinnerService,
+        private _toastService: ToastService,
+        private _translate: TranslateService
+    ) {}
+
     onSave(): void {
         if (this.newExceptionDates.length === 0 && this.exceptionDatesToBeDeleted.length === 0) {
             return;
@@ -62,7 +65,7 @@ export class AppComponent {
                     return of(null);
                 }
             }),
-            delay(1000), // fake time communicating with the API
+            delay(this.#DELAY_TIME), // fake time communicating with the API
             take(1),
             tap(() => {
                 this.dataIsReady = true;

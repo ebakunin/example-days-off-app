@@ -1,12 +1,12 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import {NgModule, ModuleWithProviders} from '@angular/core';
+import {MessageService} from 'primeng/api';
 
-import { AppService } from './app.service';
-import { EmployeeService } from './employee.service';
-import { LanguageService } from './language.service';
-import { MessageService } from 'primeng/api';
-import { OfficeService } from './office.service';
-import { SpinnerService } from './spinner.service';
-import { ToastService } from './toast.service';
+import {AppService} from '@daysOff/services/app.service';
+import {EmployeeService} from '@daysOff/services/employee.service';
+import {LanguageService} from '@daysOff/services/language.service';
+import {OfficeService} from '@daysOff/services/office.service';
+import {SpinnerService} from '@daysOff/services/spinner.service';
+import {ToastService} from '@daysOff/services/toast.service';
 
 @NgModule()
 export class ServicesModule {

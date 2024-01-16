@@ -2,10 +2,7 @@
     <div class="menu-item">
         <i id="selectTheme"
            class="pointer fas"
-           [ngClass]="{
-             'fa-sun': inDarkMode,
-             'fa-adjust': !inDarkMode
-           }"
+           [ngClass]="{'fa-moon': inDarkMode, 'fa-sun': !inDarkMode}"
            [attr.aria-label]="(inDarkMode ? 'MENU.LIGHT_MODE' : 'MENU.DARK_MODE') | translate"
            [pTooltip]="(inDarkMode ? 'MENU.LIGHT_MODE' : 'MENU.DARK_MODE') | translate"
            tooltipPosition="left"
@@ -24,10 +21,11 @@
         </span>
 
         <div id="languageDropdown" *ngIf="showDropdown">
-            <p-dropdown [options]="(languages$ | async) || []"
-                        [ngModel]="selectedLanguage$ | async"
-                        (onChange)="onChangeLanguage($event.value)"
-                        optionLabel="nativeDescription">
+            <p-dropdown
+                [options]="(languages$ | async) || []"
+                [ngModel]="selectedLanguage$ | async"
+                (onChange)="onChangeLanguage($event.value)"
+                optionLabel="nativeDescription">
             </p-dropdown>
         </div>
     </div>

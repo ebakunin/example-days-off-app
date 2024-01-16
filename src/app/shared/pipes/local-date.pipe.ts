@@ -1,8 +1,8 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { Observable } from 'rxjs';
-import { distinctUntilKeyChanged, map } from 'rxjs/operators';
+import {Pipe, PipeTransform} from '@angular/core';
+import {Observable} from 'rxjs';
+import {distinctUntilKeyChanged, map} from 'rxjs/operators';
 
-import { LanguageService } from '../../services/language.service';
+import {LanguageService} from '@daysOff/services/language.service';
 
 type AngularDateTimeFormatOptions =
     'short'
@@ -59,7 +59,8 @@ export class LocaleDatePipe implements PipeTransform {
         fullTime: {hour: 'numeric', minute: '2-digit', timeZoneName: 'long'}, // 'h:mm:ss a zzzz'
     };
 
-    constructor(private _languagesService: LanguageService) {}
+    constructor(private _languagesService: LanguageService) {
+    }
 
     /**
      * Asynchronously returns a formatted date according to Intl.DateTimeFormat options.

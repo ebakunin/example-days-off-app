@@ -1,7 +1,7 @@
-import { addDays, addMonths, getDay, startOfToday } from 'date-fns';
-import { Employee } from '../models/employee.model';
-import { Language } from '../models/language.model';
-import { Office } from '../models/office.modal';
+import {addDays, addMonths, getDay, startOfToday} from 'date-fns';
+import {Employee} from '@daysOff/models/employee.model';
+import {Language} from '@daysOff/models/language.model';
+import {Office} from '@daysOff/models/office.modal';
 
 export const English = new Language();
 English.init({

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 import {
     CallFunctionPipe,
@@ -7,9 +7,9 @@ import {
     SortByDatePipe,
     UcFirstPipe,
     UcWordsPipe,
-} from './common.pipes';
-import { LocaleDatePipe } from './pipes/local-date.pipe';
-import { FormControlTypePipe, FormGroupTypePipe, FormKeysPipe } from './pipes/reactive-form.pipes';
+} from '@daysOff/shared/common.pipes';
+import {LocaleDatePipe} from '@daysOff/shared/pipes/local-date.pipe';
+import {FormControlTypePipe, FormGroupTypePipe, FormKeysPipe} from '@daysOff/shared/pipes/reactive-form.pipes';
 
 @NgModule({
     declarations: [

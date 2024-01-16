@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { BaseService } from './base.service';
-import { Office } from '../models/office.modal';
-import { ExampleOffice } from '../data/mock.data';
+import { BaseService } from '@daysOff/services/base.service';
+import { Office } from '@daysOff/models/office.modal';
+import { ExampleOffice } from '@daysOff/data/mock.data';
 
 @Injectable()
 export class OfficeService {

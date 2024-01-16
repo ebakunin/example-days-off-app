@@ -3,6 +3,14 @@
     "compileOnSave": false,
     "compilerOptions": {
         "baseUrl": "./",
+        "paths": {
+            "@daysOff/*": [
+                "src/app/*"
+            ],
+            "@cypress/*": [
+                "../cypress/*"
+            ]
+        },
         "outDir": "./dist/out-tsc",
         "forceConsistentCasingInFileNames": true,
         "strict": true,

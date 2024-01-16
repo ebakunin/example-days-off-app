@@ -1,13 +1,10 @@
-import { Injectable } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import {Injectable} from '@angular/core';
+import {MessageService} from 'primeng/api';
 
 @Injectable()
 export class ToastService {
     constructor(private _messageService: MessageService) {}
 
-    /**
-     * @param {string} summary
-     */
     successToast(summary: string): void {
         this._messageService.add({
             severity: 'success',
@@ -17,9 +14,6 @@ export class ToastService {
         });
     }
 
-    /**
-     * @param {string} summary
-     */
     errorToast(summary: string): void {
         this._messageService.add({
             severity: 'custom',
