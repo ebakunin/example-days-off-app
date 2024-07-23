@@ -5,7 +5,7 @@ This demo is meant to show off various technologies. It is a bit over-engineered
 Example: https://dev.ericchristenson.com
 
 ### Architecture
-* [Angular 14](https://angular.io/docs)
+* [Angular 18](https://angular.dev/overview)
 * [PrimeNG](https://www.primefaces.org/primeng/) UI components
 * Modified version of [Skeleton CSS](http://getskeleton.com/) framework
 * [date-fns](https://date-fns.org/) for date handling and localization
@@ -23,4 +23,4 @@ Example: https://dev.ericchristenson.com
   * Localized dates and times
 
 ### Testing
-Specs are written for both [Karma](https://karma-runner.github.io/) and [Cypress](https://www.cypress.io/) test suites. 
+Unit tests use the [Cypress](https://www.cypress.io/) test suite. 

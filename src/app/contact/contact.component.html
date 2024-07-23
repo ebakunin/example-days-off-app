@@ -1,42 +1,46 @@
-<p-dialog [header]="'CONTACT.MESSAGE_ME' | translate"
-          id="contactDialog"
-          position="bottom"
-          styleClass="contact-dialog"
-          [modal]="true"
-          [(visible)]="isVisible"
-          (onHide)="onHide()">
+<p-dialog
+  [header]="'CONTACT.MESSAGE_ME' | translate"
+  id="contactDialog"
+  position="bottom"
+  styleClass="contact-dialog"
+  [modal]="true"
+  [(visible)]="isVisible"
+  (onHide)="onHide()">
 
-    <form [formGroup]="form" autocomplete="off" (submit)="onSendMessage()">
-        <div>
-            <textarea id="yourMessage"
-                      formControlName="message"
-                      [placeholder]="'CONTACT.MESSAGE_PLACEHOLDER' | translate"
-                      autofocus
-                      maxlength="2500"
-                      required
-                      rows="4"></textarea>
-        </div>
+  <form [formGroup]="form" autocomplete="off" (submit)="onSendMessage()">
+    <div>
+      <textarea
+        id="yourMessage"
+        formControlName="message"
+        [placeholder]="'CONTACT.MESSAGE_PLACEHOLDER' | translate"
+        autofocus
+        maxlength="2500"
+        required
+        rows="4"></textarea>
+    </div>
 
-        <div>
-            <input type="text"
-                   formControlName="name"
-                   id="yourName"
-                   required
-                   [placeholder]="'CONTACT.NAME_PLACEHOLDER' | translate">
-        </div>
+    <div>
+      <input
+        type="text"
+        formControlName="name"
+        id="yourName"
+        required
+        [placeholder]="'CONTACT.NAME_PLACEHOLDER' | translate">
+    </div>
 
-        <div>
-            <input type="email"
-                   formControlName="email"
-                   id="yourEmail"
-                   required
-                   [placeholder]="'CONTACT.EMAIL_PLACEHOLDER' | translate">
-        </div>
+    <div>
+      <input
+        type="email"
+        formControlName="email"
+        id="yourEmail"
+        required
+        [placeholder]="'CONTACT.EMAIL_PLACEHOLDER' | translate">
+    </div>
 
-        <div>
-            <button id="sendButton" class="button-primary" [disabled]="!form.valid || this.isSendingMessage">
-                {{ 'CONTACT.SEND' | translate }}
-            </button>
-        </div>
-    </form>
+    <div>
+      <button id="sendButton" class="button-primary" tabindex="0" [disabled]="!form.valid || isSendingMessage">
+        {{ 'CONTACT.SEND' | translate }}
+      </button>
+    </div>
+  </form>
 </p-dialog>

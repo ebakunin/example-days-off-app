@@ -1,0 +1,79 @@
+::ng-deep {
+  /* Mobile */
+  /* Desktop */
+}
+@media only screen and (max-width: 600px) {
+  ::ng-deep .contact-dialog {
+    width: 95vw;
+  }
+  ::ng-deep .contact-dialog form {
+    display: block;
+  }
+}
+@media only screen and (min-width: 601px) {
+  ::ng-deep .contact-dialog {
+    width: 60vw;
+  }
+  ::ng-deep .contact-dialog form {
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: 7fr 1fr;
+  }
+  ::ng-deep .contact-dialog form button {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+::ng-deep .p-dialog {
+  border: 2px solid var(--text-background-color);
+  border-bottom: none;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+::ng-deep .p-dialog-title {
+  font-size: 2rem !important;
+}
+::ng-deep .p-dialog-header {
+  background-color: var(--body-background-color) !important;
+  color: var(--text-color) !important;
+}
+::ng-deep .p-dialog-header-close:hover {
+  background-color: transparent !important;
+}
+::ng-deep .p-dialog-header-close-icon {
+  font-size: 1.5rem;
+}
+::ng-deep .p-dialog-content {
+  background-color: var(--body-background-color) !important;
+}
+
+#contactDialog form {
+  font-size: 1.5rem;
+}
+#contactDialog form div {
+  align-self: baseline;
+  grid-column: 1/3;
+}
+#contactDialog form div textarea {
+  border-radius: var(--border-radius);
+  border-width: 1px;
+  height: inherit;
+  padding: 3px 6px;
+  resize: none;
+  width: 100%;
+}
+#contactDialog form div input {
+  border-radius: var(--border-radius);
+  border-width: 1px;
+  display: block;
+  padding: 3px 6px;
+  width: 100%;
+}
+#contactDialog form div:nth-child(3) {
+  grid-column: 1/2;
+}
+#contactDialog form div:nth-child(4) {
+  grid-column: 2/3;
+  justify-self: right;
+}
+
+/*# sourceMappingURL=contact.css.map */

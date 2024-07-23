@@ -1,28 +1,26 @@
-<!--
-Note that the `id` value in ".month-separator" must be in English format.
--->
-<div *ngIf="showMonthSeparator"
-     class="month-separator"
-     [id]="'m' + (date | date:'M') + (date | date:'yyyy')">
+@if (showMonthSeparator) {
+  <!-- Note that the `id` value in ".month-separator" must be in English format. -->
+  <div class="month-separator" [id]="'m' + (date | date:'M') + (date | date:'yyyy')">
     <hr>
     <span>{{ date | localeDate:{month: 'long'} | async }}</span>
-</div>
+  </div>
+}
 
-<div class="day-off-card"
-     [class.pending-delete]="pendingDelete"
-     (click)="pendingDelete ? markForRestore() : onMarkForDelete()">
-    <div class="cal-day">
-        <div class="cal-day-month">{{ date | localeDate:{month: 'short'} | async }}</div>
-        <div class="cal-day-date">{{ date | date:'dd' }}</div>
-    </div>
+<div
+  class="day-off-card"
+  [class.pending-delete]="pendingDelete"
+  (click)="pendingDelete ? markForRestore() : onMarkForDelete()">
+  <div class="cal-day">
+    <div class="cal-day-month">{{ date | localeDate:{month: 'short'} | async }}</div>
+    <div class="cal-day-date">{{ date | date:'dd' }}</div>
+  </div>
 
-    <div class="cal-text">
-        <div class="long-date">{{ date | localeDate:'longDate' | async }}</div>
-        <div class="full-day">{{ date | localeDate:{weekday: 'long'} | async }}</div>
-    </div>
+  <div class="cal-text">
+    <div class="long-date">{{ date | localeDate:'longDate' | async }}</div>
+    <div class="full-day">{{ date | localeDate:{weekday: 'long'} | async }}</div>
+  </div>
 
-    <div class="delete-day">
-        <i *ngIf="!pendingDelete" class="show-delete far fa-times-circle"></i>
-        <i *ngIf="pendingDelete" class="show-restore fa fa-undo"></i>
-    </div>
+  <div class="delete-day">
+    <i [ngClass]="{'show-restore fa fa-undo': pendingDelete, 'show-delete far fa-times-circle': !pendingDelete}"></i>
+  </div>
 </div> <!-- /.day-off-card -->

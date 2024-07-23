@@ -1,0 +1,78 @@
+@charset "UTF-8";
+/* COLOR THEME */
+/* SKELETON THEME */
+/* MOBILE */
+@media only screen and (max-width: 600px) {
+  #mainMenu {
+    flex-flow: row;
+    justify-content: space-around;
+    position: inherit;
+  }
+  #mainMenu .menu-item {
+    font-size: 200%;
+  }
+  #languageDropdown {
+    right: unset;
+  }
+}
+/* DESKTOP */
+@media only screen and (min-width: 601px) {
+  #mainMenu {
+    flex-flow: column;
+    position: fixed;
+    right: 1.5rem;
+    text-align: center;
+  }
+  #mainMenu .menu-item {
+    font-size: 300%;
+  }
+  #mainMenu .menu-item:not(:first-child):before {
+    color: var(--gray-color);
+    content: "·";
+    display: block;
+    font-family: serif;
+    line-height: 40%;
+  }
+  #languageDropdown {
+    right: 3ch;
+  }
+}
+#mainMenu {
+  display: flex;
+}
+#mainMenu .menu-item > span:hover i {
+  color: var(--tertiary-color-dark);
+}
+#mainMenu .menu-item i {
+  color: var(--gray-color);
+  cursor: pointer;
+}
+#mainMenu .menu-item i:hover {
+  color: var(--tertiary-color-dark);
+}
+#mainMenu .menu-item .badge {
+  color: var(--body-background-color);
+  cursor: pointer;
+  font-size: 25%;
+  margin-left: -2rem;
+  margin-top: 6ch;
+  position: absolute;
+}
+
+#selectLanguage:hover {
+  color: var(--tertiary-color-dark);
+}
+
+#languageDropdown {
+  display: block;
+  font-size: 0;
+  margin-top: -5px;
+  position: absolute;
+  text-align: left;
+}
+
+#toGitHub:hover {
+  color: var(--tertiary-color-dark);
+}
+
+/*# sourceMappingURL=menu.css.map */

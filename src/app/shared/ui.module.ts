@@ -8,13 +8,13 @@ import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
-    exports: [
-        CalendarModule,
-        DialogModule,
-        DropdownModule,
-        ProgressSpinnerModule,
-        ToastModule,
-        TooltipModule
-    ]
+  exports: [
+    CalendarModule,
+    DialogModule,
+    DropdownModule,
+    ProgressSpinnerModule,
+    ToastModule,
+    TooltipModule,
+  ]
 })
-export class MaterialModule {}
+export class UiModule {}

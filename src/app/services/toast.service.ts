@@ -1,32 +1,26 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
 @Injectable()
 export class ToastService {
-    constructor(private _messageService: MessageService) {}
+  readonly #messageService = inject(MessageService);
 
-    /**
-     * @param {string} summary
-     */
-    successToast(summary: string): void {
-        this._messageService.add({
-            severity: 'success',
-            summary,
-            closable: true,
-            styleClass: 'toast-default'
-        });
-    }
+  successToast(summary: string): void {
+    this.#messageService.add({
+      severity: 'success',
+      summary,
+      closable: true,
+      styleClass: 'toast-default'
+    });
+  }
 
-    /**
-     * @param {string} summary
-     */
-    errorToast(summary: string): void {
-        this._messageService.add({
-            severity: 'custom',
-            summary,
-            closable: true,
-            styleClass: 'toast-default p-toast-message-error',
-            icon: 'pi-exclamation-circle'
-        });
-    }
+  errorToast(summary: string): void {
+    this.#messageService.add({
+      severity: 'custom',
+      summary,
+      closable: true,
+      styleClass: 'toast-default p-toast-message-error',
+      icon: 'pi-exclamation-circle'
+    });
+  }
 }

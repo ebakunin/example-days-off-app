@@ -1,64 +1,69 @@
 <nav id="mainMenu">
-    <div class="menu-item">
-        <i id="selectTheme"
-           class="pointer fas"
-           [ngClass]="{
-             'fa-sun': inDarkMode,
-             'fa-adjust': !inDarkMode
-           }"
-           [attr.aria-label]="(inDarkMode ? 'MENU.LIGHT_MODE' : 'MENU.DARK_MODE') | translate"
-           [pTooltip]="(inDarkMode ? 'MENU.LIGHT_MODE' : 'MENU.DARK_MODE') | translate"
-           tooltipPosition="left"
-           (click)="toggleDarkMode()">
-        </i>
-    </div>
+  <div class="menu-item">
+    <i
+      id="selectTheme"
+      class="pointer fas"
+      [ngClass]="{'fa-sun': inDarkMode, 'fa-adjust': !inDarkMode}"
+      [attr.aria-label]="(inDarkMode ? 'MENU.LIGHT_MODE' : 'MENU.DARK_MODE') | translate"
+      [pTooltip]="(inDarkMode ? 'MENU.LIGHT_MODE' : 'MENU.DARK_MODE') | translate"
+      tooltipPosition="left"
+      (click)="toggleDarkMode()">
+    </i>
+  </div>
 
-    <div class="menu-item">
-        <span id="selectLanguage"
-              [attr.aria-label]="'MENU.SELECT_LANGUAGE' | translate"
-              [pTooltip]="'MENU.SELECT_LANGUAGE' | translate"
-              tooltipPosition="left"
-              (click)="showDropdown = !showDropdown">
-            <i class="globe" aria-hidden="true" [ngClass]="(globeIcon$ | async) || ''"></i>
-            <span class="badge">{{ (selectedLanguage$ | async)?.abbreviation }}</span>
-        </span>
+  <div class="menu-item">
+    <span
+      id="selectLanguage"
+      [attr.aria-label]="'MENU.SELECT_LANGUAGE' | translate"
+      [pTooltip]="'MENU.SELECT_LANGUAGE' | translate"
+      tooltipPosition="left"
+      (click)="showDropdown = !showDropdown">
+        <i class="globe" aria-hidden="true" [ngClass]="(globeIcon$ | async) || ''"></i>
+        <span class="badge">{{ (selectedLanguage$ | async)?.abbreviation }}</span>
+    </span>
 
-        <div id="languageDropdown" *ngIf="showDropdown">
-            <p-dropdown [options]="(languages$ | async) || []"
-                        [ngModel]="selectedLanguage$ | async"
-                        (onChange)="onChangeLanguage($event.value)"
-                        optionLabel="nativeDescription">
-            </p-dropdown>
-        </div>
-    </div>
+    @if (showDropdown) {
+      <div id="languageDropdown">
+        <p-dropdown
+          [options]="(languages$ | async) || []"
+          [ngModel]="selectedLanguage$ | async"
+          (onChange)="onChangeLanguage($event.value)"
+          optionLabel="nativeDescription">
+        </p-dropdown>
+      </div>
+    }
+  </div>
 
-    <div class="menu-item">
-        <i id="showExplanation"
-           class="far fa-comment"
-           [attr.aria-label]="'MENU.APP_EXPLANATION' | translate"
-           [pTooltip]="'MENU.APP_EXPLANATION' | translate"
-           tooltipPosition="left"
-           (click)="showExplanation$.next(true)">
-        </i>
-    </div>
+  <div class="menu-item">
+    <i
+      id="showExplanation"
+      class="far fa-comment"
+      [attr.aria-label]="'MENU.APP_EXPLANATION' | translate"
+      [pTooltip]="'MENU.APP_EXPLANATION' | translate"
+      tooltipPosition="left"
+      (click)="showExplanation$.next(true)">
+    </i>
+  </div>
 
-    <div class="menu-item">
-        <a id="toGitHub" href="https://github.com/ebakunin/example-days-off-app" target="_blank">
-            <i class="fab fa-github"
-               [attr.aria-label]="'MENU.GITHUB_CODE' | translate"
-               [pTooltip]="'MENU.GITHUB_CODE' | translate"
-               tooltipPosition="left">
-            </i>
-        </a>
-    </div>
+  <div class="menu-item">
+    <a id="toGitHub" href="https://github.com/ebakunin/example-days-off-app" target="_blank">
+      <i
+        class="fab fa-github"
+        [attr.aria-label]="'MENU.GITHUB_CODE' | translate"
+        [pTooltip]="'MENU.GITHUB_CODE' | translate"
+        tooltipPosition="left">
+      </i>
+    </a>
+  </div>
 
-    <div class="menu-item">
-        <i id="sendMessage"
-           class="far fa-paper-plane"
-           [attr.aria-label]="'MENU.SEND_MESSAGE' | translate"
-           [pTooltip]="'MENU.SEND_MESSAGE' | translate"
-           tooltipPosition="left"
-           (click)="showContactDialog$.next(true)">
-        </i>
-    </div>
+  <div class="menu-item">
+    <i
+      id="sendMessage"
+      class="far fa-paper-plane"
+      [attr.aria-label]="'MENU.SEND_MESSAGE' | translate"
+      [pTooltip]="'MENU.SEND_MESSAGE' | translate"
+      tooltipPosition="left"
+      (click)="showContactDialog$.next(true)">
+    </i>
+  </div>
 </nav>

@@ -1,52 +1,60 @@
 {
-    "CONTACT": {
-        "EMAIL_PLACEHOLDER": "Votre e-mail",
-        "MESSAGE_ERROR": "Une erreur est survenue lors de l'envoi de votre message",
-        "MESSAGE_ME": "Envoie moi un message",
-        "MESSAGE_PLACEHOLDER": "Dites quelque chose de gentil, ou au moins d'intéressant…",
-        "MESSAGE_SUCCESS": "Merci pour le message",
-        "NAME_PLACEHOLDER": "Votre nom",
-        "SEND": "Envoyer"
+  "CONTACT": {
+    "EMAIL_PLACEHOLDER": "Votre e-mail",
+    "MESSAGE_ERROR": "Une erreur est survenue lors de l'envoi de votre message",
+    "MESSAGE_ME": "Envoie moi un message",
+    "MESSAGE_PLACEHOLDER": "Dites quelque chose de gentil, ou au moins d'intéressant…",
+    "MESSAGE_SUCCESS": "Merci pour le message",
+    "NAME_PLACEHOLDER": "Votre nom",
+    "SEND": "Envoyer"
+  },
+  "DAYS_OFF": {
+    "MAIN": {
+      "BACK_TO": "Retour à",
+      "EXPLANATION_1": "Utilisez le calendrier pour planifier vos jours de congé. 7 jours de repos ont déjà été programmés pour vous.",
+      "EXPLANATION_2": "Cliquer sur un jour actuellement programmé le rendra rouge car il sera annulé. Vous pouvez sélectionner ou désélectionner toute autre date pour planifier de nouveaux jours de congé.",
+      "EXPLANATION_3": "Cliquez sur ENREGISTRER pour mettre à jour votre horaire.",
+      "SAVE": "Enregistrer",
+      "TITLE": "Planifiez vos jours de congé (exemple d'application)",
+      "UPDATE_SUCCESS": "Jours de congé mis à jour",
+      "UPDATE_ERROR": "Erreur lors de la mise à jour des jours de congé"
     },
-    "DAYS_OFF": {
-        "MAIN": {
-            "BACK_TO": "Retour à",
-            "EXPLANATION_1": "Utilisez le calendrier pour planifier vos jours de congé. 7 jours de repos ont déjà été programmés pour vous.",
-            "EXPLANATION_2": "Cliquer sur un jour actuellement programmé le rendra rouge car il sera annulé. Vous pouvez sélectionner ou désélectionner toute autre date pour planifier de nouveaux jours de congé.",
-            "EXPLANATION_3": "Cliquez sur ENREGISTRER pour mettre à jour votre horaire.",
-            "SAVE": "Enregistrer",
-            "TITLE": "Planifiez vos jours de congé (exemple d'application)",
-            "UPDATE_SUCCESS": "Jours de congé mis à jour",
-            "UPDATE_ERROR": "Erreur lors de la mise à jour des jours de congé"
-        },
-        "MANAGEMENT": {
-            "CLEAR_MONTH": "Effacez le mois",
-            "CLEAR_ALL_DATES": "Effacez les dates",
-            "NO_DATES_SAVED": "Aucune date n'a été sauvegardée",
-            "RESTORE_ALL": "Tout restaurer",
-            "SAVED_DAYS_OFF": "Jours de congé enregistrés",
-            "SELECT_DATE_EXPLANATION": "Sélectionnez une date dans le calendrier et cliquez sur le bouton Enregistrer.",
-            "SELECT_MONTH": "Sélectionnez le mois",
-            "SELECT_YEAR": "Sélectionnez l'année",
-            "SLOTS_DELETE_ALL": "Tout supprimer",
-            "TODAY": "Aller à aujourd'hui"
-        }
-    },
-    "EXPLANATIONS": {
-        "BOX_1": "Cette application montre comment un employé peut planifier ses jours de congé. Dans cet exemple, le bureau est fermé pendant le week-end. L'employé a déjà plusieurs jours de congé prévus. En cliquant sur les dates du calendrier, vous pouvez ajouter ou supprimer jusqu'à 365 jours de congé à la fois.",
-        "BOX_2": "L'application est entièrement mobile. Il prend en charge plusieurs langues et peut basculer à la volée. Comme il s'agit d'une démonstration, toutes les données par défaut sont simulées et ne communiquent pas avec une API. Les actions CRUD fonctionnent comme prévu mais sont perdues si la page est actualisée.",
-        "BOX_3": "La base de code est construite sur Angular 14. Le calendrier est une version fortement personnalisée d'un composant PrimeNG. D'autres composants PrimeNG UI sont également utilisés. Le framework CSS bare bones est basé sur Skeleton. La base de code de l'application est disponible sur GitHub.",
-        "BOX_4": "L'application est basée sur mon code d'un emploi précédent. Il est quelque peu sur-conçu pour montrer diverses technologies. Si vous avez des questions, des suggestions ou (d'horreur) trouvez un bug, n'hésitez pas à m'envoyer un message."
-    },
-    "MENU": {
-        "APP_EXPLANATION": "Comment fonctionne l'application",
-        "DARK_MODE": "Passer en mode sombre",
-        "GITHUB_CODE": "Voir le code sur Github",
-        "LIGHT_MODE": "Passer en mode lumière",
-        "SELECT_LANGUAGE": "Sélectionnez une langue",
-        "SEND_MESSAGE": "Envoyez-moi un message"
-    },
-    "PRIMENG": {
-        "dayNamesMin": ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"]
+    "MANAGEMENT": {
+      "CLEAR_MONTH": "Effacez le mois",
+      "CLEAR_ALL_DATES": "Effacez les dates",
+      "NO_DATES_SAVED": "Aucune date n'a été sauvegardée",
+      "RESTORE_ALL": "Tout restaurer",
+      "SAVED_DAYS_OFF": "Jours de congé enregistrés",
+      "SELECT_DATE_EXPLANATION": "Sélectionnez une date dans le calendrier et cliquez sur le bouton Enregistrer.",
+      "SELECT_MONTH": "Sélectionnez le mois",
+      "SELECT_YEAR": "Sélectionnez l'année",
+      "SLOTS_DELETE_ALL": "Tout supprimer",
+      "TODAY": "Aller à aujourd'hui"
     }
+  },
+  "EXPLANATIONS": {
+    "BOX_1": "Cette application montre comment un employé peut planifier ses jours de congé. Dans cet exemple, le bureau est fermé pendant le week-end. L'employé a déjà plusieurs jours de congé prévus. En cliquant sur les dates du calendrier, vous pouvez ajouter ou supprimer jusqu'à 365 jours de congé à la fois.",
+    "BOX_2": "L'application est entièrement mobile. Il prend en charge plusieurs langues et peut basculer à la volée. Comme il s'agit d'une démonstration, toutes les données par défaut sont simulées et ne communiquent pas avec une API. Les actions CRUD fonctionnent comme prévu mais sont perdues si la page est actualisée.",
+    "BOX_3": "La base de code est construite sur Angular 14. Le calendrier est une version fortement personnalisée d'un composant PrimeNG. D'autres composants PrimeNG UI sont également utilisés. Le framework CSS bare bones est basé sur Skeleton. La base de code de l'application est disponible sur GitHub.",
+    "BOX_4": "L'application est basée sur mon code d'un emploi précédent. Il est quelque peu sur-conçu pour montrer diverses technologies. Si vous avez des questions, des suggestions ou (d'horreur) trouvez un bug, n'hésitez pas à m'envoyer un message."
+  },
+  "MENU": {
+    "APP_EXPLANATION": "Comment fonctionne l'application",
+    "DARK_MODE": "Passer en mode sombre",
+    "GITHUB_CODE": "Voir le code sur Github",
+    "LIGHT_MODE": "Passer en mode lumière",
+    "SELECT_LANGUAGE": "Sélectionnez une langue",
+    "SEND_MESSAGE": "Envoyez-moi un message"
+  },
+  "PRIMENG": {
+    "dayNamesMin": [
+      "dim",
+      "lun",
+      "mar",
+      "mer",
+      "jeu",
+      "ven",
+      "sam"
+    ]
+  }
 }

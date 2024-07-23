@@ -3,49 +3,52 @@
 <h1 id="title">{{ 'DAYS_OFF.MAIN.TITLE' | translate }}</h1>
 
 <p id="summary">
-    {{ 'DAYS_OFF.MAIN.EXPLANATION_1' | translate }}<br>
-    {{ 'DAYS_OFF.MAIN.EXPLANATION_2' | translate }}<br>
-    {{ 'DAYS_OFF.MAIN.EXPLANATION_3' | translate }}
+  {{ 'DAYS_OFF.MAIN.EXPLANATION_1' | translate }}<br>
+  {{ 'DAYS_OFF.MAIN.EXPLANATION_2' | translate }}<br>
+  {{ 'DAYS_OFF.MAIN.EXPLANATION_3' | translate }}
 </p>
 
 <section>
-    <ng-container *ngIf="dataIsReady; else showSkeleton">
-        <app-days-off-management
-            [startingViewDate]="startingViewDate"
-            [closedDays]="(office$ | async)?.closedDays ?? []"
-            [closedDates]="(office$ | async)?.closedDates ?? []"
-            [daysOff]="(employee$ | async)?.daysOff ?? []"
-            (newExceptions)="newExceptionDates = $event"
-            (exceptionsToBeDeleted)="exceptionDatesToBeDeleted = $event"
-            (currentViewedMonth)="currentViewedMonth = $event">
-        </app-days-off-management>
-    </ng-container>
-    <ng-template #showSkeleton>
-        <div class="skeleton" style="width:495px"></div>
-        <div class="skeleton" style="width:370px"></div>
-    </ng-template>
+  @if (dataIsReady) {
+    <app-days-off-management
+      [startingViewDate]="startingViewDate"
+      [closedDays]="(office$ | async)?.closedDays ?? []"
+      [closedDates]="(office$ | async)?.closedDates ?? []"
+      [daysOff]="(employee$ | async)?.daysOff ?? []"
+      (newExceptions)="newExceptionDates = $event"
+      (exceptionsToBeDeleted)="exceptionDatesToBeDeleted = $event"
+      (currentViewedMonth)="currentViewedMonth = $event">
+    </app-days-off-management>
+  } @else {
+    <div class="skeleton" style="width:495px"></div>
+    <div class="skeleton" style="width:370px"></div>
+  }
 
-    <br class="clear">
+  <br class="clear">
 
-    <div style="margin-top: 20px">
-        <button type="button"
-                id="saveButton"
-                class="button-primary"
-                [disabled]="newExceptionDates.length === 0 && exceptionDatesToBeDeleted.length === 0"
-                (click)="onSave()">
-            {{ 'DAYS_OFF.MAIN.SAVE' | translate }}
-        </button>
-    </div>
+  <div style="margin-top: 20px">
+    <button
+      type="button"
+      id="saveButton"
+      class="button-primary"
+      tabindex="0"
+      [disabled]="newExceptionDates.length === 0 && exceptionDatesToBeDeleted.length === 0"
+      (click)="onSave()">
+      {{ 'DAYS_OFF.MAIN.SAVE' | translate }}
+    </button>
+  </div>
 </section>
 
 <footer>
-    © 2021<br>
-    <span>{{ 'DAYS_OFF.MAIN.BACK_TO' | translate }} <a href="http://ericchristenson.com">ericchristenson.com</a></span>
+  © 2021<br>
+  <span>{{ 'DAYS_OFF.MAIN.BACK_TO' | translate }} <a href="//ericchristenson.com">ericchristenson.com</a></span>
 </footer>
 
-<div *ngIf="showMesh$ | async" class="mesh"></div>
-<p-toast position="bottom-center"></p-toast>
+@if (showMesh$ | async) {
+  <div class="mesh"></div>
+}
 
+<p-toast position="bottom-center"></p-toast>
 <app-spinner></app-spinner>
 <app-explanations></app-explanations>
 <app-contact></app-contact>

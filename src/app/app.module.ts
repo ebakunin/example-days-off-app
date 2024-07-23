@@ -2,44 +2,47 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { RippleModule } from 'primeng/ripple';
 
-import { CommonPipesModule } from './shared/pipes.module';
-import { DaysOffManagementModule } from './days-off/days-off-management.module';
-import { MaterialModule } from './shared/material.module';
-import { ServicesModule } from './services/services.module';
-import { TranslateWrapperModule } from './translations/translation-wrapper.module';
-
-import { AppComponent } from './app.component';
-import { ContactComponent } from './contact/contact.component';
-import { ExplanationsComponent } from './explanations/explanations.component';
-import { MenuComponent } from './menu/menu.component';
-import { SpinnerComponent } from './spinner/spinner.component';
+import { ExplanationsComponent } from '@days-off/explanations/explanations.component';
+import { AppComponent } from '@days-off/app.component';
+import { ContactComponent } from '@days-off/contact/contact.component';
+import { MenuComponent } from '@days-off/menu/menu.component';
+import { SpinnerComponent } from '@days-off/spinner/spinner.component';
+import { CommonPipesModule } from '@days-off/shared/pipes.module';
+import { UiModule } from '@days-off/shared/ui.module';
+import { DaysOffManagementModule } from '@days-off/days-off/days-off-management.module';
+import { ServicesModule } from '@services/services.module';
+import { TranslateWrapperModule } from '@days-off/translations/translation-wrapper.module';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ContactComponent,
-        ExplanationsComponent,
-        MenuComponent,
-        SpinnerComponent
-    ],
-    imports: [
-        BrowserAnimationsModule,
-        BrowserModule,
-        CommonPipesModule,
-        FormsModule,
-        HttpClientModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        RippleModule,
-        DaysOffManagementModule,
-        ServicesModule.forRoot(),
-        TranslateModule,
-        TranslateWrapperModule.forRoot()
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    ContactComponent,
+    ExplanationsComponent,
+    MenuComponent,
+    SpinnerComponent,
+  ],
+  bootstrap: [
+    AppComponent,
+  ],
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    CommonPipesModule,
+    FormsModule,
+    UiModule,
+    ReactiveFormsModule,
+    RippleModule,
+    DaysOffManagementModule,
+    ServicesModule.forRoot(),
+    TranslateModule,
+    TranslateWrapperModule.forRoot(),
+  ],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi()),
+  ]
 })
 export class AppModule {}
