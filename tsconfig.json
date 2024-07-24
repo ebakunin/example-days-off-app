@@ -17,6 +17,20 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@cypress/*": [
+        "cypress/*"
+      ],
+      "@days-off/*": [
+        "src/app/*"
+      ],
+      "@models/*": [
+        "src/app/models/*"
+      ],
+      "@services/*": [
+        "src/app/services/*"
+      ]
+    },
     "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,

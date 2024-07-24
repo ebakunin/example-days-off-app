@@ -1,4 +1,4 @@
-import { BaseModel } from './base.model';
+import { BaseModel } from '@models/base.model';
 
 export class Language extends BaseModel {
   description!: string;

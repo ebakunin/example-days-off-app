@@ -1,14 +1,3 @@
-declare global {
-  // declare prototype functions
-  interface String {
-    ucfirst(): string;
-    ucwords(): string;
-    toSnakeCase(): string;
-    toSentenceCase(): string;
-    toCamelCase(): string;
-  }
-}
-
 /**
  * JavaScript equivalent of PHP's `ucfirst()`.
  */
@@ -55,32 +44,35 @@ String.prototype.toCamelCase = function () {
 /**
  * Compares two linear arrays and returns the element intersection.
  */
-export function arrayIntersection(array1: any[], array2: any[]): any[] {
-  return array1.filter((x) => !array2.includes(x));
+Array.prototype.intersection = function (compArray: any[]) {
+  return this.filter((x) => !compArray.includes(x));
 }
 
 /**
  * Compares two linear arrays and returns the difference.
  */
-export function arrayDiff(array1: any[], array2: any[]): any[] {
-  return array2.length > array1.length
-    ? array2.filter((x) => !array1.includes(x))
-    : array1.filter((x) => !array2.includes(x));
+Array.prototype.difference = function (compArray: any[]) {
+  return compArray.length > this.length
+    ? compArray.filter((x) => !this.includes(x))
+    : this.filter((x) => !compArray.includes(x));
 }
 
 /**
  * Compares two linear arrays and returns the symmetric difference.
  */
-export function arraySymmetricDiff(array1: any[], array2: any[]): any[] {
-  return array1.filter((x) => !array2.includes(x)).concat(array2.filter((x) => !array1.includes(x)));
+Array.prototype.xor = function (compArray: any[]) {
+  return [
+    ...this.filter((x) => !compArray.includes(x)),
+    ...compArray.filter((x) => !this.includes(x))
+  ];
 }
 
 /**
  * Compares two scalar arrays and returns whether there is a difference.
  */
-export function arrayMatch(array1: any[], array2: any[]): boolean {
-  return Array.isArray(array1) &&
-    Array.isArray(array2) &&
-    array1.length === array2.length &&
-    array1.sort().every((value, index) => value === array2.sort()[index]);
+Array.prototype.matches = function (compArray: any[]) {
+  return Array.isArray(this) &&
+    Array.isArray(compArray) &&
+    this.length === compArray.length &&
+    this.sort().every((value, index) => value === compArray.sort()[index]);
 }

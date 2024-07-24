@@ -45,9 +45,28 @@
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js';  // Included with Angular CLI.
-
+import 'zone.js';
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+/***************************************************************************************************
+ * Declare prototype functions
+ */
+declare global {
+  interface String {
+    ucfirst(): string;
+    ucwords(): string;
+    toSnakeCase(): string;
+    toSentenceCase(): string;
+    toCamelCase(): string;
+  }
+
+  interface Array<T> {
+    intersection(compArray: T[]): T[];
+    difference(compArray: T[]): T[];
+    xor(compArray: T[]): T[];
+    matches(compArray: T[]): boolean;
+  }
+}
